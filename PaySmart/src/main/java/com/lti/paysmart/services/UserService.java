@@ -14,11 +14,7 @@ public class UserService {
 	UserDao udao;
 	
 	public String performLogin(UserLoginDTO userLoginDTO) {
-		User user = new User();
-		user.getCredential().setUsername(userLoginDTO.getUsername());
-		user.getCredential().setPassword(userLoginDTO.getPassword());
-		
-		return udao.performLogin(user);
+		return udao.performLogin(userLoginDTO);
 	}
 
 }
