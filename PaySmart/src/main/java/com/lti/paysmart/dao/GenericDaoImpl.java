@@ -5,8 +5,11 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.springframework.stereotype.Component;
+
 import com.lti.paysmart.interfaces.GenericDao;
 
+@Component
 public class GenericDaoImpl implements GenericDao{
 	
 	@PersistenceContext

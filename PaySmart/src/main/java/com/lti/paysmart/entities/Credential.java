@@ -17,7 +17,7 @@ public class Credential {
 	@GeneratedValue
 	@Column(name = "credential_id")
 	private long credential_id;
-	private String user_name;
+	private String username;
 	private String password;
 	
 
@@ -36,13 +36,13 @@ public class Credential {
 	}
 
 
-	public String getUser_name() {
-		return user_name;
+	public String getUsername() {
+		return username;
 	}
 
 
-	public void setUser_name(String user_name) {
-		this.user_name = user_name;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 
