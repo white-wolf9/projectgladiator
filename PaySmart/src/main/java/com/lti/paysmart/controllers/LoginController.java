@@ -12,7 +12,6 @@ import com.lti.paysmart.dto.UserLoginDTO;
 import com.lti.paysmart.services.UserService;
 
 @RestController
-@ComponentScan("com.lti.paysmart")
 public class LoginController {
 	
 	@Autowired
