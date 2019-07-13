@@ -16,6 +16,7 @@
 
 	<properties>
 		<java.version>1.8</java.version>
+		<oracle.ojdbc.version>12.2.0.1</oracle.ojdbc.version>
 	</properties>
 
 	<dependencies>
@@ -26,6 +27,11 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc8</artifactId>
+			<version>${oracle.ojdbc.version}</version>
 		</dependency>
 
 		<dependency>
