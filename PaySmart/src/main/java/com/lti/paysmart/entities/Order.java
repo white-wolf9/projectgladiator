@@ -34,6 +34,55 @@ public class Order {
 	
 	@OneToMany(mappedBy = "order", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Set<Payment> payment;
+
+	public long getOrder_id() {
+		return order_id;
+	}
+
+	public void setOrder_id(long order_id) {
+		this.order_id = order_id;
+	}
+
+	public Date getOrder_date() {
+		return order_date;
+	}
+
+	public void setOrder_date(Date order_date) {
+		this.order_date = order_date;
+	}
+
+	public EMITypes getEmi_scheme() {
+		return emi_scheme;
+	}
+
+	public void setEmi_scheme(EMITypes emi_scheme) {
+		this.emi_scheme = emi_scheme;
+	}
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Set<Payment> getPayment() {
+		return payment;
+	}
+
+	public void setPayment(Set<Payment> payment) {
+		this.payment = payment;
+	}
+	
 	
 	
 }

@@ -16,4 +16,22 @@ public class Payment {
 	
 	@ManyToOne
 	private Order order;
+
+	public long getPayment_id() {
+		return payment_id;
+	}
+
+	public void setPayment_id(long payment_id) {
+		this.payment_id = payment_id;
+	}
+
+	public Order getOrder() {
+		return order;
+	}
+
+	public void setOrder(Order order) {
+		this.order = order;
+	}
+	
+	
 }

@@ -1,5 +1,25 @@
 package com.lti.paysmart.dao;
 
-public class GenericDaoImpl {
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import com.lti.paysmart.interfaces.GenericDao;
+
+public class GenericDaoImpl implements GenericDao{
+	
+	@PersistenceContext
+	EntityManager entityManager;
+
+	@Override
+	public void add(Object object) {
+		entityManager.merge(object);
+	}
+
+	@Override
+	public Object fetchById(Class classname, int primary_key) {
+		return entityManager.find(classname, primary_key);
+	}
 
 }

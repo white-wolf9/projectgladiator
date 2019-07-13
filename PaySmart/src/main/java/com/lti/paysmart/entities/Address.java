@@ -25,5 +25,54 @@ public class Address {
 	@OneToOne
 	@JoinColumn(name = "U_ID")
 	private User user;
+
+	public long getAddress_id() {
+		return address_id;
+	}
+
+	public void setAddress_id(long address_id) {
+		this.address_id = address_id;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public long getPincode() {
+		return pincode;
+	}
+
+	public void setPincode(long pincode) {
+		this.pincode = pincode;
+	}
+
+	public String getStreet() {
+		return street;
+	}
+
+	public void setStreet(String street) {
+		this.street = street;
+	}
+
+	public String getDoorNo() {
+		return doorNo;
+	}
+
+	public void setDoorNo(String doorNo) {
+		this.doorNo = doorNo;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
 	
 }
