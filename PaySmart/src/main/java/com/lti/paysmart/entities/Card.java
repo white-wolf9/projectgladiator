@@ -20,7 +20,7 @@ public class Card {
 	
 	@Id
 	@GeneratedValue
-	@Column(name = "card_id")
+	@Column(name = "CARD_ID")
 	private long card_id;
 	private String name;
 	private long card_no;
@@ -30,7 +30,7 @@ public class Card {
 	private boolean card_status;
 	
 	@OneToOne
-	@JoinColumn(name = "U_ID")
+	@JoinColumn(name = "USER_ID")
 	private User user;
 
 	public long getCard_id() {

@@ -1,8 +1,10 @@
 package com.lti.paysmart.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -12,9 +14,11 @@ public class Payment {
 
 	@Id
 	@GeneratedValue
+	@Column(name = "PAYMENT_ID")
 	private long payment_id;
 	
 	@ManyToOne
+	@JoinColumn(name = "ORDER_ID")
 	private Order order;
 
 	public long getPayment_id() {

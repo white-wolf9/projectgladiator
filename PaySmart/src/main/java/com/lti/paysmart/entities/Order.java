@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -22,6 +23,7 @@ public class Order {
 
 	@Id
 	@GeneratedValue
+	@Column(name = "ORDER_ID")
 	private long order_id;
 	private Date order_date;
 	private EMITypes emi_scheme;
@@ -30,6 +32,7 @@ public class Order {
 	private Product product;
 	
 	@ManyToOne
+	@JoinColumn(name = "USER_ID")
 	private User user;
 	
 	@OneToMany(mappedBy = "order", fetch = FetchType.LAZY, cascade = CascadeType.ALL)

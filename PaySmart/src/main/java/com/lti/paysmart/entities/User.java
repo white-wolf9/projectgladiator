@@ -19,7 +19,7 @@ public class User {
 	
 	@Id
 	@GeneratedValue
-	@Column(name = "U_ID")
+	@Column(name = "USER_ID")
 	private long user_id;
 	private String name;
 	@Column(unique = true)
@@ -41,6 +41,9 @@ public class User {
 	
 	@OneToMany(mappedBy = "user",fetch =FetchType.EAGER,  cascade = CascadeType.ALL)
 	private Set<Order> order;
+	
+	@OneToOne(mappedBy = "user",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private Document document;
 
 	public long getUser_id() {
 		return user_id;

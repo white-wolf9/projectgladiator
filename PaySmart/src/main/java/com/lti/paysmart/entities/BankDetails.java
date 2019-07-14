@@ -14,25 +14,24 @@ public class BankDetails {
 	
 	@Id
 	@GeneratedValue
-	@Column(name = "bank_details_id")
-	private long bank_details_id;
+	@Column(name = "BANKDETAILS_ID")
+	private long bankdetails_id;
 	private String bank_name;
 	private long acc_no;
 	private String ifsc_code;
 	
 
 	@OneToOne
-	@JoinColumn(name = "U_ID")
+	@JoinColumn(name = "USER_ID")
 	private User user;
 
-
-	public long getBank_details_id() {
-		return bank_details_id;
+	public long getBankdetails_id() {
+		return bankdetails_id;
 	}
 
 
-	public void setBank_details_id(long bank_details_id) {
-		this.bank_details_id = bank_details_id;
+	public void setBankdetails_id(long bankdetails_id) {
+		this.bankdetails_id = bankdetails_id;
 	}
 
 

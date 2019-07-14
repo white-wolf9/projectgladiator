@@ -23,7 +23,7 @@ public class Address {
 	private String doorNo;
 
 	@OneToOne
-	@JoinColumn(name = "U_ID")
+	@JoinColumn(name = "USER_ID")
 	private User user;
 
 	public long getAddress_id() {

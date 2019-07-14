@@ -15,14 +15,14 @@ public class Credential {
 	
 	@Id
 	@GeneratedValue
-	@Column(name = "credential_id")
+	@Column(name = "CREDENTIAL_ID")
 	private long credential_id;
 	private String username;
 	private String password;
 	
 
 	@OneToOne
-	@JoinColumn(name = "U_ID")
+	@JoinColumn(name = "USER_ID")
 	private User user;
 
 

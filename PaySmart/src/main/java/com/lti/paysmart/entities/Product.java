@@ -19,6 +19,7 @@ public class Product {
 	
 	@Id
 	@GeneratedValue
+	@Column(name = "PRODUCT_ID")
 	private long product_id;
 	private String name;
 	private String description;
@@ -30,6 +31,7 @@ public class Product {
 	private Set<EMI> emi;
 	
 	@OneToOne
+	@JoinColumn(name = "ORDER_ID")
 	private Order order;
 
 	public long getProduct_id() {
