@@ -21,7 +21,8 @@ public class User {
 	@GeneratedValue
 	@Column(name = "USER_ID")
 	private long user_id;
-	private String name;
+	private String fname;
+	private String lname;
 	@Column(unique = true)
 	private String email;
 	@Column(unique = true)
@@ -51,14 +52,6 @@ public class User {
 
 	public void setUser_id(long user_id) {
 		this.user_id = user_id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public String getEmail() {
@@ -116,6 +109,31 @@ public class User {
 	public void setOrder(Set<Order> order) {
 		this.order = order;
 	}
+
+	public String getFname() {
+		return fname;
+	}
+
+	public void setFname(String fname) {
+		this.fname = fname;
+	}
+
+	public String getLname() {
+		return lname;
+	}
+
+	public void setLname(String lname) {
+		this.lname = lname;
+	}
+
+	public Document getDocument() {
+		return document;
+	}
+
+	public void setDocument(Document document) {
+		this.document = document;
+	}
+	
 	
 	
 

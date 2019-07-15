@@ -24,6 +24,10 @@ public class Credential {
 	@OneToOne
 	@JoinColumn(name = "USER_ID")
 	private User user;
+	
+	@OneToOne
+	@JoinColumn(name = "ADMIN_ID")
+	Admin admin;
 
 
 	public long getCredential_id() {
