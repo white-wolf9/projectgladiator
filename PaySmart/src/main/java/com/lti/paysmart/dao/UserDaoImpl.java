@@ -28,8 +28,6 @@ public class UserDaoImpl extends GenericDaoImpl implements UserDao  {
 		else if(user_temp.getCredential().getPassword().equals(userLoginDTO.getPassword().toString()))
 			return "Success";
 		else
-			System.out.println(user_temp.getCredential().getPassword());
-			System.out.println(userLoginDTO.getPassword().toString());
 			return "Incorrect Password";
 		
 	}

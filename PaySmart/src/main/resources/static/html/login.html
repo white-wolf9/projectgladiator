@@ -6,9 +6,11 @@
 <link rel="stylesheet" type="text/css" href="/css/login.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script>
-	// Variable to count number of attempts.
-	// Below function Executes on click of login button.
-	
+function myFunction() {
+  alert("Page is loaded");
+}
+</script>
+<script>
 	$(function() {
 		$("#form_login").submit(function(evt) {
 			evt.preventDefault();
@@ -26,14 +28,14 @@
 				data : JSON.stringify(obj),
 				contentType : 'application/json',
 				success : function(response) {
-					alert(response);
+					if(response === "Success") location.href = "http://www.google.com/";
 				}
 			})
 		})
 	})
 </script>
 </head>
-<body>
+<body onload="myFunction()">
 <div class="login">
 	<h1>Login </h1>      
 	<form id="form_login">
