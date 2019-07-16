@@ -5,6 +5,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>Page Title</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> 
+<script src="//geodata.solutions/includes/countrystatecity.js"></script>
 <link rel="stylesheet" type="text/css" media="screen" href="../css/register.css" />
 </head>
 <body>
@@ -29,9 +32,15 @@ Confirm Password<input type="password" name="confirmPassword"/> <br/>
 <div class="panel"> 
 House Number<input type="text" name="houseNo"/> <br/>
 Street Name<input type="text" name="streetName"/> <br/>
-city<input type="text" name="city"/> <br/>
-State<input type="text" name="state"/> <br/>
-Country<input type="text" name="country"/> <br/>
+Select Country: <select name="country" class="countries" id="countryId">
+<option value="">Select Country</option>
+</select><br/>
+Select State: <select name="state" class="states" id="stateId">
+<option value="">Select State</option>
+</select><br/>
+Select City: <select name="city" class="cities" id="cityId">
+<option value="">Select City</option>
+</select><br/>
 Pincode<input type="text" name="pincode"/> <br/>
 </div>
 <button class="accordion" type="button">Document Upload</button>

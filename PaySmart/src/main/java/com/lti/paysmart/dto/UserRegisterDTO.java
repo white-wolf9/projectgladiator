@@ -34,6 +34,8 @@ public class UserRegisterDTO {
 	private String doorno; 
 	private String street; 
 	private long pincode;
+	private String state;
+	private String country;
 	/*
 	 * Documents of the user
 	 */
@@ -145,6 +147,18 @@ public class UserRegisterDTO {
 	}
 	public void setDob(Date dob) {
 		this.dob = dob;
+	}
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
+	}
+	public String getCountry() {
+		return country;
+	}
+	public void setCountry(String country) {
+		this.country = country;
 	}
 	
 	

@@ -1,6 +1,5 @@
 package com.lti.paysmart.entities;
 
-import javax.annotation.Generated;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,6 +20,8 @@ public class Address {
 	private long pincode;
 	private String street;
 	private String doorNo;
+	private String state;
+	private String country;
 
 	@OneToOne
 	@JoinColumn(name = "USER_ID")
@@ -72,6 +73,22 @@ public class Address {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
 	}
 	
 	

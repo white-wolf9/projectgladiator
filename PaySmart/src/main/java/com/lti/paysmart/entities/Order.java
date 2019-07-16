@@ -36,8 +36,9 @@ public class Order {
 	@JoinColumn(name = "USER_ID")
 	private User user;
 	
-	@OneToMany(mappedBy = "order", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private Set<Payment> payment;
+	@OneToOne
+	@JoinColumn(name = "PAYMENT_ID")
+	private Payment payment;
 
 	public long getOrder_id() {
 		return order_id;
@@ -79,14 +80,13 @@ public class Order {
 		this.user = user;
 	}
 
-	public Set<Payment> getPayment() {
+	public Payment getPayment() {
 		return payment;
 	}
 
-	public void setPayment(Set<Payment> payment) {
+	public void setPayment(Payment payment) {
 		this.payment = payment;
 	}
-	
 	
 	
 }

@@ -11,11 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.lti.paysmart.dto.AdminLoginDTO;
 import com.lti.paysmart.dto.UserLoginDTO;
+import com.lti.paysmart.dto.UserRegisterDTO;
 import com.lti.paysmart.interfaces.AdminService;
 import com.lti.paysmart.interfaces.UserService;
 
 @RestController
-public class LoginController {
+public class MasterController {
 	
 	@Autowired
 	UserService userServ;
@@ -31,5 +32,10 @@ public class LoginController {
 	@RequestMapping(value = "/login.admin", method = RequestMethod.POST)
 	public String login(@RequestBody AdminLoginDTO adminLoginDTO) {
 		return admServ.performLogin(adminLoginDTO);
+	}
+	
+	@RequestMapping(value = "/register.user", method = RequestMethod.POST)
+	public String register(@RequestBody UserRegisterDTO userRegisterDTO) {
+		return userServ.performRegister(userRegisterDTO);
 	}
 }
