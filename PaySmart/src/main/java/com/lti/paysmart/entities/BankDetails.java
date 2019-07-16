@@ -17,7 +17,7 @@ public class BankDetails {
 	@Column(name = "BANKDETAILS_ID")
 	private long bankdetails_id;
 	private String bank_name;
-	private long acc_no;
+	private String acc_no;
 	private String ifsc_code;
 	
 
@@ -44,17 +44,6 @@ public class BankDetails {
 		this.bank_name = bank_name;
 	}
 
-
-	public long getAcc_no() {
-		return acc_no;
-	}
-
-
-	public void setAcc_no(long acc_no) {
-		this.acc_no = acc_no;
-	}
-
-
 	public String getIfsc_code() {
 		return ifsc_code;
 	}
@@ -73,7 +62,15 @@ public class BankDetails {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
-	
+
+
+	public String getAcc_no() {
+		return acc_no;
+	}
+
+
+	public void setAcc_no(String acc_no) {
+		this.acc_no = acc_no;
+	}
 
 }

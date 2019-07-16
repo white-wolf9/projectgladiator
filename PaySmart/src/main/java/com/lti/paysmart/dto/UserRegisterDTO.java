@@ -6,21 +6,39 @@ import com.lti.paysmart.enums.CardTypes;
 
 public class UserRegisterDTO {
 	
+	/*
+	 * Basic details of the user.
+	 */
 	private String fname;
 	private String lname;
 	private String email;
 	private long phone_no;
+	/*
+	 * Credentials of the user
+	 */
 	private String username;
 	private String password;
+	/*
+	 * Bank details of the user
+	 */
 	private String bankname;
 	private String acc_no;
 	private String ifsc_code;
+	/*
+	 * Address of the user
+	 */
 	private String city;
 	private String doorno; 
 	private String street; 
 	private long pincode;
+	/*
+	 * Documents of the user
+	 */
 	private MultipartFile aadharcard;
 	private MultipartFile pancard;
+	/*
+	 * Card details of the user
+	 */
 	private CardTypes cardtype;
 	
 	public String getFname() {
