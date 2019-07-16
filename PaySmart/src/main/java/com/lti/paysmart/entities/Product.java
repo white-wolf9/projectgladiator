@@ -23,15 +23,14 @@ public class Product {
 	private long product_id;
 	private String name;
 	private String description;
-	private byte[] image;
+	private String imagefilename;
 	private double price;
 	private int stock;
 	
 	@OneToMany(mappedBy = "product",fetch =FetchType.LAZY, cascade = CascadeType.ALL)
 	private Set<EMI> emi;
 	
-	@OneToOne
-	@JoinColumn(name = "ORDER_ID")
+	@OneToOne(mappedBy = "product",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Order order;
 
 	public long getProduct_id() {
@@ -58,12 +57,12 @@ public class Product {
 		this.description = description;
 	}
 
-	public byte[] getImage() {
-		return image;
+	public String getImagefilename() {
+		return imagefilename;
 	}
 
-	public void setImage(byte[] image) {
-		this.image = image;
+	public void setImagefilename(String imagefilename) {
+		this.imagefilename = imagefilename;
 	}
 
 	public double getPrice() {
@@ -97,6 +96,7 @@ public class Product {
 	public void setOrder(Order order) {
 		this.order = order;
 	}
+
 	
 	
 

@@ -28,7 +28,8 @@ public class Order {
 	private Date order_date;
 	private EMITypes emi_scheme;
 	
-	@OneToOne(mappedBy = "order",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToOne
+	@JoinColumn(name = "PRODUCT_ID")
 	private Product product;
 	
 	@ManyToOne

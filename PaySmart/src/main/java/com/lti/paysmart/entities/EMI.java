@@ -7,6 +7,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -26,6 +27,7 @@ public class EMI {
 	private double emi_value;
 	
 	@ManyToOne
+	@JoinColumn(name = "PRODUCT_ID")
 	private Product product;
 
 	public int getEmi_id() {
