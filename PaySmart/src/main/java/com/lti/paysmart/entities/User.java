@@ -1,5 +1,6 @@
 package com.lti.paysmart.entities;
 
+import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -13,6 +14,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name = "TBL_PROJ_USER")
 public class User {
@@ -23,6 +26,8 @@ public class User {
 	private long user_id;
 	private String fname;
 	private String lname;
+	@DateTimeFormat
+	private Date dob;
 	@Column(unique = true)
 	private String email;
 	@Column(unique = true)
@@ -133,8 +138,14 @@ public class User {
 	public void setDocument(Document document) {
 		this.document = document;
 	}
-	
-	
+
+	public Date getDob() {
+		return dob;
+	}
+
+	public void setDob(Date dob) {
+		this.dob = dob;
+	}
 	
 
 }

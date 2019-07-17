@@ -1,5 +1,7 @@
 package com.lti.paysmart.dto;
 
+import java.util.Date;
+
 import org.springframework.web.multipart.MultipartFile;
 
 import com.lti.paysmart.enums.CardTypes;
@@ -13,6 +15,7 @@ public class UserRegisterDTO {
 	private String lname;
 	private String email;
 	private long phone_no;
+	private Date dob;
 	/*
 	 * Credentials of the user
 	 */
@@ -136,6 +139,12 @@ public class UserRegisterDTO {
 	}
 	public void setCardtype(CardTypes cardtype) {
 		this.cardtype = cardtype;
+	}
+	public Date getDob() {
+		return dob;
+	}
+	public void setDob(Date dob) {
+		this.dob = dob;
 	}
 	
 	

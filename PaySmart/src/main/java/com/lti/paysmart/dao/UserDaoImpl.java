@@ -102,6 +102,7 @@ public class UserDaoImpl extends GenericDaoImpl implements UserDao  {
 		user.setLname(userRegisterDTO.getLname());
 		user.setEmail(userRegisterDTO.getEmail());
 		user.setPhone_no(userRegisterDTO.getPhone_no());
+		user.setDob(userRegisterDTO.getDob());
 		
 		user.setCard(card);
 		user.setBank(bankdetails);
