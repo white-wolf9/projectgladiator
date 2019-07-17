@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="register.css" />
+    <script src="main.js"></script>
+</head>
+<body>
+
+    
+    <div class="Register">
+        <h1>Registration Page </h1>
+    <form method="Get" action="StudentServlet">
+
+        FirstName<input type="text" name="firstName"/> <br/>
+        LastName<input type="text" name="lastName"/> <br/>
+        Date of Birth<input type="text" name="dob"/> <br/>
+        Email Id<input type="text" name="emailId"/> <br/>
+        Phone Number<input type="number" name="phoneNumber"/> <br/>
+        Username<input type="text" name="username"/> <br/>
+        Password<input type="password" name="password"/> <br/>
+        Confirm Password<input type="password" name="confirmPassword"/> <br/>
+        Address : 
+        House Number<input type="text" name="houseNo"/> <br/>
+        Street Name<input type="text" name="streetName"/> <br/>
+        city<input type="text" name="city"/> <br/>
+        State<input type="text" name="state"/> <br/>
+        Country<input type="text" name="country"/> <br/>
+        Pincode<input type="text" name="pincode"/> <br/>
+
+        Aadhar Number<input type="text" name="aadhar"/> <br/>
+        PAN Card Number<input type="text" name="panNo"/> <br/>
+        
+        Card Type : 
+                    <input type="checkbox" name="checkbox" value="gold"/>Gold 
+                    <input type="checkbox" name="checkbox" value="titanium"/>Titanium <br/>
+
+        Bank Name<input type="text" name="bankName"/> <br/>
+        Savings Account Number<input type="text" name="accNo"/> <br/>
+        IFSC Code<input type="text" name="ifsccode"/> <br/>
+        
+        <input type="submit" value="Register"/> <br/>
+    </form>
+    </div>
+    <div class="help">
+        Already Registered Member? <a href="#">Login here</a>
+    </div>
+    
+</body>
+</html>
