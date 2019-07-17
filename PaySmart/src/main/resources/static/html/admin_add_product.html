@@ -20,13 +20,13 @@ $(function() {
 		formdata.append("product_name",$("#product_name").val());
 		formdata.append("product_description",$("#product_description").val());
 		formdata.append("product_price",$("#product_price").val());
-		formdata.append("product_stock",$("product_stock").val());
+		formdata.append("product_stock",$("#product_stock").val());
 		formdata.append("product_image", $("#product_image").get(0).files[0]);
 		
-		formdata.append("radio_three",$(".radio_three:checked").val());
-		formdata.append("radio_six",$(".radio_six:checked").val());
-		formdata.append("radio_nine",$(".radio_nine:checked").val());
-		formdata.append("radio_twelve",$(".radio_twelve:checked").val());
+		formdata.append("radio_three_zero",$("input[name='radio_three_zero']:checked").val());
+		formdata.append("radio_six_zero",$("input[name='radio_six_zero']:checked").val());
+		formdata.append("radio_nine_zero",$("input[name='radio_nine_zero']:checked").val());
+		formdata.append("radio_twelve_zero",$("input[name='radio_twelve_zero']:checked").val());
 		
 		formdata.append("emi_three",$("#emi_three").val());
 		formdata.append("emi_six",$("#emi_six").val());
@@ -50,11 +50,11 @@ $(function() {
 </script>
 </head>
 <body onload="master()">
-<form name="addProductForm">
+<form id="addProductForm">
 Product Name: <input type = "text" id = "product_name"/><br/>
 Product Description: <input type = "text" id = "product_description"/><br/>
-Product Price: <input type = "text" id = "product_price"/><br/>
-Product Stock: <input type = "text" id = "product_stock"/><br/>
+Product Price: <input type = "number" step="any" id = "product_price"/><br/>
+Product Stock: <input type = "number" step="any" id = "product_stock"/><br/>
 Product Image: <input type="file" id = "product_image"><br/>
 
 
@@ -62,7 +62,7 @@ Zero Cost EMI for 3 months:<br/>
 <p>
 <input type="radio" name="emi_three_zero" class="emi_three_zero" value="true"/>Yes
 <input type="radio" name="emi_three_zero" class="emi_three_zero" value="false" checked/>No
-<input type="text" id="emi_three" class="emi_entry"/>
+<input type="number" step="any" id="emi_three" class="emi_entry"/>
 </p>
 
 
@@ -70,7 +70,7 @@ Zero Cost EMI for 6 months:<br/>
 <p>
 <input type="radio" name="emi_six_zero" class="emi_six_zero" value="true"/>Yes
 <input type="radio" name="emi_six_zero" class="emi_six_zero" value="false" checked/>No
-<input type="text" id="emi_six" class="emi_entry"/>
+<input type="number" step="any" id="emi_six" class="emi_entry"/>
 </p>
 
 
@@ -78,7 +78,7 @@ Zero Cost EMI for 9 months:<br/>
 <p>
 <input type="radio" name="emi_nine_zero" class="emi_nine_zero" value="true"/>Yes
 <input type="radio" name="emi_nine_zero" class="emi_nine_zero" value="false" checked/>No
-<input type="text" id="emi_nine" class="emi_entry"/>
+<input type="number" step="any" id="emi_nine" class="emi_entry"/>
 </p>
 
 
@@ -86,7 +86,7 @@ Zero Cost EMI for 12 months:<br/>
 <p>
 <input type="radio" name="emi_twelve_zero" class="emi_twelve_zero" value="true"/>Yes
 <input type="radio" name="emi_twelve_zero" class="emi_twelve_zero" value="false" checked/>No
-<input type="text" id="emi_twelve" class="emi_entry"/>
+<input type="number" step="any" id="emi_twelve" class="emi_entry"/>
 </p>
 
 <input type="submit">

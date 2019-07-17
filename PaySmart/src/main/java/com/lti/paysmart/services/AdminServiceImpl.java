@@ -28,7 +28,7 @@ public class AdminServiceImpl implements AdminService {
 	@Transactional
 	public String addProduct(AddProductDTO addProductDTO) {
 		pdao.addProduct(addProductDTO);
-		return null;
+		return "Success";
 	}
 	
 	
