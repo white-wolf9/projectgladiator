@@ -84,8 +84,8 @@ public class ProductDaoImpl extends GenericDaoImpl implements ProductDao{
 
 	@Override
 	@Transactional
-	public void addProduct(Product product) {
-		entityManager.merge(product);
+	public Product addProduct(Product product) {
+		return entityManager.merge(product);
 	}
 	
 }

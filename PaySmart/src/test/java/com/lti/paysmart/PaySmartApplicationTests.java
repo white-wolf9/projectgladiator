@@ -34,38 +34,43 @@ public class PaySmartApplicationTests {
 	
 	@Test
 	public void contextLoads() {
+		/*
+		 * Create a new product object, and push it into the database using the addProduct
+		 * Since the addProduct function returns the same object assign it to the product
+		 * variable
+		 */
 		Product product = new Product();
 		product.setName("name");
 		product.setDescription("description");
 		product.setImagefilename("name_filename");
 		product.setPrice(30000);
 		product.setStock(999);
+		product = pdao.addProduct(product);
 		
 		EMI emi = new EMI();
 		emi.setEmi_type(EMITypes.THREEMONTHS);
 		emi.setEmi_value(3);
 		emi.setZero_emi(true);
 		emi.setProduct(product);
+		pdao.add(emi);
 		
-		EMI emi2 = new EMI();
-		emi2.setEmi_type(EMITypes.SIXMONTHS);
-		emi2.setEmi_value(3.5);
-		emi2.setZero_emi(true);
-		emi2.setProduct(product);
-
+		emi.setEmi_type(EMITypes.SIXMONTHS);
+		emi.setEmi_value(3.5);
+		emi.setZero_emi(true);
+		emi.setProduct(product);
+		pdao.add(emi);
 		
 		emi.setEmi_type(EMITypes.NINEMONTHS);
 		emi.setEmi_value(4);
 		emi.setZero_emi(true);
-
+		emi.setProduct(product);
+		pdao.add(emi);
 		
-		/*
-		 * emi.setEmi_type(EMITypes.TWELVEMONTHS); emi.setEmi_value(3.9);
-		 * emi.setZero_emi(true); set.add(emi);
-		 */
-		
-		pdao.add(product);
-		
+		emi.setEmi_type(EMITypes.TWELVEMONTHS); 
+		emi.setEmi_value(3.9);
+		emi.setZero_emi(true);
+		emi.setProduct(product);
+		pdao.add(emi);
 	}
 
 }
