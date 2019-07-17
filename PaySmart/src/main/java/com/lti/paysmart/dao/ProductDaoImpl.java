@@ -5,13 +5,18 @@ import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.transaction.Transactional;
+
+import org.springframework.stereotype.Component;
+
 import com.lti.paysmart.dto.AddProductDTO;
 import com.lti.paysmart.entities.EMI;
 import com.lti.paysmart.entities.Product;
+import com.lti.paysmart.entities.User;
 import com.lti.paysmart.enums.EMITypes;
 import com.lti.paysmart.interfaces.ProductDao;
 
-
+@Component
 public class ProductDaoImpl extends GenericDaoImpl implements ProductDao{
 
 	@Override
@@ -64,6 +69,22 @@ public class ProductDaoImpl extends GenericDaoImpl implements ProductDao{
 		
 		product.setEmi(set);
 		
+		entityManager.merge(product);
+	}
+
+	@Override
+	public Product viewProduct(String name) {
+		return (Product) entityManager.createQuery("select p from Product as p where p.name = :name").setParameter("name", name).getSingleResult();
+	}
+
+	@Override
+	public Product viewProduct(long product_id) {
+		return entityManager.find(Product.class, product_id); 
+	}
+
+	@Override
+	@Transactional
+	public void addProduct(Product product) {
 		entityManager.merge(product);
 	}
 	

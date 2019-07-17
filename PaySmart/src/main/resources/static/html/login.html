@@ -28,7 +28,8 @@ function myFunction() {
 				data : JSON.stringify(obj),
 				contentType : 'application/json',
 				success : function(response) {
-					if(response === "Success") location.href = "http://www.google.com/";
+					sessionStorage.setItem("customerusername", "white-wolf9");
+					if(response === "Success") location.href = "../index.html";
 				}
 			})
 		})

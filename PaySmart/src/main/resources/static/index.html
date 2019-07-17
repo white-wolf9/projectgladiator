@@ -5,11 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Index Page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="pragma" content="no-cache">
     <link rel="stylesheet" type="text/css" href="../css/index.css" />
-    
-    <script src="main.js"></script>
+    <script>
+    	if(sessionStorage.username != null){
+    		function myFunction(){
+        		alert(sessionStorage.customerusername);
+        	}	
+    	}
+    </script>
 </head>
-<body>
+<body onload="myFunction()">
     <header>
         <div class="main">
             <div class="logo">

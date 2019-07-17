@@ -1,8 +1,11 @@
 package com.lti.paysmart.interfaces;
 
+import java.util.List;
+
 public interface GenericDao {
 	
-	public void add(Object object);
-	public Object fetchById(Class classname, int primary_key);
+	public <E> void add(E object);
+	public <E> Object fetchById(Class<E> classname, long primary_key);
+	public <E> List<E> fetchAll(Class<E> classname);
 
 }

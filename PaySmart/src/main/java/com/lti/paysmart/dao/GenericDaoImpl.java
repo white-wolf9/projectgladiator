@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import org.springframework.stereotype.Component;
 
@@ -16,13 +17,20 @@ public class GenericDaoImpl implements GenericDao{
 	EntityManager entityManager;
 
 	@Override
-	public void add(Object object) {
+	public <E> void add(E object) {
 		entityManager.merge(object);
 	}
 
 	@Override
-	public Object fetchById(Class classname, int primary_key) {
+	public <E> Object fetchById(Class<E> classname, long primary_key) {
 		return entityManager.find(classname, primary_key);
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public <E> List<E> fetchAll(Class<E> classname) {
+		List <E> list = entityManager.createQuery("select object from "+ classname.getName()+"as object").getResultList();
+		return list;
 	}
 
 }
