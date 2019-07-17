@@ -60,7 +60,7 @@ public class MasterController {
 	
 	@RequestMapping(value = "/add.product", method = RequestMethod.POST)
 	public String addProduct(AddProductDTO addProductDTO) {
-		//return userServ.performRegister(userRegisterDTO);
+		String result = admServ.addProduct(addProductDTO);
 		System.out.println("Working");
 		return "Okay";
 	}
