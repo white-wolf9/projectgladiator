@@ -21,6 +21,7 @@ public class Product {
 	@GeneratedValue
 	@Column(name = "PRODUCT_ID")
 	private long product_id;
+	@Column(unique = true)
 	private String name;
 	private String description;
 	private String imagefilename;
