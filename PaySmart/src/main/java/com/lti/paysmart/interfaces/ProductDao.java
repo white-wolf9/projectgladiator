@@ -9,6 +9,5 @@ public interface ProductDao extends GenericDao {
 	public void addProduct(AddProductDTO adminAddProductDTO);
 	public Product viewProduct(String name);
 	public Product viewProduct(long product_id);
-	public Product addProduct(Product product);
 	
 }

@@ -48,27 +48,27 @@ public class ProductDaoImpl extends GenericDaoImpl implements ProductDao{
 		
 		product = entityManager.merge(product);
 		
-		EMI emi = new EMI(); List<EMI> list = new ArrayList<EMI>();
+		EMI emi = new EMI();
 		  
 		emi.setEmi_type(EMITypes.THREEMONTHS);
 		emi.setEmi_value(addProductDTO.getEmi_three());
-		emi.setZero_emi(addProductDTO.isEmi_three_zero()); list.add(emi);
+		emi.setZero_emi(addProductDTO.isEmi_three_zero());
+		edao.addEMIToProduct(product, emi);
 		  
 		emi.setEmi_type(EMITypes.SIXMONTHS);
 		emi.setEmi_value(addProductDTO.getEmi_six());
-		emi.setZero_emi(addProductDTO.isEmi_six_zero()); list.add(emi);
+		emi.setZero_emi(addProductDTO.isEmi_six_zero());
+		edao.addEMIToProduct(product, emi);
 		  
 		emi.setEmi_type(EMITypes.NINEMONTHS);
 		emi.setEmi_value(addProductDTO.getEmi_nine());
-		emi.setZero_emi(addProductDTO.isEmi_nine_zero()); list.add(emi);
+		emi.setZero_emi(addProductDTO.isEmi_nine_zero());
+		edao.addEMIToProduct(product, emi);
 		  
 		emi.setEmi_type(EMITypes.TWELVEMONTHS);
 		emi.setEmi_value(addProductDTO.getEmi_twelve());
-		emi.setZero_emi(addProductDTO.isEmi_twelve_zero()); list.add(emi);
-		  
-		for(EMI emi_iterator : list) {
-			edao.addEMIToProduct(product, emi_iterator);
-		 }
+		emi.setZero_emi(addProductDTO.isEmi_twelve_zero());
+		edao.addEMIToProduct(product, emi);
 		
 	}
 
@@ -80,12 +80,6 @@ public class ProductDaoImpl extends GenericDaoImpl implements ProductDao{
 	@Override
 	public Product viewProduct(long product_id) {
 		return entityManager.find(Product.class, product_id); 
-	}
-
-	@Override
-	@Transactional
-	public Product addProduct(Product product) {
-		return entityManager.merge(product);
 	}
 	
 }

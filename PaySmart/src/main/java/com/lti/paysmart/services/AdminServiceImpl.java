@@ -33,9 +33,7 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	@Transactional
 	public String addProduct(AddProductDTO addProductDTO) {
-		System.out.println(1);
 		pdao.addProduct(addProductDTO);
-		System.out.println(2);
 		return "Success";
 	}
 	
