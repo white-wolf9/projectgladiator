@@ -6,9 +6,11 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import com.lti.paysmart.enums.CardTypes;
@@ -19,7 +21,8 @@ import com.lti.paysmart.enums.CardTypes;
 public class Card {
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqid-gen")
+	@SequenceGenerator(name = "seqid-gen", sequenceName = "RTDS_ADSINPUT_SEQ" )
 	@Column(name = "CARD_ID")
 	private long card_id;
 	private String name;
