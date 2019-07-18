@@ -8,6 +8,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "TBL_PROJ_DOC")
 public class Document {
@@ -21,6 +23,7 @@ public class Document {
 
 	@OneToOne
 	@JoinColumn(name = "USER_ID")
+	@JsonIgnore
 	private User user;
 
 	public long getDocument_id() {

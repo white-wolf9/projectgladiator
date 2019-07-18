@@ -119,7 +119,7 @@ public class UserDaoImpl extends GenericDaoImpl implements UserDao  {
 	
 	@Override
 	public List<User> viewAllUser() {
-		return entityManager.createQuery("select u.fname,u.lname from User as u").getResultList();
+		return entityManager.createQuery("select u from User as u").getResultList();
 	}
 	
 	

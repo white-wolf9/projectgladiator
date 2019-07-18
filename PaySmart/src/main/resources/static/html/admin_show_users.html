@@ -13,6 +13,23 @@ $(document).ready(function(){
 		
 		success : function(response){
 			alert(JSON.stringify(response));
+			$.each(response, function(i, user) {
+				var row = $('<tr/>');
+				var column1 = $('<td/>').text(user.fname);
+				var column2 = $("<td/>").text(user.lname);
+				var column3 = $("<td/>").text(user.dob);
+				var column4 = $("<td/>").text(user.email); 
+		 		var column5 = $("<td/>").text(user.phone_no);
+				//var column6 = $("<td/>").text(Bus.Price); 
+				row.append(column1);
+				row.append(column2);
+				row.append(column3); 
+				row.append(column4);
+				row.append(column5);
+				//row.append(column6);
+				$('#users_table').append(row);
+
+			})
 		}
 	})
 })
@@ -20,5 +37,6 @@ $(document).ready(function(){
 </head>
 <body>
 <h1>Displaying all the users</h1>
+<table id="users_table"></table>
 </body>
 </html>

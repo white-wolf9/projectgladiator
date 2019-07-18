@@ -16,6 +16,8 @@ import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "TBL_PROJ_USER")
 public class User {
@@ -33,22 +35,31 @@ public class User {
 	@Column(unique = true)
 	private long phone_no;
 	
+	/*
+	 * Read more on @JsonIgnore
+	 */
+	
 	@OneToOne(mappedBy = "user",fetch =FetchType.EAGER,  cascade = CascadeType.ALL)
+	@JsonIgnore
 	private Card card;
 	
 	@OneToOne(mappedBy = "user",fetch =FetchType.EAGER,  cascade = CascadeType.ALL)
+	@JsonIgnore
 	private BankDetails bank;
 	
 	@OneToOne(mappedBy = "user",fetch =FetchType.EAGER,  cascade = CascadeType.ALL)
+	@JsonIgnore
 	private Credential credential;
 	
 	@OneToOne(mappedBy = "user",fetch =FetchType.EAGER,  cascade = CascadeType.ALL)
 	private Address address;
 	
 	@OneToMany(mappedBy = "user",fetch =FetchType.EAGER,  cascade = CascadeType.ALL)
+	@JsonIgnore
 	private Set<Order> order;
 	
 	@OneToOne(mappedBy = "user",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JsonIgnore
 	private Document document;
 
 	public long getUser_id() {
