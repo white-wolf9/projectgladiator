@@ -2,48 +2,94 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Add Product</title>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script>
+function master() {
+	if(sessionStorage.getItem("administrator_username") != null){
+		
+    }
+	else
+		history.go(-1);	
+}
+$(function() {
+	$("#addProductForm").submit(function(evt) {
+		evt.preventDefault();
+		
+		formdata = new FormData();
+		formdata.append("product_name",$("#product_name").val());
+		formdata.append("product_description",$("#product_description").val());
+		formdata.append("product_price",$("#product_price").val());
+		formdata.append("product_stock",$("product_stock").val());
+		formdata.append("product_image", $("#product_image").get(0).files[0]);
+		
+		formdata.append("radio_three",$(".radio_three:checked").val());
+		formdata.append("radio_six",$(".radio_six:checked").val());
+		formdata.append("radio_nine",$(".radio_nine:checked").val());
+		formdata.append("radio_twelve",$(".radio_twelve:checked").val());
+		
+		formdata.append("emi_three",$("#emi_three").val());
+		formdata.append("emi_six",$("#emi_six").val());
+		formdata.append("emi_nine",$("#emi_nine").val());
+		formdata.append("emi_twelve",$("#emi_twelve").val());
+		
+		alert(JSON.stringify(formdata)),
+		
+		$.ajax({
+			url : "/add.product",
+			method : 'POST', 
+			data : formdata,
+			processData : false,
+			contentType : false,
+			success: function(response){
+				alert(JSON.stringify(response));
+			}
+		})
+	})
+})
+</script>
 </head>
-<body>
-<body onload="disable()">
-Product Name: <input type = "text"/><br/>
-Product Description: <input type = "text"/><br/>
-Product Price: <input type = "text"/><br/>
-Product Stock: <input type = "text"/><br/>
-Product Image: <input type="file"><br/>
+<body onload="master()">
+<form name="addProductForm">
+Product Name: <input type = "text" id = "product_name"/><br/>
+Product Description: <input type = "text" id = "product_description"/><br/>
+Product Price: <input type = "text" id = "product_price"/><br/>
+Product Stock: <input type = "text" id = "product_stock"/><br/>
+Product Image: <input type="file" id = "product_image"><br/>
 
 
 Zero Cost EMI for 3 months:<br/> 
 <p>
-<input type="radio" name="radio_three" class="radio_three" value="true" checked/>Yes
-<input type="radio" name="radio_three" class="radio_three" value="false"/>No
-<input type="text" id="field" class="emi_entry"/>
+<input type="radio" name="emi_three_zero" class="emi_three_zero" value="true"/>Yes
+<input type="radio" name="emi_three_zero" class="emi_three_zero" value="false" checked/>No
+<input type="text" id="emi_three" class="emi_entry"/>
 </p>
 
 
 Zero Cost EMI for 6 months:<br/> 
 <p>
-<input type="radio" name="radio_six" class="radio_six" value="true" checked/>Yes
-<input type="radio" name="radio_six" class="radio_six" value="false"/>No
-<input type="text" id="field1" class="emi_entry"/>
+<input type="radio" name="emi_six_zero" class="emi_six_zero" value="true"/>Yes
+<input type="radio" name="emi_six_zero" class="emi_six_zero" value="false" checked/>No
+<input type="text" id="emi_six" class="emi_entry"/>
 </p>
 
 
 Zero Cost EMI for 9 months:<br/> 
-</label>
 <p>
-<input type="radio" name="radio2" class="radio_nine" value="true" checked/>Yes
-<input type="radio" name="radio2" class="radio_nine" value="false"/>No
-<input type="text" id="field2" class="emi_entry"/>
+<input type="radio" name="emi_nine_zero" class="emi_nine_zero" value="true"/>Yes
+<input type="radio" name="emi_nine_zero" class="emi_nine_zero" value="false" checked/>No
+<input type="text" id="emi_nine" class="emi_entry"/>
 </p>
 
 
 Zero Cost EMI for 12 months:<br/> 
 <p>
-<input type="radio" name="radio3" class="radio_tweleve" value="true" checked/>Yes
-<input type="radio" name="radio3" class="radio_twelve" value="false"/>No
-<input type="text" id="emi_entry" class="emi_entry"/>
+<input type="radio" name="emi_twelve_zero" class="emi_twelve_zero" value="true"/>Yes
+<input type="radio" name="emi_twelve_zero" class="emi_twelve_zero" value="false" checked/>No
+<input type="text" id="emi_twelve" class="emi_entry"/>
 </p>
-var message_pri = $(".message_pri:checked").val();
+
+<input type="submit">
+</form>
 </body>
 </html>

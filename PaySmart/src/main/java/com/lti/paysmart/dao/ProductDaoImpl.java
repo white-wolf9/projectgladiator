@@ -23,16 +23,16 @@ public class ProductDaoImpl extends GenericDaoImpl implements ProductDao{
 	public void addProduct(AddProductDTO addProductDTO) {
 		
 		Product product = new Product();
-		product.setName(addProductDTO.getName());
-		product.setDescription(addProductDTO.getDescription());
-		product.setPrice(addProductDTO.getPrice());
-		product.setStock(addProductDTO.getStock());
+		product.setName(addProductDTO.getProduct_name());
+		product.setDescription(addProductDTO.getProduct_description());
+		product.setPrice(addProductDTO.getProduct_price());
+		product.setStock(addProductDTO.getProduct_stock());
 		
 		String path = "D:/uploads/";
-		String filename = addProductDTO.getName()+"_"+addProductDTO.getImagefilename().getOriginalFilename();
+		String filename = addProductDTO.getProduct_name()+"_"+addProductDTO.getProduct_image().getOriginalFilename();
 		String imagefinalpath = path + filename;
 		try {
-			addProductDTO.getImagefilename().transferTo(new File(imagefinalpath));	
+			addProductDTO.getProduct_image().transferTo(new File(imagefinalpath));	
 		} catch(IOException e) {
 			e.printStackTrace();
 		}

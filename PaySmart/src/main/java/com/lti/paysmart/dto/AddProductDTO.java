@@ -4,11 +4,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class AddProductDTO {
 	
-	private String name;
-	private String description;
-	private double price;
-	private int stock;
-	private MultipartFile imagefilename;
+	private String product_name;
+	private String product_description;
+	private double product_price;
+	private int product_stock;
+	private MultipartFile product_image;
 	private double emi_three;
 	private double emi_six;
 	private double emi_nine;
@@ -18,35 +18,35 @@ public class AddProductDTO {
 	private boolean emi_nine_zero;
 	private boolean emi_twelve_zero;
 	
-	public String getName() {
-		return name;
+	public String getProduct_name() {
+		return product_name;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setProduct_name(String product_name) {
+		this.product_name = product_name;
 	}
-	public String getDescription() {
-		return description;
+	public String getProduct_description() {
+		return product_description;
 	}
-	public void setDescription(String description) {
-		this.description = description;
+	public void setProduct_description(String product_description) {
+		this.product_description = product_description;
 	}
-	public MultipartFile getImagefilename() {
-		return imagefilename;
+	public double getProduct_price() {
+		return product_price;
 	}
-	public void setImagefilename(MultipartFile imagefilename) {
-		this.imagefilename = imagefilename;
+	public void setProduct_price(double product_price) {
+		this.product_price = product_price;
 	}
-	public double getPrice() {
-		return price;
+	public int getProduct_stock() {
+		return product_stock;
 	}
-	public void setPrice(double price) {
-		this.price = price;
+	public void setProduct_stock(int product_stock) {
+		this.product_stock = product_stock;
 	}
-	public int getStock() {
-		return stock;
+	public MultipartFile getProduct_image() {
+		return product_image;
 	}
-	public void setStock(int stock) {
-		this.stock = stock;
+	public void setProduct_image(MultipartFile product_image) {
+		this.product_image = product_image;
 	}
 	public double getEmi_three() {
 		return emi_three;

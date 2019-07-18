@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lti.paysmart.dto.AddProductDTO;
 import com.lti.paysmart.dto.AdminLoginDTO;
 import com.lti.paysmart.dto.AdminLoginResponseDTO;
 import com.lti.paysmart.dto.UserLoginDTO;
@@ -55,5 +56,12 @@ public class MasterController {
 	@RequestMapping(value = "/register.user", method = RequestMethod.POST)
 	public String register(@RequestBody UserRegisterDTO userRegisterDTO) {
 		return userServ.performRegister(userRegisterDTO);
+	}
+	
+	@RequestMapping(value = "/add.product", method = RequestMethod.POST)
+	public String addProduct(AddProductDTO addProductDTO) {
+		//return userServ.performRegister(userRegisterDTO);
+		System.out.println("Working");
+		return "Okay";
 	}
 }
