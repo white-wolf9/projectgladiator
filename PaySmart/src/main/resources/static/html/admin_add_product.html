@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<body onload="disable()">
+Product Name: <input type = "text"/><br/>
+Product Description: <input type = "text"/><br/>
+Product Price: <input type = "text"/><br/>
+Product Stock: <input type = "text"/><br/>
+Product Image: <input type="file"><br/>
+
+
+Zero Cost EMI for 3 months:<br/> 
+<p>
+<input type="radio" name="radio_three" class="radio_three" value="true" checked/>Yes
+<input type="radio" name="radio_three" class="radio_three" value="false"/>No
+<input type="text" id="field" class="emi_entry"/>
+</p>
+
+
+Zero Cost EMI for 6 months:<br/> 
+<p>
+<input type="radio" name="radio_six" class="radio_six" value="true" checked/>Yes
+<input type="radio" name="radio_six" class="radio_six" value="false"/>No
+<input type="text" id="field1" class="emi_entry"/>
+</p>
+
+
+Zero Cost EMI for 9 months:<br/> 
+</label>
+<p>
+<input type="radio" name="radio2" class="radio_nine" value="true" checked/>Yes
+<input type="radio" name="radio2" class="radio_nine" value="false"/>No
+<input type="text" id="field2" class="emi_entry"/>
+</p>
+
+
+Zero Cost EMI for 12 months:<br/> 
+<p>
+<input type="radio" name="radio3" class="radio_tweleve" value="true" checked/>Yes
+<input type="radio" name="radio3" class="radio_twelve" value="false"/>No
+<input type="text" id="emi_entry" class="emi_entry"/>
+</p>
+var message_pri = $(".message_pri:checked").val();
+</body>
+</html>

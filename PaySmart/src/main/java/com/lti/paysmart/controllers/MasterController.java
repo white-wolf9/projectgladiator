@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lti.paysmart.dto.AdminLoginDTO;
+import com.lti.paysmart.dto.AdminLoginResponseDTO;
 import com.lti.paysmart.dto.UserLoginDTO;
 import com.lti.paysmart.dto.UserRegisterDTO;
 import com.lti.paysmart.interfaces.AdminService;
@@ -30,8 +31,25 @@ public class MasterController {
 	}
 	
 	@RequestMapping(value = "/login.admin", method = RequestMethod.POST)
-	public String login(@RequestBody AdminLoginDTO adminLoginDTO) {
-		return admServ.performLogin(adminLoginDTO);
+	public AdminLoginResponseDTO login(@RequestBody AdminLoginDTO adminLoginDTO) {
+		
+		AdminLoginResponseDTO response = new AdminLoginResponseDTO();
+		String result = admServ.performLogin(adminLoginDTO);
+		if(result.equals("Administrator account does not exist!")) {
+			response.setMessage("User does not exist");
+			return response;
+		}
+		else if(result.equals("Success")) {
+			response.setPassword(adminLoginDTO.getPassword());
+			response.setUsername(adminLoginDTO.getUsername());
+			response.setMessage("Success");
+			return response;
+		}
+		else {
+			response.setMessage("Incorrect Password");
+			return response;
+		}
+		
 	}
 	
 	@RequestMapping(value = "/register.user", method = RequestMethod.POST)

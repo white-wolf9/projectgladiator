@@ -7,7 +7,7 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script>
 function myFunction() {
-  alert("Page is loaded");
+  alert("Administrator login got loaded!");
 }
 </script>
 <script>
@@ -28,8 +28,12 @@ function myFunction() {
 				data : JSON.stringify(obj),
 				contentType : 'application/json',
 				success : function(response) {
-					alert(response);
-					if(response === "Success") location.href = "../html/admin_home.html";
+					alert(JSON.stringify(response));
+					if(response.message === "Success") {
+						sessionStorage.setItem("administrator_username", response.username);
+						sessionStorage.setItem("administrator_password", response.password);
+						location.href = "../html/admin_home.html";	
+					}
 				}
 			})
 		})
@@ -38,7 +42,7 @@ function myFunction() {
 </head>
 <body onload="myFunction()">
 <div class="login">
-	<h1>Login </h1>      
+	<h1>ADMINISTRATOR LOGIN </h1>      
 	<form id="form_login">
 		<p><input type="text" name="login" id="username" value="" placeholder="Username or Email"></p>
 		<p><input type="password" name="password" id="password" value="" placeholder="Password"></p>

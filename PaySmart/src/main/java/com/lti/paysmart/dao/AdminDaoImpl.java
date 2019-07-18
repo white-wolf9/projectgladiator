@@ -20,11 +20,11 @@ public class AdminDaoImpl extends GenericDaoImpl implements AdminDao{
 			
 		}
 		if(admin_temp == null)
-			return "User does not exist!";
+			return "Administrator account does not exist!";
 		else if(admin_temp.getCredential().getPassword().equals(adminLoginDTO.getPassword().toString()))
 			return "Success";
 		else
-			return "Incorrect Password";
+			return "Incorrect password entered";
 	}
 
 

@@ -2,10 +2,19 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Administrator Home</title>
+<script>
+function master() {
+	if(sessionStorage.getItem("administrator_username") != null){
+		
+    }
+	else
+		history.go(-1);
+}
+</script>
 </head>
-<body>
-Click<a href="admin_add_product.html">here</a> to go to the add product page.
-Click<a href="view_user.html">here</a> to go to validate users.
+<body onload="master()">
+Click <a href="../html/admin_add_product.html">here</a> to go to the add product page.</br>
+Click <a href="view_user.html">here</a> to go to validate users.</br>
 </body>
 </html>
