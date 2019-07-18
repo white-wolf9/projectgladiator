@@ -27,7 +27,8 @@ public class EMI {
 	private int emi_id;
 	@Enumerated(EnumType.STRING)
 	private EMITypes emi_type;
-	private double emi_value;
+	private double emi_value_gold;
+	private double emi_value_titanium;
 	
 	@ManyToOne
 	@JoinColumn(name = "PRODUCT_ID")
@@ -49,12 +50,20 @@ public class EMI {
 		this.emi_type = emi_type;
 	}
 
-	public double getEmi_value() {
-		return emi_value;
+	public double getEmi_value_gold() {
+		return emi_value_gold;
 	}
 
-	public void setEmi_value(double emi_value) {
-		this.emi_value = emi_value;
+	public void setEmi_value_gold(double emi_value_gold) {
+		this.emi_value_gold = emi_value_gold;
+	}
+
+	public double getEmi_value_titanium() {
+		return emi_value_titanium;
+	}
+
+	public void setEmi_value_titanium(double emi_value_titanium) {
+		this.emi_value_titanium = emi_value_titanium;
 	}
 
 	public Product getProduct() {

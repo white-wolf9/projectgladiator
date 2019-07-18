@@ -1,5 +1,6 @@
 package com.lti.paysmart.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import com.lti.paysmart.dto.AdminLoginDTO;
 import com.lti.paysmart.dto.LoginResponseDTO;
 import com.lti.paysmart.dto.UserLoginDTO;
 import com.lti.paysmart.dto.UserRegisterDTO;
+import com.lti.paysmart.dto.ViewUsersAdminDTO;
 import com.lti.paysmart.entities.User;
 import com.lti.paysmart.interfaces.AdminService;
 import com.lti.paysmart.interfaces.UserService;
@@ -83,7 +85,20 @@ public class MasterController {
 	}
 	
 	@RequestMapping(value = "/view.all.users", method = RequestMethod.POST)
-	public List<User> viewUserDetails() {
-		return admServ.viewAllUser();
+	public List<ViewUsersAdminDTO> viewUserDetails() {
+		List<User> list = admServ.viewAllUser();
+		List<ViewUsersAdminDTO> responseList = new ArrayList<ViewUsersAdminDTO>();
+		ViewUsersAdminDTO object = new ViewUsersAdminDTO();
+		for(User user_iterator:list) {
+			object.setFname(user_iterator.getFname());
+			object.setLname(user_iterator.getLname());
+			object.setEmail(user_iterator.getEmail());
+			object.setPhone_no(user_iterator.getPhone_no());
+			object.setAddress(user_iterator.getAddress().getDoorNo()+", "+user_iterator.getAddress().getStreet()+", "+user_iterator.getAddress().getCity());
+			object.setAadharfile(user_iterator.getDocument().getAadharcardfilename());
+			object.setPanfile(user_iterator.getDocument().getPancardfilename());
+			responseList.add(object);
+		}
+		return responseList;
 	}
 }

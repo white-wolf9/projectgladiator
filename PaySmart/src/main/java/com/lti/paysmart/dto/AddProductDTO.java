@@ -9,10 +9,18 @@ public class AddProductDTO {
 	private double product_price;
 	private int product_stock;
 	private MultipartFile product_image;
-	private double emi_three;
-	private double emi_six;
-	private double emi_nine;
-	private double emi_twelve;
+	
+	
+	private double emi_three_gold;
+	private double emi_six_gold;
+	private double emi_nine_gold;
+	private double emi_twelve_gold;
+	
+	private double emi_three_titanium;
+	private double emi_six_titanium;
+	private double emi_nine_titanium;
+	private double emi_twelve_titanium;
+	
 	
 	public String getProduct_name() {
 		return product_name;
@@ -44,31 +52,54 @@ public class AddProductDTO {
 	public void setProduct_image(MultipartFile product_image) {
 		this.product_image = product_image;
 	}
-	public double getEmi_three() {
-		return emi_three;
+	public double getEmi_three_gold() {
+		return emi_three_gold;
 	}
-	public void setEmi_three(double emi_three) {
-		this.emi_three = emi_three;
+	public void setEmi_three_gold(double emi_three_gold) {
+		this.emi_three_gold = emi_three_gold;
 	}
-	public double getEmi_six() {
-		return emi_six;
+	public double getEmi_six_gold() {
+		return emi_six_gold;
 	}
-	public void setEmi_six(double emi_six) {
-		this.emi_six = emi_six;
+	public void setEmi_six_gold(double emi_six_gold) {
+		this.emi_six_gold = emi_six_gold;
 	}
-	public double getEmi_nine() {
-		return emi_nine;
+	public double getEmi_nine_gold() {
+		return emi_nine_gold;
 	}
-	public void setEmi_nine(double emi_nine) {
-		this.emi_nine = emi_nine;
+	public void setEmi_nine_gold(double emi_nine_gold) {
+		this.emi_nine_gold = emi_nine_gold;
 	}
-	public double getEmi_twelve() {
-		return emi_twelve;
+	public double getEmi_twelve_gold() {
+		return emi_twelve_gold;
 	}
-	public void setEmi_twelve(double emi_twelve) {
-		this.emi_twelve = emi_twelve;
+	public void setEmi_twelve_gold(double emi_twelve_gold) {
+		this.emi_twelve_gold = emi_twelve_gold;
 	}
-	
+	public double getEmi_three_titanium() {
+		return emi_three_titanium;
+	}
+	public void setEmi_three_titanium(double emi_three_titanium) {
+		this.emi_three_titanium = emi_three_titanium;
+	}
+	public double getEmi_six_titanium() {
+		return emi_six_titanium;
+	}
+	public void setEmi_six_titanium(double emi_six_titanium) {
+		this.emi_six_titanium = emi_six_titanium;
+	}
+	public double getEmi_nine_titanium() {
+		return emi_nine_titanium;
+	}
+	public void setEmi_nine_titanium(double emi_nine_titanium) {
+		this.emi_nine_titanium = emi_nine_titanium;
+	}
+	public double getEmi_twelve_titanium() {
+		return emi_twelve_titanium;
+	}
+	public void setEmi_twelve_titanium(double emi_twelve_titanium) {
+		this.emi_twelve_titanium = emi_twelve_titanium;
+	}
 	
 
 }

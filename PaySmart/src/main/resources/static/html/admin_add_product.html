@@ -23,12 +23,18 @@ $(function() {
 		formdata.append("product_stock",$("#product_stock").val());
 		formdata.append("product_image", $("#product_image").get(0).files[0]);
 		
-		formdata.append("emi_three",$("#emi_three").val());
-		formdata.append("emi_six",$("#emi_six").val());
-		formdata.append("emi_nine",$("#emi_nine").val());
-		formdata.append("emi_twelve",$("#emi_twelve").val());
+		formdata.append("emi_three_gold",$("#emi_three_gold").val());
+		formdata.append("emi_six_gold",$("#emi_six_gold").val());
+		formdata.append("emi_nine_gold",$("#emi_nine_gold").val());
+		formdata.append("emi_twelve_gold",$("#emi_twelve_gold").val());
 		
-		alert(formdata),
+		
+		formdata.append("emi_three_titanium",$("#emi_three_titanium").val());
+		formdata.append("emi_six_titanium",$("#emi_six_titanium").val());
+		formdata.append("emi_nine_titanium",$("#emi_nine_titanium").val());
+		formdata.append("emi_twelve_titanium",$("#emi_twelve_titanium").val());
+		
+		alert(JSON.stringify(formdata)),
 		
 		$.ajax({
 			url : "/add.product",
@@ -53,11 +59,18 @@ Product Stock: <input type = "number" step="any" id = "product_stock"/><br/>
 Product Image: <input type="file" id = "product_image"><br/>
 <p>Enter 0.25 as EMI value where ever no cost EMI is applicable</p>
 <p>NOTE: EMI values are in percentages</p>
-EMI for three months: <input type="number" step="any" id="emi_three" class="emi_entry"/>%<br/>
-EMI for six months: <input type="number" step="any" id="emi_six" class="emi_entry"/>%<br/>
-EMI for nine months: <input type="number" step="any" id="emi_nine" class="emi_entry"/>%<br/>
-EMI for twelve months: <input type="number" step="any" id="emi_twelve" class="emi_entry"/>%<br/>
-
+<p>
+EMI for three months for gold card holders: <input type="number" step="any" id="emi_three_gold" class="emi_entry"/>%<br/>
+EMI for six months gold card holders: <input type="number" step="any" id="emi_six_gold" class="emi_entry"/>%<br/>
+EMI for nine months gold card holders: <input type="number" step="any" id="emi_nine_gold" class="emi_entry"/>%<br/>
+EMI for twelve months gold card holders: <input type="number" step="any" id="emi_twelve_gold" class="emi_entry"/>%<br/>
+</p>
+<p>
+EMI for three months for titanium card holders: <input type="number" step="any" id="emi_three_titanium" class="emi_entry"/>%<br/>
+EMI for six months titanium card holders: <input type="number" step="any" id="emi_six_titanium" class="emi_entry"/>%<br/>
+EMI for nine months titanium card holders: <input type="number" step="any" id="emi_nine_titanium" class="emi_entry"/>%<br/>
+EMI for twelve months titanium card holders: <input type="number" step="any" id="emi_twelve_titanium" class="emi_entry"/>%<br/>
+</p>
 <input type="submit">
 </form>
 </body>

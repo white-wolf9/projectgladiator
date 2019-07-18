@@ -51,19 +51,23 @@ public class ProductDaoImpl extends GenericDaoImpl implements ProductDao{
 		EMI emi = new EMI();
 		  
 		emi.setEmi_type(EMITypes.THREEMONTHS);
-		emi.setEmi_value(addProductDTO.getEmi_three());
+		emi.setEmi_value_gold(addProductDTO.getEmi_three_gold());
+		emi.setEmi_value_titanium(addProductDTO.getEmi_three_titanium());
 		edao.addEMIToProduct(product, emi);
 		  
 		emi.setEmi_type(EMITypes.SIXMONTHS);
-		emi.setEmi_value(addProductDTO.getEmi_six());
+		emi.setEmi_value_gold(addProductDTO.getEmi_six_gold());
+		emi.setEmi_value_titanium(addProductDTO.getEmi_six_titanium());
 		edao.addEMIToProduct(product, emi);
 		  
 		emi.setEmi_type(EMITypes.NINEMONTHS);
-		emi.setEmi_value(addProductDTO.getEmi_nine());
+		emi.setEmi_value_gold(addProductDTO.getEmi_nine_gold());
+		emi.setEmi_value_titanium(addProductDTO.getEmi_nine_titanium());
 		edao.addEMIToProduct(product, emi);
 		  
 		emi.setEmi_type(EMITypes.TWELVEMONTHS);
-		emi.setEmi_value(addProductDTO.getEmi_twelve());
+		emi.setEmi_value_gold(addProductDTO.getEmi_twelve_gold());
+		emi.setEmi_value_titanium(addProductDTO.getEmi_twelve_titanium());
 		edao.addEMIToProduct(product, emi);
 		
 	}
