@@ -1,7 +1,7 @@
 package com.lti.paysmart.interfaces;
 
 import com.lti.paysmart.dto.AddProductDTO;
-import com.lti.paysmart.entities.EMI;
+
 import com.lti.paysmart.entities.Product;
 
 public interface ProductDao extends GenericDao {

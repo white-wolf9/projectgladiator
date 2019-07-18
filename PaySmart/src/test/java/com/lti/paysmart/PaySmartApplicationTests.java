@@ -12,11 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.lti.paysmart.dao.ProductDaoImpl;
 import com.lti.paysmart.entities.EMI;
 import com.lti.paysmart.entities.Product;
 import com.lti.paysmart.enums.EMITypes;
@@ -27,7 +25,6 @@ import com.lti.paysmart.interfaces.ProductDao;
 @Rollback(false)
 @AutoConfigureTestDatabase(replace = Replace.NONE)
 public class PaySmartApplicationTests {
-
 
 	@Autowired
 	ProductDao pdao;
