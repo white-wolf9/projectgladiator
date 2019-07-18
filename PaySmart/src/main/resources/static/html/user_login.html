@@ -28,8 +28,12 @@ function myFunction() {
 				data : JSON.stringify(obj),
 				contentType : 'application/json',
 				success : function(response) {
-					sessionStorage.setItem("customerusername", "white-wolf9");
-					if(response === "Success") location.href = "../index.html";
+					alert(JSON.stringify(response));
+					if(response.message === "Success") {
+						sessionStorage.setItem("customer_username", response.username);
+						sessionStorage.setItem("customer_password", response.password);
+						location.href = "../index.html";	
+					}
 				}
 			})
 		})

@@ -1,6 +1,6 @@
 package com.lti.paysmart.dto;
 
-public class AdminLoginResponseDTO {
+public class LoginResponseDTO {
 
 	private String username;
 	private String password;

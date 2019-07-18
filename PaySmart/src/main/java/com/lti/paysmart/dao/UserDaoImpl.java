@@ -35,7 +35,7 @@ public class UserDaoImpl extends GenericDaoImpl implements UserDao  {
 		if(user_temp == null)
 			return "User account does not exist!";
 		else if(user_temp.getCredential().getPassword().equals(userLoginDTO.getPassword().toString()))
-			return "Logged in as "+userLoginDTO.getUsername()+" using password "+userLoginDTO.getPassword();
+			return "Success";
 		else
 			return "Incorrect Password";
 	}

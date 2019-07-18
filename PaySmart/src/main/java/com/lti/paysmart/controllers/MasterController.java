@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.lti.paysmart.dto.AddProductDTO;
 import com.lti.paysmart.dto.AdminLoginDTO;
-import com.lti.paysmart.dto.AdminLoginResponseDTO;
+import com.lti.paysmart.dto.LoginResponseDTO;
 import com.lti.paysmart.dto.UserLoginDTO;
 import com.lti.paysmart.dto.UserRegisterDTO;
 import com.lti.paysmart.interfaces.AdminService;
@@ -27,14 +27,30 @@ public class MasterController {
 	AdminService admServ;
 	
 	@RequestMapping(value = "/login.user", method = RequestMethod.POST)
-	public String login(@RequestBody UserLoginDTO userLoginDTO) {
-		return userServ.performLogin(userLoginDTO);
+	public LoginResponseDTO login(@RequestBody UserLoginDTO userLoginDTO) {
+		
+		LoginResponseDTO response = new LoginResponseDTO();
+		String result = userServ.performLogin(userLoginDTO);
+		if(result.equals("User account does not exist!")) {
+			response.setMessage("User account does not exist!");
+			return response;
+		}
+		else if(result.equals("Success")) {
+			response.setPassword(userLoginDTO.getPassword());
+			response.setUsername(userLoginDTO.getUsername());
+			response.setMessage("Success");
+			return response;
+		}
+		else {
+			response.setMessage("Incorrect Password");
+			return response;
+		}
 	}
 	
 	@RequestMapping(value = "/login.admin", method = RequestMethod.POST)
-	public AdminLoginResponseDTO login(@RequestBody AdminLoginDTO adminLoginDTO) {
+	public LoginResponseDTO login(@RequestBody AdminLoginDTO adminLoginDTO) {
 		
-		AdminLoginResponseDTO response = new AdminLoginResponseDTO();
+		LoginResponseDTO response = new LoginResponseDTO();
 		String result = admServ.performLogin(adminLoginDTO);
 		if(result.equals("Administrator account does not exist!")) {
 			response.setMessage("User does not exist");
