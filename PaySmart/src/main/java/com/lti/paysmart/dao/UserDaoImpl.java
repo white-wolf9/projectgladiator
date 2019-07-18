@@ -2,6 +2,7 @@ package com.lti.paysmart.dao;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import javax.persistence.NoResultException;
 
@@ -113,6 +114,12 @@ public class UserDaoImpl extends GenericDaoImpl implements UserDao  {
 		entityManager.merge(user);
 		
 		return "Success";
+	}
+
+	
+	@Override
+	public List<User> viewAllUser() {
+		return entityManager.createQuery("select u.fname,u.lname from User as u").getResultList();
 	}
 	
 	

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Validate Users</title>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script>
+$(document).ready(function(){
+	$.ajax({
+		url : '/view.all.users',
+		method : 'POST',
+		contentType : 'application/json',
+		
+		success : function(response){
+			alert(JSON.stringify(response));
+		}
+	})
+})
+</script>
+</head>
+<body>
+<h1>Displaying all the users</h1>
+</body>
+</html>

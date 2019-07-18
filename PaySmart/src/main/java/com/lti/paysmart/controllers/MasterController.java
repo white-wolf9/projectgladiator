@@ -1,5 +1,7 @@
 package com.lti.paysmart.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -14,6 +16,7 @@ import com.lti.paysmart.dto.AdminLoginDTO;
 import com.lti.paysmart.dto.LoginResponseDTO;
 import com.lti.paysmart.dto.UserLoginDTO;
 import com.lti.paysmart.dto.UserRegisterDTO;
+import com.lti.paysmart.entities.User;
 import com.lti.paysmart.interfaces.AdminService;
 import com.lti.paysmart.interfaces.UserService;
 
@@ -77,5 +80,10 @@ public class MasterController {
 	@RequestMapping(value = "/add.product", method = RequestMethod.POST)
 	public String addProduct(AddProductDTO addProductDTO) {
 		return admServ.addProduct(addProductDTO);
+	}
+	
+	@RequestMapping(value = "/view.all.users", method = RequestMethod.POST)
+	public List<User> viewUserDetails() {
+		return admServ.viewAllUser();
 	}
 }

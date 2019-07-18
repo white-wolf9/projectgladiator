@@ -29,7 +29,7 @@ public class GenericDaoImpl implements GenericDao{
 	@SuppressWarnings("unchecked")
 	@Override
 	public <E> List<E> fetchAll(Class<E> classname) {
-		List <E> list = entityManager.createQuery("select object from "+ classname.getName()+"as object").getResultList();
+		List <E> list = entityManager.createQuery("select object from "+ classname.getName()+" as object").getResultList();
 		return list;
 	}
 
