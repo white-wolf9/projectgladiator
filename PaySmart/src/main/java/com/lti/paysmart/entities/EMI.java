@@ -25,7 +25,6 @@ public class EMI {
 	@Enumerated(EnumType.STRING)
 	private EMITypes emi_type;
 	private double emi_value;
-	private boolean zero_emi;
 	
 	@ManyToOne
 	@JoinColumn(name = "PRODUCT_ID")
@@ -63,14 +62,5 @@ public class EMI {
 		this.product = product;
 	}
 
-	public boolean isZero_emi() {
-		return zero_emi;
-	}
-
-	public void setZero_emi(boolean zero_emi) {
-		this.zero_emi = zero_emi;
-	}
-	
-	
 	
 }

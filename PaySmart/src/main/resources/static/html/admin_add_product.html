@@ -23,10 +23,10 @@ $(function() {
 		formdata.append("product_stock",$("#product_stock").val());
 		formdata.append("product_image", $("#product_image").get(0).files[0]);
 		
-		formdata.append("radio_three_zero",$('input[name=emi_three_zero]:checked').val());
+		/* formdata.append("radio_three_zero",$('input[name=emi_three_zero]:checked').val());
 		formdata.append("radio_six_zero",$('input[name=emi_six_zero]:checked').val());
 		formdata.append("radio_nine_zero",$('input[name=emi_nine_zero]:checked').val());
-		formdata.append("radio_twelve_zero",$('input[name=emi_twelve_zero]:checked').val());
+		formdata.append("radio_twelve_zero",$('input[name=emi_twelve_zero]:checked').val()); */
 		
 		formdata.append("emi_three",$("#emi_three").val());
 		formdata.append("emi_six",$("#emi_six").val());
@@ -56,38 +56,12 @@ Product Description: <input type = "text" id = "product_description"/><br/>
 Product Price: <input type = "number" step="any" id = "product_price"/><br/>
 Product Stock: <input type = "number" step="any" id = "product_stock"/><br/>
 Product Image: <input type="file" id = "product_image"><br/>
-
-
-Zero Cost EMI for 3 months:<br/> 
-<p>
-<input type="radio" name="emi_three_zero" class="emi_three_zero" value="true"/>Yes
-<input type="radio" name="emi_three_zero" class="emi_three_zero" value="false" checked/>No
-<input type="number" step="any" id="emi_three" class="emi_entry"/>
-</p>
-
-
-Zero Cost EMI for 6 months:<br/> 
-<p>
-<input type="radio" name="emi_six_zero" class="emi_six_zero" value="true"/>Yes
-<input type="radio" name="emi_six_zero" class="emi_six_zero" value="false" checked/>No
-<input type="number" step="any" id="emi_six" class="emi_entry"/>
-</p>
-
-
-Zero Cost EMI for 9 months:<br/> 
-<p>
-<input type="radio" name="emi_nine_zero" class="emi_nine_zero" value="true"/>Yes
-<input type="radio" name="emi_nine_zero" class="emi_nine_zero" value="false" checked/>No
-<input type="number" step="any" id="emi_nine" class="emi_entry"/>
-</p>
-
-
-Zero Cost EMI for 12 months:<br/> 
-<p>
-<input type="radio" name="emi_twelve_zero" class="emi_twelve_zero" value="true"/>Yes
-<input type="radio" name="emi_twelve_zero" class="emi_twelve_zero" value="false" checked/>No
-<input type="number" step="any" id="emi_twelve" class="emi_entry"/>
-</p>
+<p>Enter 0.25 as EMI value where ever no cost EMI is applicable</p>
+<p>NOTE: EMI values are in percentages</p>
+EMI for three months: <input type="number" step="any" id="emi_three" class="emi_entry"/>%<br/>
+EMI for six months: <input type="number" step="any" id="emi_six" class="emi_entry"/>%<br/>
+EMI for nine months: <input type="number" step="any" id="emi_nine" class="emi_entry"/>%<br/>
+EMI for twelve months: <input type="number" step="any" id="emi_twelve" class="emi_entry"/>%<br/>
 
 <input type="submit">
 </form>

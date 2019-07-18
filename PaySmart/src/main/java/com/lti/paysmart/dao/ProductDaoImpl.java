@@ -52,22 +52,18 @@ public class ProductDaoImpl extends GenericDaoImpl implements ProductDao{
 		  
 		emi.setEmi_type(EMITypes.THREEMONTHS);
 		emi.setEmi_value(addProductDTO.getEmi_three());
-		emi.setZero_emi(addProductDTO.isEmi_three_zero());
 		edao.addEMIToProduct(product, emi);
 		  
 		emi.setEmi_type(EMITypes.SIXMONTHS);
 		emi.setEmi_value(addProductDTO.getEmi_six());
-		emi.setZero_emi(addProductDTO.isEmi_six_zero());
 		edao.addEMIToProduct(product, emi);
 		  
 		emi.setEmi_type(EMITypes.NINEMONTHS);
 		emi.setEmi_value(addProductDTO.getEmi_nine());
-		emi.setZero_emi(addProductDTO.isEmi_nine_zero());
 		edao.addEMIToProduct(product, emi);
 		  
 		emi.setEmi_type(EMITypes.TWELVEMONTHS);
 		emi.setEmi_value(addProductDTO.getEmi_twelve());
-		emi.setZero_emi(addProductDTO.isEmi_twelve_zero());
 		edao.addEMIToProduct(product, emi);
 		
 	}

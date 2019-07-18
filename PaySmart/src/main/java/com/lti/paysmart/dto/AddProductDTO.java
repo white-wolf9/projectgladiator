@@ -13,10 +13,6 @@ public class AddProductDTO {
 	private double emi_six;
 	private double emi_nine;
 	private double emi_twelve;
-	private boolean emi_three_zero;
-	private boolean emi_six_zero;
-	private boolean emi_nine_zero;
-	private boolean emi_twelve_zero;
 	
 	public String getProduct_name() {
 		return product_name;
@@ -71,30 +67,6 @@ public class AddProductDTO {
 	}
 	public void setEmi_twelve(double emi_twelve) {
 		this.emi_twelve = emi_twelve;
-	}
-	public boolean isEmi_three_zero() {
-		return emi_three_zero;
-	}
-	public void setEmi_three_zero(boolean emi_three_zero) {
-		this.emi_three_zero = emi_three_zero;
-	}
-	public boolean isEmi_six_zero() {
-		return emi_six_zero;
-	}
-	public void setEmi_six_zero(boolean emi_six_zero) {
-		this.emi_six_zero = emi_six_zero;
-	}
-	public boolean isEmi_nine_zero() {
-		return emi_nine_zero;
-	}
-	public void setEmi_nine_zero(boolean emi_nine_zero) {
-		this.emi_nine_zero = emi_nine_zero;
-	}
-	public boolean isEmi_twelve_zero() {
-		return emi_twelve_zero;
-	}
-	public void setEmi_twelve_zero(boolean emi_twelve_zero) {
-		this.emi_twelve_zero = emi_twelve_zero;
 	}
 	
 	
