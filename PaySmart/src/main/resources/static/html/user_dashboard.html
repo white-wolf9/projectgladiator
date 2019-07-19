@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	if (sessionStorage.getItem("customer_username") === null)
+		history.go(-1);
+	else
+		alert("Logged in as : "+sessionStorage.getItem("customer_username"));
+	
+	$.ajax({
+			
+		})
+	
+	var obj = {
+			cname : 'Saurav Sanyal',
+			cnumber : '0011 0392 0101 3212',
+			ctype : 'GOLD',
+			cstatus : 'ACTIVE'
+	}
+	
+	$("#card_number").append(obj.cnumber);
+	$("#card_name").append(obj.cname);
+	$("#card_type").append(obj.ctype);
+	$("#card_status").append(obj.cstatus);
+	
+	
+	
+})
+</script>
+<body>
+<h1 align="center">DASHBOARD</h1>
+<div>
+<label>Card Number :</label> <label id="card_number"></label> <br/>
+<label>Card Holder Name :</label> <label id="card_name"></label> <br/>
+<label>Type of Card :</label> <label id="card_type"></label><br/>
+<label>Status:</label> <label id="card_status"></label><br/>
+</div>
+<div>
+<h1>TOTAL CREDIT:</h1>
+<h1>CREDIT USED:</h1>
+<h1>REMAINING CREDIT:</h1>
+<br/>
+</div>
+
+</body>
+</html>

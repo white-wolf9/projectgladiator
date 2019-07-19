@@ -44,7 +44,7 @@ public class ProductDaoImpl extends GenericDaoImpl implements ProductDao{
 		} catch(IOException e) {
 			e.printStackTrace();
 		}
-		product.setImagefilename(imagefinalpath);
+		product.setImagefilename(filename);
 		
 		product = entityManager.merge(product);
 		

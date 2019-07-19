@@ -1,6 +1,11 @@
 package com.lti.paysmart.controllers;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -95,6 +100,21 @@ public class MasterController {
 			object.setEmail(user_iterator.getEmail());
 			object.setPhone_no(user_iterator.getPhone_no());
 			object.setAddress(user_iterator.getAddress().getDoorNo()+", "+user_iterator.getAddress().getStreet()+", "+user_iterator.getAddress().getCity());
+			Path sourceAadharFile = Paths.get("D:/uploads/"+user_iterator.getDocument().getAadharcardfilename());
+			Path destAadharFile = Paths.get("src/main/resources/static/uploads"+user_iterator.getDocument().getAadharcardfilename());
+			try {
+				Files.copy(sourceAadharFile, destAadharFile, StandardCopyOption.REPLACE_EXISTING);
+			}catch (Exception e) {
+				// TODO: handle exception
+			}
+			
+			Path sourcePanFile = Paths.get("D:/uploads/"+user_iterator.getDocument().getPancardfilename());
+			Path destPanFile = Paths.get("src/main/resources/static/uploads"+user_iterator.getDocument().getPancardfilename());
+			try {
+				Files.copy(sourcePanFile, destPanFile, StandardCopyOption.REPLACE_EXISTING);
+			}catch (Exception e) {
+				// TODO: handle exception
+			}
 			object.setAadharfile(user_iterator.getDocument().getAadharcardfilename());
 			object.setPanfile(user_iterator.getDocument().getPancardfilename());
 			responseList.add(object);

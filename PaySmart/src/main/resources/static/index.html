@@ -7,11 +7,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="pragma" content="no-cache">
 <link rel="stylesheet" type="text/css" href="../css/index.css" />
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script>
-
+$(document).ready(function(){
+	alert("Index page loaded");
+})
 </script>
 </head>
-<body onload="myFunction()">
+<body>
     <header>
         <div class="main">
             <div class="logo">
@@ -19,6 +22,7 @@
             </div>
 
             <ul>
+            	<li><a href="../html/user_dashboard.html">Dash board</a></li>
                 <li><a href="/index.html">Home</a></li>
                 <li><a href="../html/user_register.html">New user?</a></li>
                 <li><a href="../html/admin_login.html">Administrator Login</a></li>

@@ -13,6 +13,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.lti.paysmart.enums.CardStatus;
 import com.lti.paysmart.enums.CardTypes;
 
 
@@ -30,7 +31,8 @@ public class Card {
 	@Enumerated(EnumType.STRING)
 	private CardTypes type;
 	private double card_balance;
-	private boolean card_status;
+	@Enumerated(EnumType.STRING)
+	private CardStatus card_status;
 	
 	@OneToOne
 	@JoinColumn(name = "USER_ID")
@@ -76,11 +78,11 @@ public class Card {
 		this.card_balance = card_balance;
 	}
 
-	public boolean isCard_status() {
+	public CardStatus getCard_status() {
 		return card_status;
 	}
 
-	public void setCard_status(boolean card_status) {
+	public void setCard_status(CardStatus card_status) {
 		this.card_status = card_status;
 	}
 

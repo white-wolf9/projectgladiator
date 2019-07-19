@@ -6,6 +6,12 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script>
 $(document).ready(function(){
+	if(sessionStorage.getItem("administrator_username") != null){
+		
+    }
+	else
+		history.go(-1);
+	
 	$.ajax({
 		url : '/view.all.users',
 		method : 'POST',

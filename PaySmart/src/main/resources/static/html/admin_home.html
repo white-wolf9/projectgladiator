@@ -3,17 +3,18 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Administrator Home</title>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script>
-function master() {
-	if(sessionStorage.getItem("administrator_username") != null){
+$(document).ready(function(){
+if(sessionStorage.getItem("administrator_username") != null){
 		
     }
 	else
 		history.go(-1);
-}
+})
 </script>
 </head>
-<body onload="master()">
+<body>
 Click <a href="../html/admin_add_product.html">here</a> to go to the add product page.</br>
 Click <a href="../html/admin_show_users.html">here</a> to go to validate users.</br>
 </body>

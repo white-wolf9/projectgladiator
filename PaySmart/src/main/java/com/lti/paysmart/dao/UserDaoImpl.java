@@ -19,6 +19,7 @@ import com.lti.paysmart.entities.Card;
 import com.lti.paysmart.entities.Credential;
 import com.lti.paysmart.entities.Document;
 import com.lti.paysmart.entities.User;
+import com.lti.paysmart.enums.CardStatus;
 import com.lti.paysmart.interfaces.UserDao;
 
 /*
@@ -48,7 +49,7 @@ public class UserDaoImpl extends GenericDaoImpl implements UserDao  {
 	public String performRegister(UserRegisterDTO userRegisterDTO) {
 		
 		Card card = new Card();
-		card.setCard_status(false);
+		card.setCard_status(CardStatus.INACTIVE);
 		card.setType(userRegisterDTO.getCardtype());
 		card.setName(userRegisterDTO.getFname()+" "+userRegisterDTO.getLname());
 		/*
@@ -82,8 +83,10 @@ public class UserDaoImpl extends GenericDaoImpl implements UserDao  {
 		 * All the details of the credentials entered by the user is stored in this
 		 * object of type Credential and is assigned to the User Entity
 		 */
-		Document document = new Document();
+		
 		String path = "D:/uploads/";
+		
+		Document document = new Document();
 		String filename = userRegisterDTO.getEmail()+"_"+userRegisterDTO.getAadharcard().getOriginalFilename();
 		String aadharfinalpath = path + filename;
 		try {
@@ -91,15 +94,16 @@ public class UserDaoImpl extends GenericDaoImpl implements UserDao  {
 		} catch(IOException e) {
 			e.printStackTrace();
 		}
-		document.setAadharcardfilename(aadharfinalpath);
+		document.setAadharcardfilename(filename);
+		
 		filename = userRegisterDTO.getEmail()+"_"+userRegisterDTO.getPancard().getOriginalFilename();
 		String panfinalpath = path + filename;
 		try {
-			userRegisterDTO.getAadharcard().transferTo(new File(panfinalpath));	
+			userRegisterDTO.getPancard().transferTo(new File(panfinalpath));	
 		} catch(IOException e) {
 			e.printStackTrace();
 		}
-		document.setPancardfilename(panfinalpath);
+		document.setPancardfilename(filename);
 		/*
 		 * All the details of the documents entered by the user is stored in this
 		 * object of type Document and is assigned to the User Entity
