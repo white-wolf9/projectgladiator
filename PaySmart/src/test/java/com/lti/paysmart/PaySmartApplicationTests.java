@@ -19,6 +19,7 @@ import com.lti.paysmart.entities.EMI;
 import com.lti.paysmart.entities.Product;
 import com.lti.paysmart.enums.EMITypes;
 import com.lti.paysmart.interfaces.ProductDao;
+import com.lti.paysmart.utilities.CardNumberGenerator;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
@@ -55,6 +56,10 @@ public class PaySmartApplicationTests {
 		 * emi.setEmi_type(EMITypes.TWELVEMONTHS); emi.setEmi_value(3.9);
 		 * emi.setZero_emi(true); emi.setProduct(product); pdao.add(emi);
 		 */
+		
+		CardNumberGenerator cnd = new CardNumberGenerator();
+		long number = Long.parseLong(cnd.generate("4121", 16));
+		System.out.println(number);
 	}
 
 }

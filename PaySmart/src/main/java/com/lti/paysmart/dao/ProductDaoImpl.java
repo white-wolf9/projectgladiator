@@ -40,7 +40,7 @@ public class ProductDaoImpl extends GenericDaoImpl implements ProductDao{
 		String filename = addProductDTO.getProduct_name()+"_"+addProductDTO.getProduct_image().getOriginalFilename();
 		String imagefinalpath = path + filename;
 		try {
-			addProductDTO.getProduct_image().transferTo(new File(imagefinalpath));	
+			addProductDTO.getProduct_image().transferTo(new File(filename));	
 		} catch(IOException e) {
 			e.printStackTrace();
 		}
@@ -81,5 +81,12 @@ public class ProductDaoImpl extends GenericDaoImpl implements ProductDao{
 	public Product viewProduct(long product_id) {
 		return entityManager.find(Product.class, product_id); 
 	}
+
+	@Override
+	public List<Product> fetchAllProduct() {
+		return (List<Product>) entityManager.createQuery("select p from Product as p").getResultList();
+	}
+
+	
 	
 }

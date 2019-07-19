@@ -25,7 +25,10 @@ import com.lti.paysmart.dto.CardDetailsResponseDTO;
 import com.lti.paysmart.dto.LoginResponseDTO;
 import com.lti.paysmart.dto.UserLoginDTO;
 import com.lti.paysmart.dto.UserRegisterDTO;
+import com.lti.paysmart.dto.ViewProductDTO;
+import com.lti.paysmart.dto.ViewProductDetailedDTO;
 import com.lti.paysmart.dto.ViewUsersAdminDTO;
+import com.lti.paysmart.entities.Product;
 import com.lti.paysmart.entities.User;
 import com.lti.paysmart.interfaces.AdminService;
 import com.lti.paysmart.interfaces.UserService;
@@ -94,6 +97,7 @@ public class MasterController {
 	
 	@RequestMapping(value = "/view.all.users", method = RequestMethod.POST)
 	public List<ViewUsersAdminDTO> viewUserDetails() {
+
 		List<User> list = admServ.viewAllUser();
 		List<ViewUsersAdminDTO> responseList = new ArrayList<ViewUsersAdminDTO>();
 		
@@ -125,14 +129,9 @@ public class MasterController {
 			object.setPanfile(user_iterator.getDocument().getPancardfilename());
 			responseList.add(object);
 		}
-		for(ViewUsersAdminDTO i:responseList) {
-			System.out.println(i);
-		}
-		
 		return responseList;
 	}
 
-	
 	@RequestMapping(value = "/get.card.details", method = RequestMethod.POST)
 	public CardDetailsResponseDTO showCardDetails(@RequestBody CardDetailsRequestDTO cardDetailsRequestDTO) {
 		return userServ.fetchCardUser(cardDetailsRequestDTO);
@@ -143,4 +142,55 @@ public class MasterController {
 		return admServ.toggleCard(user_id);
 	}
 	
+	@RequestMapping(value = "/view.all.product.index", method = RequestMethod.POST)
+	public List<ViewProductDTO> showAllProduct() {
+
+		List<Product> list = userServ.fetchAllProduct();
+		List<ViewProductDTO> responseList = new ArrayList<ViewProductDTO>();
+		
+		for(Product product_iterator : list) {
+			ViewProductDTO object = new ViewProductDTO();
+			object.setName(product_iterator.getName());
+			object.setProduct_id(product_iterator.getProduct_id());
+			object.setDescription(product_iterator.getDescription());
+			
+			object.setPrice(product_iterator.getPrice());
+			
+			Path sourceProductFile = Paths.get("D:/uploads/"+product_iterator.getImagefilename());
+			Path destProductFile = Paths.get("src/main/resources/static/uploads/"+product_iterator.getImagefilename());
+			try {
+				Files.copy(sourceProductFile, destProductFile, StandardCopyOption.REPLACE_EXISTING);
+			}catch (Exception e) {
+				// TODO: handle exception
+			}
+			object.setImagefilename(product_iterator.getImagefilename());
+			
+			responseList.add(object);
+		}
+		return responseList;
+	}
+	
+	@RequestMapping(value = "/view.specific.product", method = RequestMethod.GET)
+	public ViewProductDetailedDTO showClickedProduct(@RequestParam("product_id") long product_id) {
+		//Product product = userServ.fetchSingleProduct(product_id);
+		
+		ViewProductDetailedDTO object = new ViewProductDetailedDTO();
+		/*
+		 * object.setName(product.getName());
+		 * object.setProduct_id(product.getProduct_id());
+		 * object.setDescription(product.getDescription());
+		 * object.setPrice(product.getPrice());
+		 */
+		
+		object.setThree_emi_value_gold(1);
+		object.setThree_emi_value_titanium(1);
+		object.setSix_emi_value_gold(1);
+		object.setSix_emi_value_titanium(1);
+		object.setNine_emi_value_gold(1);
+		object.setNine_emi_value_titanium(1);
+		object.setTwelve_emi_value_gold(1);
+		object.setTwelve_emi_value_titanium(1);
+		
+		return object;
+	}
 }

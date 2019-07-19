@@ -27,6 +27,7 @@ public class Card {
 	@Column(name = "CARD_ID")
 	private long card_id;
 	private String name;
+	@Column(unique = true)
 	private long card_no;
 	@Enumerated(EnumType.STRING)
 	private CardTypes type;

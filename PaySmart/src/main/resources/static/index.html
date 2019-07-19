@@ -10,7 +10,62 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script>
 $(document).ready(function(){
-	alert("Index page loaded");
+	
+	$.ajax({
+		url : '/view.all.product.index',
+		method : 'POST',
+		contentType : 'application/json',
+		
+		success : function(response){
+			alert(JSON.stringify(response));
+			$.each(response, function(i, product) {
+				var row = $('<tr/>');
+				var column1 = $('<td/>').text(product.name);
+				var column2 = $("<td/>").text(product.description);
+		 		var column3 = $("<td/>").text(product.price);
+		 		
+		 		/* var column6 = $("<td/>");
+		 		var img = $("<img/>").attr("src","../uploads/"+user.aadharfile);
+		 		column6.append(img);
+		 		var column7 = $("<td/>");
+		 		var img = $("<img/>").attr("src","../uploads/"+user.panfile);
+		 		column6.append(img); */
+		 		
+		 		var column4 = $("<td/>").html('<a href="../uploads/'+product.imagefilename+'">View Picture</a>');
+		 		
+		 		var r = $('<button class="specificproduct" value='+product.product_id+'>Buy now</button>')
+		 		
+				row.append(column1);
+				row.append(column2);
+				row.append(column3); 
+				row.append(column4);
+				row.append(r);
+				$('#products_table').append(row);
+
+			})
+		}
+	})
+	$(document).on("click","button.specificproduct",function(){
+
+		sessionStorage.setItem("clicked_item", $(this).val());
+		location.href = "../html/buy_product.html"
+		
+		/* var user_id = $(this).val()
+		
+		var url = "/activate.user.card?user_id="+user_id
+		 */
+		/* $.ajax({
+			url : url,
+			method : 'GET',
+			type : 'json',
+			
+			success : function(response){
+				alert(JSON.stringify(response));
+			}
+			
+		}) */
+	})
+	
 })
 </script>
 </head>
@@ -31,7 +86,7 @@ $(document).ready(function(){
             </ul>
         </div>
     </header>
-            <div class="container">
+            <!-- <div class="container">
                  <div class="card">
                     <img src="https://images-na.ssl-images-amazon.com/images/I/41rR0S0rUDL._AC_SY400_.jpg" alt="100" style="width:60%">
                     <h1>OnePlus 6 </h1>
@@ -70,8 +125,13 @@ $(document).ready(function(){
                     <p><button>Buy now</button></p>
                 </div>
             </div>
+        --> 
+        <table id="products_table" style="border : 1px solid black;">
+			<tr style="border : 1px solid black;">
+			</tr>
+		</table>
+        
         <footer>
-             
                 <ul id="ul2">
                     <li><a href="#">About</a></li>
                     <li><a href="#">Eligibility</a></li>

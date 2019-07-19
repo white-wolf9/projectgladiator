@@ -1,5 +1,7 @@
 package com.lti.paysmart.services;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,10 @@ import com.lti.paysmart.dto.CardDetailsRequestDTO;
 import com.lti.paysmart.dto.CardDetailsResponseDTO;
 import com.lti.paysmart.dto.UserLoginDTO;
 import com.lti.paysmart.dto.UserRegisterDTO;
+import com.lti.paysmart.dto.ViewProductDTO;
+import com.lti.paysmart.entities.Product;
+import com.lti.paysmart.interfaces.GenericDao;
+import com.lti.paysmart.interfaces.ProductDao;
 import com.lti.paysmart.interfaces.UserDao;
 import com.lti.paysmart.interfaces.UserService;
 
@@ -18,6 +24,12 @@ public class UserServiceImpl implements UserService{
 	
 	@Autowired
 	UserDao udao;
+	
+	@Autowired
+	ProductDao pdao;
+	
+	@Autowired
+	GenericDao gdao;
 	
 	public String performLogin(UserLoginDTO userLoginDTO) {
 		return udao.performLogin(userLoginDTO);
@@ -34,4 +46,9 @@ public class UserServiceImpl implements UserService{
 		return udao.fetchCardUser(cardDetailsRequestDTO);
 	}
 
+	@Override
+	public List<Product> fetchAllProduct() {
+		return pdao.fetchAllProduct();
+	}
+	
 }

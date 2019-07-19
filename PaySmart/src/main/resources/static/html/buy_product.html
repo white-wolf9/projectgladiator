@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Buy Product</title>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script>
+$(document).ready(function(){
+	var product_id = sessionStorage.getItem("clicked_item");
+	var url = "/view.specific.product?product_id="+product_id
+	
+	$.ajax({
+		url : url,
+		method : 'GET',
+		type : 'json',
+		
+		success : function(response){
+			alert(JSON.stringify(response));
+		}
+		
+	})
+})
+</script>
+</head>
+<body>
+Yo we here homie!
+</body>
+</html>

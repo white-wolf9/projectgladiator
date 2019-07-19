@@ -23,6 +23,7 @@ import com.lti.paysmart.entities.Document;
 import com.lti.paysmart.entities.User;
 import com.lti.paysmart.enums.CardStatus;
 import com.lti.paysmart.interfaces.UserDao;
+import com.lti.paysmart.utilities.CardNumberGenerator;
 
 /*
  * All the methods that are unique to the Class User go here and are exposed via the interface UserDao
@@ -54,7 +55,8 @@ public class UserDaoImpl extends GenericDaoImpl implements UserDao  {
 		card.setCard_status(CardStatus.INACTIVE);
 		card.setType(userRegisterDTO.getCardtype());
 		card.setName(userRegisterDTO.getFname()+" "+userRegisterDTO.getLname());
-		card.setCard_no(userRegisterDTO.getPhone_no());
+		CardNumberGenerator cnd = new CardNumberGenerator();
+		card.setCard_no(Long.parseLong(cnd.generate("4121", 16)));
 		/*
 		 * The user has only control of what type of card they require.
 		 * By default the status of the card is set to false
