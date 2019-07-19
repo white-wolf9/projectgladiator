@@ -15,7 +15,7 @@ public class BankDetails {
 	@Id
 	@GeneratedValue
 	@Column(name = "BANKDETAILS_ID")
-	private long bankdetails_id;
+	private int bankdetails_id;
 	private String bank_name;
 	private String acc_no;
 	private String ifsc_code;
@@ -25,12 +25,12 @@ public class BankDetails {
 	@JoinColumn(name = "USER_ID")
 	private User user;
 
-	public long getBankdetails_id() {
+	public int getBankdetails_id() {
 		return bankdetails_id;
 	}
 
 
-	public void setBankdetails_id(long bankdetails_id) {
+	public void setBankdetails_id(int bankdetails_id) {
 		this.bankdetails_id = bankdetails_id;
 	}
 

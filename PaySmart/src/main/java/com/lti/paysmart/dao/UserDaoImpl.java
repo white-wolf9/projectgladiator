@@ -2,6 +2,9 @@ package com.lti.paysmart.dao;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.NoResultException;
@@ -64,6 +67,9 @@ public class UserDaoImpl extends GenericDaoImpl implements UserDao  {
 		address.setDoorNo(userRegisterDTO.getDoorno());
 		address.setStreet(userRegisterDTO.getStreet());
 		address.setPincode(userRegisterDTO.getPincode());
+		address.setCity(userRegisterDTO.getCity());
+		address.setState(userRegisterDTO.getState());
+		address.setCountry(userRegisterDTO.getCountry());
 		/*
 		 * All the details of the address entered by the user is stored in this
 		 * object of type Address and is to be assigned to User Entity
@@ -103,16 +109,26 @@ public class UserDaoImpl extends GenericDaoImpl implements UserDao  {
 		user.setLname(userRegisterDTO.getLname());
 		user.setEmail(userRegisterDTO.getEmail());
 		user.setPhone_no(userRegisterDTO.getPhone_no());
-		user.setDob(userRegisterDTO.getDob());
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		try {
+			user.setDob(sdf.parse(userRegisterDTO.getDob()));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		user = entityManager.merge(user);
 		
-		user.setCard(card);
-		user.setBank(bankdetails);
-		user.setCredential(credential);
-		user.setAddress(address);
-		user.setDocument(document);
-		
+		card.setUser(user);
 		entityManager.merge(user);
-		
+		bankdetails.setUser(user);
+		entityManager.merge(bankdetails);
+		credential.setUser(user);
+		entityManager.merge(credential);
+		address.setUser(user);
+		entityManager.merge(address);
+		document.setUser(user);
+		entityManager.merge(document);
+
 		return "Success";
 	}
 
@@ -120,6 +136,8 @@ public class UserDaoImpl extends GenericDaoImpl implements UserDao  {
 	@Override
 	public List<User> viewAllUser() {
 		return entityManager.createQuery("select u from User as u").getResultList();
+		
+		 
 	}
 	
 	

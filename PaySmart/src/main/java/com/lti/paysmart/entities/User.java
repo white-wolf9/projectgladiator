@@ -52,6 +52,7 @@ public class User {
 	private Credential credential;
 	
 	@OneToOne(mappedBy = "user",fetch =FetchType.EAGER,  cascade = CascadeType.ALL)
+	@JsonIgnore
 	private Address address;
 	
 	@OneToMany(mappedBy = "user",fetch =FetchType.EAGER,  cascade = CascadeType.ALL)

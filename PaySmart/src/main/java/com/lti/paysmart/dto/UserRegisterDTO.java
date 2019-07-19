@@ -15,7 +15,7 @@ public class UserRegisterDTO {
 	private String lname;
 	private String email;
 	private long phone_no;
-	private Date dob;
+	private String dob;
 	/*
 	 * Credentials of the user
 	 */
@@ -142,10 +142,11 @@ public class UserRegisterDTO {
 	public void setCardtype(CardTypes cardtype) {
 		this.cardtype = cardtype;
 	}
-	public Date getDob() {
+	
+	public String getDob() {
 		return dob;
 	}
-	public void setDob(Date dob) {
+	public void setDob(String dob) {
 		this.dob = dob;
 	}
 	public String getState() {

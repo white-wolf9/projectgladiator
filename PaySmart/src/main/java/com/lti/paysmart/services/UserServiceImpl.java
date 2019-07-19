@@ -1,5 +1,7 @@
 package com.lti.paysmart.services;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Component;
@@ -20,6 +22,7 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
+	@Transactional
 	public String performRegister(UserRegisterDTO userRegisterDTO) {
 		return udao.performRegister(userRegisterDTO);
 	}

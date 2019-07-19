@@ -10,93 +10,134 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> 
 <script src="//geodata.solutions/includes/countrystatecity.js"></script>
 <link rel="stylesheet" type="text/css" media="screen" href="../css/register.css" />
+<script type="text/javascript">
+$(function() {
+	$("#addUser").submit(function(evt) {
+		evt.preventDefault();
+		
+		formdata = new FormData();
+		
+		formdata.append("fname",$("#u_fname").val());
+		formdata.append("lname",$("#u_lname").val());
+		formdata.append("email",$("#u_email").val());
+		formdata.append("phone_no",$("#u_phone_no").val());
+		formdata.append("dob",$("#u_dob").val());
+		
+		formdata.append("username",$("#u_username").val());
+		formdata.append("password",$("#u_password").val());
+		
+		formdata.append("bankname",$("#u_bank_name").val());
+		formdata.append("acc_no", $("#u_ac_no").val());
+		formdata.append("ifsc_code", $("#u_ifsc").val());
+		
+		formdata.append("cardtype",$('input[name=cardtype]:checked').val());
+		
+		formdata.append("city",$("#cityId").val());
+		formdata.append("doorno",$("#u_door_no").val());
+		formdata.append("street",$("#u_street").val());
+		formdata.append("pincode",$("#u_pincode").val());
+		formdata.append("state",$("#stateId").val());
+		formdata.append("country", $("#countryId").val());
+		
+		formdata.append("aadharcard", $("#u_aadhar").get(0).files[0]);
+		formdata.append("pancard", $("#u_pan").get(0).files[0]);
+		
+		
+		alert(formdata),
+		
+ 		$.ajax({
+ 			url : "/register.user",
+ 			method : 'POST', 
+ 			data : formdata,
+ 			processData : false,
+ 			contentType : false,
+ 			success: function(response){
+ 				if(response.message === "Success") {
+					location.href = "../index.html";	
+				}
+ 			}
+ 		})
+	})
+})
+</script>
 </head>
 <body>  
-<div class="register">
-<h2 align="center">REGISTRATION PAGE</h2>
-<form method="post">
-        <button class="accordion" type="button">Basic Details</button>
-        <div class="panel">
-         <label>FIRSTNAME</label>
-         <input type="text" class="form-control" placeholder="Enter you first name">
-          <label>LASTNAME</label>
-          <input type="text" class="form-control" placeholder="Enter your last name">
-          <label>DATE</label>
-          <input type="date" class="form-control select-date">
-       
-          <label>EMAIL</label>
-          <input type="text" class="form-control" placeholder="Enter your email">
-      
-          <label>PHONENO.</label>
-          <input type="text" class="form-control" placeholder="Enter your phone number">
-        </div>
-         
-         <button class="accordion" type="button">Credentials</button>
-         <div class="panel">
-         <label>USERNAME</label>
-         <input type="text" class="form-control" placeholder="Enter your username">
-          <label>PASSWORD</label>
-          <input type="text" class="form-control" placeholder="Enter your password">
-          <label>CONFIRM PASSWORD</label>
-          <input type="text" class="form-control ">
-       
-         
-          </div>
-          
-          <button class="accordion" type="button">Address</button>
-        <div class="panel">
-         <label>HOUSENO</label>
-         <input type="text" class="form-control" placeholder="Enter your house no">
-          <label>STREET</label>
-          <input type="text" class="form-control" placeholder="Enter your street">
-          <label>CITY</label>
-          <input type="text" class="form-control " placeholder="Enter your city">
-       
-          <label>COUNTRY</label>
-          <input type="text" class="form-control" placeholder="Enter your country">
-      
-          <label>PINCODE</label>
-          <input type="text" class="form-control" placeholder="Enter your pincode">
-        </div>
-
-          <button class="accordion" type="button">Document Upload</button>
-        <div class="panel">
-         <label>AADHAR CARD</label>
-         <input type="file" class="form-control" placeholder="">
-          <label>PAN CARD</label>
-          <input type="file" class="form-control" placeholder="">
-          
-        </div>
-         
-        <button class="accordion" type="button">CARD TYPE</button>
-        <div class="panel">
-         <input type="radio" name="cardtype"  value="gold"/>Gold 
-         <input type="radio" name="cardtype" value="titanium"/>Titanium <br/>
-          
-        </div>
-
-          <button class="accordion" type="button">BANK DETAILS</button>
-        <div class="panel">
-         <label>BANK NAME</label>
-         <input type="text" class="form-control" placeholder="Enter your bank name">
-          <label>SAVINGS A/C NO</label>
-          <input type="text" class="form-control" placeholder="Enter your a/c no">
-          <label>IFSC CODE</label>
-          <input type="text" class="form-control " placeholder="Enter your ifsc code">
-       
-          
-        </div>
-
-         <div class="submit">
-    <input type="submit" value="Register" /> <br/>
-    </div>
-
-    </form>
-</div>
+	<div class="register">
+	<h2 align="center">REGISTRATION PAGE</h2>
+		<form id="addUser" method="post">
+			<button class="accordion" type="button">Basic Details</button>
+			<div class="panel">
+				<label>FIRSTNAME</label>
+				<input type="text" class="form-control" placeholder="Enter you first name" id="u_fname">
+				<label>LASTNAME</label>
+				<input type="text" class="form-control" placeholder="Enter your last name" id="u_lname">
+				<label>DATE</label>
+				<input type="date" class="form-control select-date" id="u_dob">
+				<label>EMAIL</label>
+				<input type="email" class="form-control" placeholder="Enter your email" id="u_email">
+				<label>PHONENO.</label>
+				<input type="number" class="form-control" placeholder="Enter your phone number" id="u_phone_no">
+			</div>
+			<button class="accordion" type="button">Credentials</button>
+			<div class="panel">
+				<label>USERNAME</label>
+				<input type="text" class="form-control" placeholder="Enter your username" id="u_username">
+				<label>PASSWORD</label>
+				<input type="password" class="form-control" placeholder="Enter your password" id="u_password">
+				<label>CONFIRM PASSWORD</label>
+				<input type="password" class="form-control" id="u_confirm_pass">
+			</div>
+			<button class="accordion" type="button">Address</button>
+			<div class="panel">
+				<label>HOUSENO</label>
+				<input type="text" class="form-control" placeholder="Enter your door no" id="u_door_no">
+				<label>STREET</label>
+				<input type="text" class="form-control" placeholder="Enter your street" id="u_street">
+				<label>COUNTRY</label>
+				<select name="country" class="countries" id="countryId">
+				    <option value="">Select Country</option>
+				</select>
+				<label>STATE</label>
+				<select name="state" class="states" id="stateId">
+				    <option value="">Select State</option>
+				</select>
+				<label>CITY</label>
+				<select name="city" class="cities" id="cityId">
+				    <option value="">Select City</option>
+				</select>
+				<label>PINCODE</label>
+				<input type="number" class="form-control" placeholder="Enter your pincode" id="u_pincode">
+			</div>
+			<button class="accordion" type="button">Document Upload</button>
+			<div class="panel">
+			<label>AADHAR CARD</label>
+			<input type="file" class="form-control" placeholder="" id="u_aadhar">
+			<label>PAN CARD</label>
+			<input type="file" class="form-control" placeholder="" id="u_pan">
+			</div>
+			<button class="accordion" type="button">CARD TYPE</button>
+			<div class="panel">
+			<input type="radio" name="cardtype"  value="GOLD"/>Gold 
+			<input type="radio" name="cardtype" value="TITANIUM"/>Titanium <br/>
+			</div>
+			<button class="accordion" type="button">BANK DETAILS</button>
+			<div class="panel">
+			<label>BANK NAME</label>
+			<input type="text" class="form-control" placeholder="Enter your bank name" id="u_bank_name">
+			<label>SAVINGS A/C NO</label>
+			<input type="text" class="form-control" placeholder="Enter your a/c no" id="u_ac_no">
+			<label>IFSC CODE</label>
+			<input type="text" class="form-control " placeholder="Enter your ifsc code" id="u_ifsc"> 
+			</div>
+			<div class="submit">
+			<input type="submit" value="Register" /> <br/>
+			</div>
+		</form>
+	</div>
 <br/>
 
 <div class="help">
-Already Registered Member? <a href="#" style="color:blue">Login here</a>
+Already Registered Member? <a href="../html/user_login.html" style="color:blue">Login here</a>
 </div>
 <script>
 	var acc = document.getElementsByClassName("accordion");

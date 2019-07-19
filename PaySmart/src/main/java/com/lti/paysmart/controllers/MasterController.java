@@ -73,7 +73,7 @@ public class MasterController {
 	}
 	
 	@RequestMapping(value = "/register.user", method = RequestMethod.POST)
-	public String register(@RequestBody UserRegisterDTO userRegisterDTO) {
+	public String register(UserRegisterDTO userRegisterDTO) {
 		return userServ.performRegister(userRegisterDTO);
 	}
 	
