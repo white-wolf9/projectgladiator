@@ -12,21 +12,26 @@ $(document).ready(function(){
 	else
 		alert("Logged in as : "+sessionStorage.getItem("customer_username"));
 	
-	$.ajax({
-			
-		})
-	
 	var obj = {
-			cname : 'Saurav Sanyal',
-			cnumber : '0011 0392 0101 3212',
-			ctype : 'GOLD',
-			cstatus : 'ACTIVE'
+			username : sessionStorage.getItem("customer_username")
 	}
 	
-	$("#card_number").append(obj.cnumber);
-	$("#card_name").append(obj.cname);
-	$("#card_type").append(obj.ctype);
-	$("#card_status").append(obj.cstatus);
+	$.ajax({
+			url : '/get.card.details',
+			method : 'POST',
+			data : JSON.stringify(obj),
+			contentType : 'application/json',
+			
+			success : function(response){
+				//alert(JSON.stringify(response));
+				$("#card_number").append(response.cardno);
+				$("#card_name").append(response.name);
+				$("#card_type").append(response.type);
+				$("#card_status").append(response.cardstatus);
+			}
+		})
+	
+	
 	
 	
 	
@@ -40,12 +45,5 @@ $(document).ready(function(){
 <label>Type of Card :</label> <label id="card_type"></label><br/>
 <label>Status:</label> <label id="card_status"></label><br/>
 </div>
-<div>
-<h1>TOTAL CREDIT:</h1>
-<h1>CREDIT USED:</h1>
-<h1>REMAINING CREDIT:</h1>
-<br/>
-</div>
-
 </body>
 </html>

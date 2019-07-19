@@ -11,6 +11,8 @@ import javax.persistence.NoResultException;
 
 import org.springframework.stereotype.Component;
 
+import com.lti.paysmart.dto.CardDetailsRequestDTO;
+import com.lti.paysmart.dto.CardDetailsResponseDTO;
 import com.lti.paysmart.dto.UserLoginDTO;
 import com.lti.paysmart.dto.UserRegisterDTO;
 import com.lti.paysmart.entities.Address;
@@ -141,8 +143,26 @@ public class UserDaoImpl extends GenericDaoImpl implements UserDao  {
 	@Override
 	public List<User> viewAllUser() {
 		return entityManager.createQuery("select u from User as u").getResultList();
-		
 		 
+	}
+
+	@Override
+	public CardDetailsResponseDTO fetchCardUser(CardDetailsRequestDTO cardDetailsRequestDTO) {
+		User user_temp = new User();
+		try {
+			user_temp = (User) entityManager.createQuery("select u from User as u where u.credential.username = :username").setParameter("username", cardDetailsRequestDTO.getUsername()).getSingleResult();
+		}catch(NoResultException noResultException) {
+			
+		}
+		
+		CardDetailsResponseDTO response = new CardDetailsResponseDTO();
+		response.setCardbalance(user_temp.getCard().getCard_balance());
+		response.setCardstatus(user_temp.getCard().getCard_status().toString());
+		response.setName(user_temp.getCard().getName());
+		response.setType(user_temp.getCard().getType().toString());
+		response.setCardno(user_temp.getCard().getCard_no());
+		
+		return response;
 	}
 	
 	

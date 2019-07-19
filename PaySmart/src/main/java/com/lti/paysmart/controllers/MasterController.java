@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.lti.paysmart.dto.AddProductDTO;
 import com.lti.paysmart.dto.AdminLoginDTO;
+import com.lti.paysmart.dto.CardDetailsRequestDTO;
+import com.lti.paysmart.dto.CardDetailsResponseDTO;
 import com.lti.paysmart.dto.LoginResponseDTO;
 import com.lti.paysmart.dto.UserLoginDTO;
 import com.lti.paysmart.dto.UserRegisterDTO;
@@ -121,4 +123,11 @@ public class MasterController {
 		}
 		return responseList;
 	}
+
+	
+	@RequestMapping(value = "/get.card.details", method = RequestMethod.POST)
+	public CardDetailsResponseDTO showCardDetails(@RequestBody CardDetailsRequestDTO cardDetailsRequestDTO) {
+		return userServ.fetchCardUser(cardDetailsRequestDTO);
+	}
+	
 }
