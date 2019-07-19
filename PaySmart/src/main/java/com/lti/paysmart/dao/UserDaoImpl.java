@@ -50,6 +50,7 @@ public class UserDaoImpl extends GenericDaoImpl implements UserDao  {
 		Card card = new Card();
 		card.setCard_status(false);
 		card.setType(userRegisterDTO.getCardtype());
+		card.setName(userRegisterDTO.getFname()+" "+userRegisterDTO.getLname());
 		/*
 		 * The user has only control of what type of card they require.
 		 * By default the status of the card is set to false
@@ -119,7 +120,7 @@ public class UserDaoImpl extends GenericDaoImpl implements UserDao  {
 		user = entityManager.merge(user);
 		
 		card.setUser(user);
-		entityManager.merge(user);
+		entityManager.merge(card);
 		bankdetails.setUser(user);
 		entityManager.merge(bankdetails);
 		credential.setUser(user);
