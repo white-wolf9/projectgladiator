@@ -54,6 +54,7 @@ public class UserDaoImpl extends GenericDaoImpl implements UserDao  {
 		card.setCard_status(CardStatus.INACTIVE);
 		card.setType(userRegisterDTO.getCardtype());
 		card.setName(userRegisterDTO.getFname()+" "+userRegisterDTO.getLname());
+		card.setCard_no(userRegisterDTO.getPhone_no());
 		/*
 		 * The user has only control of what type of card they require.
 		 * By default the status of the card is set to false
