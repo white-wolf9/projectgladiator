@@ -64,12 +64,13 @@ public class PaySmartApplicationTests {
 		 */
 		
 		EMIUtility eu = new EMIUtility();
-		System.out.println(eu.calculateInstallmnet(30000, 5.5, 0.25));
-		Calendar cal = Calendar.getInstance();
-		//Displaying current date in the desired format
-		//System.out.println("Current Date: "+sdf.format(cal.getTime()));
-		//Number of Days to add
-		eu.EMIDateCalculate(cal, 2);
+		System.out.println(eu.calculateInstallmnet(30000, 0.01, 0.25));
+		
+		/*
+		 * Calendar cal = Calendar.getInstance(); Displaying current date in the desired
+		 * format System.out.println("Current Date: "+sdf.format(cal.getTime())); Number
+		 * of Days to add eu.EMIDateCalculate(cal, 2);
+		 */
 	}
 
 }

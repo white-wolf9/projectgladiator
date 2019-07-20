@@ -3,7 +3,7 @@ package com.lti.paysmart.dto;
 public class ProductOrderRequestDTO {
 	
 	private String user_name;
-	private String product_id;
+	private long product_id;
 	private String emi_scheme;
 	
 	public String getUser_name() {
@@ -12,10 +12,10 @@ public class ProductOrderRequestDTO {
 	public void setUser_id(String user_name) {
 		this.user_name = user_name;
 	}
-	public String getProduct_id() {
+	public long getProduct_id() {
 		return product_id;
 	}
-	public void setProduct_id(String product_id) {
+	public void setProduct_id(long product_id) {
 		this.product_id = product_id;
 	}
 	public String getEmi_scheme() {
