@@ -37,7 +37,7 @@ $(document).ready(function(){
 		 		var column6 = $("<td/>").html('<a href="../uploads/'+user.aadharfile+'">View Aadhar</a>');
 		 		var column7 = $("<td/>").html('<a href="../uploads/'+user.panfile+'">View Pan</a>');
 		 		
-		 		var r = $('<button class="" value='+user.userid+'>Validate</button>')
+		 		var r = $('<button class="validateuser" value='+user.userid+'>Validate</button>')
 		 		
 				row.append(column1);
 				row.append(column2);
@@ -52,11 +52,17 @@ $(document).ready(function(){
 			})
 		}
 	})
+	$(document).on("click","button.validateuser",function(){
+		alert($(this).val());
+	})
 })
 </script>
 </head>
 <body>
 <h1>Displaying all the users</h1>
 <table id="users_table"></table>
+<script type="text/javascript">
+
+</script>
 </body>
 </html>
