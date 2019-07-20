@@ -23,6 +23,7 @@ import com.lti.paysmart.dto.AdminLoginDTO;
 import com.lti.paysmart.dto.CardDetailsRequestDTO;
 import com.lti.paysmart.dto.CardDetailsResponseDTO;
 import com.lti.paysmart.dto.LoginResponseDTO;
+import com.lti.paysmart.dto.ProductOrderRequestDTO;
 import com.lti.paysmart.dto.UserLoginDTO;
 import com.lti.paysmart.dto.UserRegisterDTO;
 import com.lti.paysmart.dto.ViewProductDTO;
@@ -172,25 +173,12 @@ public class MasterController {
 	
 	@RequestMapping(value = "/view.specific.product", method = RequestMethod.GET)
 	public ViewProductDetailedDTO showClickedProduct(@RequestParam("product_id") long product_id) {
-		//Product product = userServ.fetchSingleProduct(product_id);
+		return userServ.fetchSingleProduct(product_id);
+	}
+
+	@RequestMapping(value = "/place.product.order", method = RequestMethod.POST)
+	public String placeOrder(@RequestBody ProductOrderRequestDTO productOrderRequestDTO) {
 		
-		ViewProductDetailedDTO object = new ViewProductDetailedDTO();
-		/*
-		 * object.setName(product.getName());
-		 * object.setProduct_id(product.getProduct_id());
-		 * object.setDescription(product.getDescription());
-		 * object.setPrice(product.getPrice());
-		 */
-		
-		object.setThree_emi_value_gold(1);
-		object.setThree_emi_value_titanium(1);
-		object.setSix_emi_value_gold(1);
-		object.setSix_emi_value_titanium(1);
-		object.setNine_emi_value_gold(1);
-		object.setNine_emi_value_titanium(1);
-		object.setTwelve_emi_value_gold(1);
-		object.setTwelve_emi_value_titanium(1);
-		
-		return object;
+		return "Working";
 	}
 }

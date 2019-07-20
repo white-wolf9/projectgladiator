@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.lti.paysmart.dto.AddProductDTO;
+import com.lti.paysmart.dto.ViewProductDetailedDTO;
 import com.lti.paysmart.entities.EMI;
 import com.lti.paysmart.entities.Product;
 import com.lti.paysmart.entities.User;
@@ -85,6 +86,33 @@ public class ProductDaoImpl extends GenericDaoImpl implements ProductDao{
 	@Override
 	public List<Product> fetchAllProduct() {
 		return (List<Product>) entityManager.createQuery("select p from Product as p").getResultList();
+	}
+
+	@Override
+	public ViewProductDetailedDTO fetchSingleProduct(long product_id) {
+		
+		Product product = (Product) entityManager.find(Product.class, product_id);
+		EMI emi_obj_three = (EMI) entityManager.createQuery("select e from EMI as e where e.product.product_id = :product_id and e.emi_type='THREEMONTHS'").setParameter("product_id", product_id).getSingleResult();
+		EMI emi_obj_six = (EMI) entityManager.createQuery("select e from EMI as e where e.product.product_id = :product_id and e.emi_type='SIXMONTHS'").setParameter("product_id", product_id).getSingleResult();
+		EMI emi_obj_nine = (EMI) entityManager.createQuery("select e from EMI as e where e.product.product_id = :product_id and e.emi_type='NINEMONTHS'").setParameter("product_id", product_id).getSingleResult();
+		EMI emi_obj_twelve = (EMI) entityManager.createQuery("select e from EMI as e where e.product.product_id = :product_id and e.emi_type='TWELVEMONTHS'").setParameter("product_id", product_id).getSingleResult();
+
+		ViewProductDetailedDTO object = new ViewProductDetailedDTO();
+		
+		object.setName(product.getName());
+		object.setProduct_id(product.getProduct_id());
+		object.setDescription(product.getDescription());
+		object.setPrice(product.getPrice());
+		object.setThree_emi_value_gold(emi_obj_three.getEmi_value_gold());
+		object.setThree_emi_value_titanium(emi_obj_three.getEmi_value_titanium());
+		object.setSix_emi_value_gold(emi_obj_six.getEmi_value_gold());
+		object.setSix_emi_value_titanium(emi_obj_six.getEmi_value_titanium());
+		object.setNine_emi_value_gold(emi_obj_nine.getEmi_value_gold());
+		object.setNine_emi_value_titanium(emi_obj_nine.getEmi_value_titanium());
+		object.setTwelve_emi_value_gold(emi_obj_twelve.getEmi_value_gold());
+		object.setTwelve_emi_value_titanium(emi_obj_twelve.getEmi_value_titanium());
+		
+		return object;
 	}
 
 	

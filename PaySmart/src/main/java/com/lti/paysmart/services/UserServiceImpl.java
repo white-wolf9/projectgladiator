@@ -13,6 +13,7 @@ import com.lti.paysmart.dto.CardDetailsResponseDTO;
 import com.lti.paysmart.dto.UserLoginDTO;
 import com.lti.paysmart.dto.UserRegisterDTO;
 import com.lti.paysmart.dto.ViewProductDTO;
+import com.lti.paysmart.dto.ViewProductDetailedDTO;
 import com.lti.paysmart.entities.Product;
 import com.lti.paysmart.interfaces.GenericDao;
 import com.lti.paysmart.interfaces.ProductDao;
@@ -50,5 +51,12 @@ public class UserServiceImpl implements UserService{
 	public List<Product> fetchAllProduct() {
 		return pdao.fetchAllProduct();
 	}
+
+	@Override
+	public ViewProductDetailedDTO fetchSingleProduct(long product_id) {
+		return pdao.fetchSingleProduct(product_id);
+	}
+	
+	
 	
 }

@@ -57,9 +57,8 @@ public class PaySmartApplicationTests {
 		 * emi.setZero_emi(true); emi.setProduct(product); pdao.add(emi);
 		 */
 		
-		CardNumberGenerator cnd = new CardNumberGenerator();
-		long number = Long.parseLong(cnd.generate("4121", 16));
-		System.out.println(number);
+		CardNumberGenerator cng = new CardNumberGenerator();
+		System.out.println((cng.generate("2847", 16)));
 	}
 
 }

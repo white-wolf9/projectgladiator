@@ -16,13 +16,52 @@ $(document).ready(function(){
 		
 		success : function(response){
 			alert(JSON.stringify(response));
+			var r = $('<button class="buyproduct" value='+response.product_id+'>Validate</button>')
+			$("p").append(r);
 		}
 		
 	})
+	$(document).on("click","button.buyproduct",function(){
+		
+		alert($(this).val());
+		alert($( "#customer_choice" ).val());
+		
+		var obj = {
+			user_id : sessionStorage.getItem("customer_username"),
+			product : product_id,
+			emi_scheme : $( "#customer_choice" ).val()
+		}
+		
+		alert(JSON.stringify(obj));
+		
+		$.ajax({
+			url : '/place.product.order',
+			method : 'POST',
+			type : 'json',
+			data : JSON.stringify(obj),
+			contentType : 'application/json',
+			
+			success : function(response){
+				alert(response);
+			}
+		})
+	})
 })
+
 </script>
+
 </head>
 <body>
-Yo we here homie!
+TO DO: Add the parts where the data is getting appended.
+<div>
+<select name="EMI Schemes" id="customer_choice">
+  <option value="THREEMONTHS">THREEMONTHS</option>
+  <option value="SIXMONTHS">SIXMONTHS</option>
+  <option value="NINEMONTHS">NINEMONTHS</option>
+  <option value="TWELVEMONTHS">TWELVEMONTHS</option>
+</select>
+</div>
+<p>
+</p>
 </body>
 </html>

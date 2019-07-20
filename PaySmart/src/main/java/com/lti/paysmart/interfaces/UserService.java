@@ -7,6 +7,7 @@ import com.lti.paysmart.dto.CardDetailsResponseDTO;
 import com.lti.paysmart.dto.UserLoginDTO;
 import com.lti.paysmart.dto.UserRegisterDTO;
 import com.lti.paysmart.dto.ViewProductDTO;
+import com.lti.paysmart.dto.ViewProductDetailedDTO;
 import com.lti.paysmart.entities.Product;
 
 public interface UserService {
@@ -15,5 +16,6 @@ public interface UserService {
 	public String performRegister(UserRegisterDTO userRegisterDTO);
 	public CardDetailsResponseDTO fetchCardUser(CardDetailsRequestDTO cardDetailsRequestDTO);
 	public List<Product> fetchAllProduct();
+	public ViewProductDetailedDTO fetchSingleProduct(long product_id);
 
 }
