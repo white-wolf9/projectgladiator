@@ -171,6 +171,12 @@ public class UserDaoImpl extends GenericDaoImpl implements UserDao  {
 		
 		return response;
 	}
+
+	
+	@Override
+	public User fetchByUsername(String username) {
+		return (User) entityManager.createQuery("select u from User as u where u.credential.username = :username").setParameter("username", username).getSingleResult();
+	}
 	
 	
 

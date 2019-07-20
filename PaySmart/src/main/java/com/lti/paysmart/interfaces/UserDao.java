@@ -18,4 +18,5 @@ public interface UserDao extends GenericDao {
 	public String performRegister(UserRegisterDTO userRegisterDTO);
 	public List<User> viewAllUser();
 	public CardDetailsResponseDTO fetchCardUser(CardDetailsRequestDTO cardDetailsRequestDTO);
+	public User fetchByUsername(String username);
 }

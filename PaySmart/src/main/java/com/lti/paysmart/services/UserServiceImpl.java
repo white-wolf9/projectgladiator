@@ -10,11 +10,16 @@ import org.springframework.stereotype.Component;
 
 import com.lti.paysmart.dto.CardDetailsRequestDTO;
 import com.lti.paysmart.dto.CardDetailsResponseDTO;
+import com.lti.paysmart.dto.ProductOrderRequestDTO;
+import com.lti.paysmart.dto.ProductOrderResponseDTO;
 import com.lti.paysmart.dto.UserLoginDTO;
 import com.lti.paysmart.dto.UserRegisterDTO;
 import com.lti.paysmart.dto.ViewProductDTO;
 import com.lti.paysmart.dto.ViewProductDetailedDTO;
+import com.lti.paysmart.entities.Card;
 import com.lti.paysmart.entities.Product;
+import com.lti.paysmart.entities.User;
+import com.lti.paysmart.enums.CardStatus;
 import com.lti.paysmart.interfaces.GenericDao;
 import com.lti.paysmart.interfaces.ProductDao;
 import com.lti.paysmart.interfaces.UserDao;
@@ -55,6 +60,28 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public ViewProductDetailedDTO fetchSingleProduct(long product_id) {
 		return pdao.fetchSingleProduct(product_id);
+	}
+
+	@Override
+	public ProductOrderResponseDTO placeOrder(ProductOrderRequestDTO productOrderRequestDTO) {
+		
+		ProductOrderResponseDTO orderResponse = new ProductOrderResponseDTO();
+		/*
+		 * Testing
+		 */
+		User user = (User) udao.fetchByUsername(productOrderRequestDTO.getUser_name());
+		/*
+		 * Testing
+		 */
+		Card card = user.getCard();
+		if(card.getCard_status().equals(CardStatus.INACTIVE)) {
+			orderResponse.setResponse("Card is inactive, please wait for it to be activated");
+			return orderResponse;
+		}
+		else {
+			orderResponse.setResponse("Card is active, Code is not written");
+			return orderResponse;
+		}
 	}
 	
 	

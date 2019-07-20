@@ -24,6 +24,7 @@ import com.lti.paysmart.dto.CardDetailsRequestDTO;
 import com.lti.paysmart.dto.CardDetailsResponseDTO;
 import com.lti.paysmart.dto.LoginResponseDTO;
 import com.lti.paysmart.dto.ProductOrderRequestDTO;
+import com.lti.paysmart.dto.ProductOrderResponseDTO;
 import com.lti.paysmart.dto.UserLoginDTO;
 import com.lti.paysmart.dto.UserRegisterDTO;
 import com.lti.paysmart.dto.ViewProductDTO;
@@ -177,8 +178,7 @@ public class MasterController {
 	}
 
 	@RequestMapping(value = "/place.product.order", method = RequestMethod.POST)
-	public String placeOrder(@RequestBody ProductOrderRequestDTO productOrderRequestDTO) {
-		
-		return "Working";
+	public ProductOrderResponseDTO placeOrder(@RequestBody ProductOrderRequestDTO productOrderRequestDTO) {
+		return userServ.placeOrder(productOrderRequestDTO);
 	}
 }

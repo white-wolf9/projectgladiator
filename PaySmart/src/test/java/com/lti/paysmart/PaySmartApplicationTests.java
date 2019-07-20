@@ -20,6 +20,7 @@ import com.lti.paysmart.entities.Product;
 import com.lti.paysmart.enums.EMITypes;
 import com.lti.paysmart.interfaces.ProductDao;
 import com.lti.paysmart.utilities.CardNumberGenerator;
+import com.lti.paysmart.utilities.EMIUtility;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
@@ -57,8 +58,18 @@ public class PaySmartApplicationTests {
 		 * emi.setZero_emi(true); emi.setProduct(product); pdao.add(emi);
 		 */
 		
-		CardNumberGenerator cng = new CardNumberGenerator();
-		System.out.println((cng.generate("2847", 16)));
+		/*
+		 * CardNumberGenerator cng = new CardNumberGenerator();
+		 * System.out.println((cng.generate("2847", 16)));
+		 */
+		
+		EMIUtility eu = new EMIUtility();
+		System.out.println(eu.calculateInstallmnet(30000, 5.5, 0.25));
+		Calendar cal = Calendar.getInstance();
+		//Displaying current date in the desired format
+		//System.out.println("Current Date: "+sdf.format(cal.getTime()));
+		//Number of Days to add
+		eu.EMIDateCalculate(cal, 2);
 	}
 
 }

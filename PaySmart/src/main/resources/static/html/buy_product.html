@@ -23,12 +23,9 @@ $(document).ready(function(){
 	})
 	$(document).on("click","button.buyproduct",function(){
 		
-		alert($(this).val());
-		alert($( "#customer_choice" ).val());
-		
 		var obj = {
-			user_id : sessionStorage.getItem("customer_username"),
-			product : product_id,
+			user_name : sessionStorage.getItem("customer_username"),
+			product_id : product_id,
 			emi_scheme : $( "#customer_choice" ).val()
 		}
 		
@@ -42,7 +39,7 @@ $(document).ready(function(){
 			contentType : 'application/json',
 			
 			success : function(response){
-				alert(response);
+				alert(JSON.stringify(response));
 			}
 		})
 	})
