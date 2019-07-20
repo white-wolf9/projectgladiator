@@ -26,15 +26,27 @@ $(document).ready(function(){
 				var column3 = $("<td/>").text(user.phone_no);
 				var column4 = $("<td/>").text(user.email); 
 		 		var column5 = $("<td/>").text(user.address);
-		 		//var column6 = $("<td/>").html('<a href=" http://127.0.0.1:8887/OnePlus_oneplus6.jpg">Click</a>');
-		 		var column6 = $("<td/>").html('<a href="http://127.0.0.1:8887/'+user.aadharfile+' ">Click</a>');
-				//var column6 = $("<td/>").text(Bus.Price); 
+
+		 		/* var column6 = $("<td/>");
+		 		var img = $("<img/>").attr("src","../uploads/"+user.aadharfile);
+		 		column6.append(img);
+		 		var column7 = $("<td/>");
+		 		var img = $("<img/>").attr("src","../uploads/"+user.panfile);
+		 		column6.append(img); */
+		 		
+		 		var column6 = $("<td/>").html('<a href="../uploads/'+user.aadharfile+'">View Aadhar</a>');
+		 		var column7 = $("<td/>").html('<a href="../uploads/'+user.panfile+'">View Pan</a>');
+		 		
+		 		var r = $('<button class="" value='+user.userid+'>Validate</button>')
+		 		
 				row.append(column1);
 				row.append(column2);
 				row.append(column3); 
 				row.append(column4);
 				row.append(column5);
 				row.append(column6);
+				row.append(column7);
+				row.append(r);
 				$('#users_table').append(row);
 
 			})

@@ -9,6 +9,14 @@ public class ViewUsersAdminDTO {
 	private String address;
 	private String aadharfile;
 	private String panfile;
+	private long userid;
+	
+	public long getUserid() {
+		return userid;
+	}
+	public void setUserid(long userid) {
+		this.userid = userid;
+	}
 	public String getFname() {
 		return fname;
 	}
@@ -50,6 +58,12 @@ public class ViewUsersAdminDTO {
 	}
 	public void setPanfile(String panfile) {
 		this.panfile = panfile;
+	}
+	@Override
+	public String toString() {
+		return "ViewUsersAdminDTO [fname=" + fname + ", lname=" + lname + ", email=" + email + ", phone_no=" + phone_no
+				+ ", address=" + address + ", aadharfile=" + aadharfile + ", panfile=" + panfile + ", userid=" + userid
+				+ "]";
 	}
 	
 	

@@ -95,15 +95,18 @@ public class MasterController {
 	public List<ViewUsersAdminDTO> viewUserDetails() {
 		List<User> list = admServ.viewAllUser();
 		List<ViewUsersAdminDTO> responseList = new ArrayList<ViewUsersAdminDTO>();
-		ViewUsersAdminDTO object = new ViewUsersAdminDTO();
+		
 		for(User user_iterator:list) {
+			ViewUsersAdminDTO object = new ViewUsersAdminDTO();
 			object.setFname(user_iterator.getFname());
 			object.setLname(user_iterator.getLname());
 			object.setEmail(user_iterator.getEmail());
 			object.setPhone_no(user_iterator.getPhone_no());
 			object.setAddress(user_iterator.getAddress().getDoorNo()+", "+user_iterator.getAddress().getStreet()+", "+user_iterator.getAddress().getCity());
+			object.setUserid(user_iterator.getUser_id());
+			
 			Path sourceAadharFile = Paths.get("D:/uploads/"+user_iterator.getDocument().getAadharcardfilename());
-			Path destAadharFile = Paths.get("src/main/resources/static/uploads"+user_iterator.getDocument().getAadharcardfilename());
+			Path destAadharFile = Paths.get("src/main/resources/static/uploads/"+user_iterator.getDocument().getAadharcardfilename());
 			try {
 				Files.copy(sourceAadharFile, destAadharFile, StandardCopyOption.REPLACE_EXISTING);
 			}catch (Exception e) {
@@ -111,7 +114,7 @@ public class MasterController {
 			}
 			
 			Path sourcePanFile = Paths.get("D:/uploads/"+user_iterator.getDocument().getPancardfilename());
-			Path destPanFile = Paths.get("src/main/resources/static/uploads"+user_iterator.getDocument().getPancardfilename());
+			Path destPanFile = Paths.get("src/main/resources/static/uploads/"+user_iterator.getDocument().getPancardfilename());
 			try {
 				Files.copy(sourcePanFile, destPanFile, StandardCopyOption.REPLACE_EXISTING);
 			}catch (Exception e) {
@@ -121,6 +124,10 @@ public class MasterController {
 			object.setPanfile(user_iterator.getDocument().getPancardfilename());
 			responseList.add(object);
 		}
+		for(ViewUsersAdminDTO i:responseList) {
+			System.out.println(i);
+		}
+		
 		return responseList;
 	}
 
