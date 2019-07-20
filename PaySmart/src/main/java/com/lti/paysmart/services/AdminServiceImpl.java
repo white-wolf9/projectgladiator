@@ -34,6 +34,9 @@ public class AdminServiceImpl implements AdminService {
 	@Autowired
 	UserDao udao;
 	
+	@Autowired
+	GenericDao gdao;
+	
 	public String performLogin(AdminLoginDTO adminLoginDTO) {
 		return adao.performLogin(adminLoginDTO);
 	}
@@ -49,6 +52,12 @@ public class AdminServiceImpl implements AdminService {
 	public List<User> viewAllUser() {
 		return udao.viewAllUser();
 		
+	}
+
+	@Override
+	@Transactional
+	public String toggleCard(long user_id) {
+		return adao.toggleCard(user_id);
 	}
 	
 	

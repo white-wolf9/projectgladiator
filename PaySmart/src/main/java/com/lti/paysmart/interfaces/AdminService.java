@@ -11,5 +11,5 @@ public interface AdminService {
 	public String performLogin(AdminLoginDTO adminLoginDTO);
 	public String addProduct(AddProductDTO addProductDTO);
 	public List<User> viewAllUser();
-
+	public String toggleCard(long user_id);
 }

@@ -53,7 +53,21 @@ $(document).ready(function(){
 		}
 	})
 	$(document).on("click","button.validateuser",function(){
-		alert($(this).val());
+		
+		var user_id = $(this).val()
+		
+		var url = "/activate.user.card?user_id="+user_id
+		
+		$.ajax({
+			url : url,
+			method : 'GET',
+			type : 'json',
+			
+			success : function(response){
+				alert(JSON.stringify(response));
+			}
+			
+		})
 	})
 })
 </script>

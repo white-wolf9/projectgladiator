@@ -140,6 +140,10 @@ public class UserDaoImpl extends GenericDaoImpl implements UserDao  {
 	}
 
 	
+	/*
+	 * Shift the viewAllUser() to the administrator DAO because this is a functionality of the administrator
+	 */
+	
 	@Override
 	public List<User> viewAllUser() {
 		return entityManager.createQuery("select u from User as u").getResultList();
