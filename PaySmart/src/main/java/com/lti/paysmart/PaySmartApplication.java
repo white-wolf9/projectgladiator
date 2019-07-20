@@ -1,4 +1,4 @@
-package com.lti.paysmart;
+ package com.lti.paysmart;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

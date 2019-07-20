@@ -41,7 +41,7 @@ public class ProductDaoImpl extends GenericDaoImpl implements ProductDao{
 		String filename = addProductDTO.getProduct_name()+"_"+addProductDTO.getProduct_image().getOriginalFilename();
 		String imagefinalpath = path + filename;
 		try {
-			addProductDTO.getProduct_image().transferTo(new File(filename));	
+			addProductDTO.getProduct_image().transferTo(new File(imagefinalpath));	
 		} catch(IOException e) {
 			e.printStackTrace();
 		}

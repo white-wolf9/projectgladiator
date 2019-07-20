@@ -205,15 +205,6 @@ public class UserServiceImpl implements UserService{
 				}
 
 			}
-			/*
-			 * Product product = (Product) gdao.fetchById(Product.class,
-			 * productOrderRequestDTO.getProduct_id()); EMIUtility emiUtility = new
-			 * EMIUtility(); emiUtility.calculateInstallmnet(product_price, emi_value,
-			 * monthinyears)
-			 * 
-			 * if()
-			 */
-			
 			
 			return orderResponse;
 		}

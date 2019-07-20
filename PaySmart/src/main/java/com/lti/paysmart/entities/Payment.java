@@ -15,6 +15,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.lti.paysmart.enums.PaymentStatus;
+
 @Entity
 @Table(name = "TBL_PROJ_PAYMENT")
 public class Payment {
@@ -29,6 +31,7 @@ public class Payment {
 	private double installment_value;
 	private Date last_paid_date;
 	private Date next_pay_date;
+	private PaymentStatus payment_status;
 	
 	public Date getLast_paid_date() {
 		return last_paid_date;
@@ -88,6 +91,14 @@ public class Payment {
 
 	public void setPaid_installments(int paid_installments) {
 		this.paid_installments = paid_installments;
+	}
+
+	public PaymentStatus getPayment_status() {
+		return payment_status;
+	}
+
+	public void setPayment_status(PaymentStatus payment_status) {
+		this.payment_status = payment_status;
 	}
 	
 	
