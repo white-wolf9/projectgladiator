@@ -117,33 +117,19 @@ ul li a:hover{
     		success : function(response){
 				alert(JSON.stringify(response));
 				
+               
     			$.each(response, function(i, product) {
-//    				'<a href="../uploads/'+user.aadharfile+'">View Aadhar</a>')
-    				$( ".product_name" ).append( '<h1>'+product.name+'</h1>');
-    				var row = $('<tr/>');
-    				var column1 = $('<td/>').text(product.name);
-    				var column2 = $("<td/>").text(product.description);
-    		 		var column3 = $("<td/>").text(product.price);
-    		 		
-    		 		/* var column6 = $("<td/>");
-    		 		var img = $("<img/>").attr("src","../uploads/"+user.aadharfile);
-    		 		column6.append(img);
-    		 		var column7 = $("<td/>");
-    		 		var img = $("<img/>").attr("src","../uploads/"+user.panfile);
-    		 		column6.append(img); */
-    		 		
-    		 		var column4 = $("<td/>").html('<a href="../uploads/'+product.imagefilename+'">View Picture</a>');
-    		 		
-    		 		var r = $('<button class="specificproduct" value='+product.product_id+'>Buy now</button>')
-    		 		
-    				row.append(column1);
-    				row.append(column2);
-    				row.append(column3); 
-    				row.append(column4);
-    				row.append(r);
-    				$('#products_table').append(row);
+    				
+    				
+    				$(".container").append("<div class='card'>");
+    	            $(".card").append("<img src='https://images-na.ssl-images-amazon.com/images/I/41rR0S0rUDL._AC_SY400_.jpg' alt='100' style='width:60%'>");
+    	            $(".card").append("<h3>(Midnight Black, 8GB RAM, 256GB Storage)</h3>");
+    	            $(".card").append("<p class='price'>₹ 35,999</p>");
+                    $(".card").append("<p><button>Buy now</button></p>");
+    				
 
     			})
+    			
     		}
     	})
     	$(document).on("click","button.specificproduct",function(){
@@ -187,15 +173,16 @@ ul li a:hover{
         </div>
     </header>
             <div class="container">
-                 <div class="card">
+            
+                 <!-- <div class="card">
                     <img src="https://images-na.ssl-images-amazon.com/images/I/41rR0S0rUDL._AC_SY400_.jpg" alt="100" style="width:60%">
                     <div class="product_name"></div>
                     <h3>(Midnight Black, 8GB RAM, 256GB Storage)</h3>
                     <p class="price">₹ 35,999</p>
                     <p>No cost EMI available</p>
                     <p><button>Buy now</button></p>
-                </div>
-                
+                </div> -->
+    
             </div>
         <footer>
              
