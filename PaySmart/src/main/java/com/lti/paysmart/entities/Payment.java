@@ -1,10 +1,14 @@
 package com.lti.paysmart.entities;
 
+import java.time.LocalDateTime;
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,6 +18,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import com.lti.paysmart.enums.PaymentStatus;
 
@@ -29,8 +35,13 @@ public class Payment {
 	private int total_installments;
 	private int paid_installments;
 	private double installment_value;
+	@Column
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date last_paid_date;
+	@Column
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date next_pay_date;
+	@Enumerated(EnumType.STRING)
 	private PaymentStatus payment_status;
 	
 	public Date getLast_paid_date() {

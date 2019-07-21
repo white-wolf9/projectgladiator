@@ -30,11 +30,25 @@ $(document).ready(function(){
 				$("#card_status").append(response.cardstatus);
 			}
 		})
+	$(document).on("click","#pressthis",function(){
+		
+		alert("This is going fine");
+		var user_name = sessionStorage.getItem("customer_username");
+		alert(user_name);
+		
+		var url = "/fetch.all.orders?user_name="+user_name
 	
-	
-	
-	
-	
+		$.ajax({
+			url : url,
+			method : 'GET',
+			type : 'json',
+			
+			success : function(response){
+				alert(JSON.stringify(response));
+			}
+			
+		})
+	})
 })
 </script>
 <body>
@@ -44,6 +58,15 @@ $(document).ready(function(){
 <label>Card Holder Name :</label> <label id="card_name"></label> <br/>
 <label>Type of Card :</label> <label id="card_type"></label><br/>
 <label>Status:</label> <label id="card_status"></label><br/>
+</div>
+<div class="show_order_button">
+<button class="showorder" id="pressthis">Show orders</button>
+</div>
+<div class="table_div">
+<table id="order_table"  style="border : 1px solid black;">
+<tr style="border : 1px solid black;">
+</tr>
+</table>
 </div>
 </body>
 </html>

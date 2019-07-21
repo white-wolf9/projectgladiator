@@ -98,7 +98,6 @@ public class UserServiceImpl implements UserService{
 					}
 					else {
 						return udao.placeOrderFresh(installment_value, totalAmtToPay, user, productOrderRequestDTO, product);
-						//orderResponse.setResponse("Card is active, Product is yet to be purchased"); 
 					}
 					
 				}else {
@@ -127,7 +126,7 @@ public class UserServiceImpl implements UserService{
 						orderResponse.setResponse("Card is active, but no money sorry"); 
 					}
 					else {
-						orderResponse.setResponse("Card is active, Product is yet to be purchased"); 
+						return udao.placeOrderFresh(installment_value, totalAmtToPay, user, productOrderRequestDTO, product);
 					}
 					
 					
@@ -139,7 +138,7 @@ public class UserServiceImpl implements UserService{
 						orderResponse.setResponse("Card is active, but no money sorry"); 
 					}
 					else {
-						orderResponse.setResponse("Card is active, Product is yet to be purchased"); 
+						return udao.placeOrderFresh(installment_value, totalAmtToPay, user, productOrderRequestDTO, product);
 					}
 						
 				}
@@ -158,7 +157,7 @@ public class UserServiceImpl implements UserService{
 						orderResponse.setResponse("Card is active, but no money sorry"); 
 					}
 					else {
-						orderResponse.setResponse("Card is active, Product is yet to be purchased"); 
+						return udao.placeOrderFresh(installment_value, totalAmtToPay, user, productOrderRequestDTO, product);
 					}
 					
 				}else {
@@ -169,7 +168,7 @@ public class UserServiceImpl implements UserService{
 						orderResponse.setResponse("Card is active, but no money sorry"); 
 					}
 					else {
-						orderResponse.setResponse("Card is active, Product is yet to be purchased"); 
+						return udao.placeOrderFresh(installment_value, totalAmtToPay, user, productOrderRequestDTO, product);
 					}
 					
 				}
@@ -188,7 +187,7 @@ public class UserServiceImpl implements UserService{
 						orderResponse.setResponse("Card is active, but no money sorry"); 
 					}
 					else {
-						orderResponse.setResponse("Card is active, Product is yet to be purchased"); 
+						return udao.placeOrderFresh(installment_value, totalAmtToPay, user, productOrderRequestDTO, product);
 					}
 					
 				}else {
@@ -199,7 +198,7 @@ public class UserServiceImpl implements UserService{
 						orderResponse.setResponse("Card is active, but no money sorry"); 
 					}
 					else {
-						orderResponse.setResponse("Card is active, Product is yet to be purchased"); 
+						return udao.placeOrderFresh(installment_value, totalAmtToPay, user, productOrderRequestDTO, product);
 					}
 
 				}

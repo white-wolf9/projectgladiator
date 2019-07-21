@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Index Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <style>
+    *{
+    margin: 0;
+    padding: 0;
+    font-family: Century Gothic;
+
+}
+
+header{
+    background-color:white;
+    height:100px;
+    background-size: cover;
+    background-position: center;
+}
+   
+
+
+ul{
+    float:right;
+    list-style-type:none; 
+    margin-top:25px;
+}
+
+ul li{
+    display: inline-block;
+}
+
+
+
+ul li a{
+    text-decoration: none;
+    color:darkblue;
+    padding: 5px 20px;
+    border: 1px solid transparent;
+    transition: 0.6s ease;
+}
+
+
+ul li a:hover{
+    background-color:greenyellow;
+    color:darkblue;
+}
+
+.container card {
+    box-shadow: 0 10px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    margin: auto;
+    text-align: center;
+    font-family:arial;
+    display: inline;
+    padding-inline-end:2px 16px;
+
+  }
+  
+  .price {
+    color:red;
+    font-size: 22px;
+
+  }
+  
+  .container button {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: darkblue;
+    background-color: greenyellow;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+  }
+  
+  .logo img{
+      float: left;
+      width: 180px;
+      height: auto;
+     
+  }
+.card{
+     display: inline-block;
+     width: 300px;
+    height: 200px;
+    margin: 1em;
+ }
+
+ #ul2{
+     float: left;
+     margin-top: 140px;
+
+
+
+ }
+
+.container{
+    border:50px;
+    border-color: black;
+}
+    
+    </style>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+    	
+    	$.ajax({
+    		url : '/view.all.product.index',
+    		method : 'POST',
+    		contentType : 'application/json',
+    		
+    		success : function(response){
+				alert(JSON.stringify(response));
+				
+    			$.each(response, function(i, product) {
+//    				'<a href="../uploads/'+user.aadharfile+'">View Aadhar</a>')
+    				$( ".product_name" ).append( '<h1>'+product.name+'</h1>');
+    				var row = $('<tr/>');
+    				var column1 = $('<td/>').text(product.name);
+    				var column2 = $("<td/>").text(product.description);
+    		 		var column3 = $("<td/>").text(product.price);
+    		 		
+    		 		/* var column6 = $("<td/>");
+    		 		var img = $("<img/>").attr("src","../uploads/"+user.aadharfile);
+    		 		column6.append(img);
+    		 		var column7 = $("<td/>");
+    		 		var img = $("<img/>").attr("src","../uploads/"+user.panfile);
+    		 		column6.append(img); */
+    		 		
+    		 		var column4 = $("<td/>").html('<a href="../uploads/'+product.imagefilename+'">View Picture</a>');
+    		 		
+    		 		var r = $('<button class="specificproduct" value='+product.product_id+'>Buy now</button>')
+    		 		
+    				row.append(column1);
+    				row.append(column2);
+    				row.append(column3); 
+    				row.append(column4);
+    				row.append(r);
+    				$('#products_table').append(row);
+
+    			})
+    		}
+    	})
+    	$(document).on("click","button.specificproduct",function(){
+
+    		sessionStorage.setItem("clicked_item", $(this).val());
+    		location.href = "../html/buy_product.html"
+    		
+    		/* var user_id = $(this).val()
+    		
+    		var url = "/activate.user.card?user_id="+user_id
+    		 */
+    		/* $.ajax({
+    			url : url,
+    			method : 'GET',
+    			type : 'json',
+    			
+    			success : function(response){
+    				alert(JSON.stringify(response));
+    			}
+    			
+    		}) */
+    	})
+    	
+    })
+    
+    </script>
+</head>
+<body>
+    <header>
+        <div class="main">
+            <div class="logo">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmRfNHrjFQYzswdYiAIceM2oBp9O1-9HjEC5HEv9a1HDUnZmy2JA">
+            </div>
+
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Register</a></li>
+                <li><a href="#">Login</a></li>
+               
+            </ul>
+        </div>
+    </header>
+            <div class="container">
+                 <div class="card">
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/41rR0S0rUDL._AC_SY400_.jpg" alt="100" style="width:60%">
+                    <div class="product_name"></div>
+                    <h3>(Midnight Black, 8GB RAM, 256GB Storage)</h3>
+                    <p class="price">₹ 35,999</p>
+                    <p>No cost EMI available</p>
+                    <p><button>Buy now</button></p>
+                </div>
+                
+            </div>
+        <footer>
+             
+                <ul id="ul2">
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Eligibility</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+        </footer>
+</body>
+</html>

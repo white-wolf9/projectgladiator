@@ -17,7 +17,7 @@ $(document).ready(function(){
 		contentType : 'application/json',
 		
 		success : function(response){
-			alert(JSON.stringify(response));
+
 			$.each(response, function(i, product) {
 				var row = $('<tr/>');
 				var column1 = $('<td/>').text(product.name);
@@ -82,6 +82,7 @@ $(document).ready(function(){
                 <li><a href="../html/user_register.html">New user?</a></li>
                 <li><a href="../html/admin_login.html">Administrator Login</a></li>
                 <li><a href="../html/user_login.html">Login</a></li>
+                <li><a href="../html/test_page.html">Test Page</a></li>
                
             </ul>
         </div>

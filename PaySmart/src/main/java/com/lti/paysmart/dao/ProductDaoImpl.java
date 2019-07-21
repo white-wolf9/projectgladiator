@@ -103,6 +103,7 @@ public class ProductDaoImpl extends GenericDaoImpl implements ProductDao{
 		object.setProduct_id(product.getProduct_id());
 		object.setDescription(product.getDescription());
 		object.setPrice(product.getPrice());
+		object.setImagefilename(product.getImagefilename());
 		object.setThree_emi_value_gold(emi_obj_three.getEmi_value_gold());
 		object.setThree_emi_value_titanium(emi_obj_three.getEmi_value_titanium());
 		object.setSix_emi_value_gold(emi_obj_six.getEmi_value_gold());

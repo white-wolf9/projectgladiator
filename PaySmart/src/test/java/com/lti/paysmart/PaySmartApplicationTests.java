@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
@@ -76,11 +77,31 @@ public class PaySmartApplicationTests {
 		 * format System.out.println("Current Date: "+sdf.format(cal.getTime())); Number
 		 * of Days to add eu.EMIDateCalculate(cal, 2);
 		 */
-		Date date = new Date();
-		Calendar calendar = Calendar.getInstance();
-		calendar.setTime(date);
-		System.out.println(calendar.getTime());
+		/*
+		 * Date date = new Date(); Calendar calendar = Calendar.getInstance();
+		 * calendar.setTime(date); System.out.println(calendar.getTime());
+		 */
 		
+		/*
+		 * Calendar cal = Calendar.getInstance(); // Printing the calendar object
+		 * System.out.println(cal.getTime().toString()); // Creating a date time format
+		 * SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); // Creating a
+		 * string that changes the calendar instance to a string String newDate =
+		 * sdf.format(cal.getTime()); // Parsing the string into a date try { Date
+		 * date1=new SimpleDateFormat("dd-MM-yyyy").parse(newDate);
+		 * System.out.println(date1); } catch (ParseException e) { // TODO
+		 * Auto-generated catch block e.printStackTrace(); }
+		 */
+		
+		Date date = new Date();
+		System.out.println(date);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		try {
+			System.out.println(sdf.parse(date.toString()));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
 

@@ -181,4 +181,10 @@ public class MasterController {
 	public ProductOrderResponseDTO placeOrder(@RequestBody ProductOrderRequestDTO productOrderRequestDTO) {
 		return userServ.placeOrder(productOrderRequestDTO);
 	}
+	
+	@RequestMapping(value = "/fetch.all.orders", method = RequestMethod.GET)
+	public String fetchAllOrder(@RequestParam("user_name") String username) {
+		System.out.println(username);
+		return "WORD";
+	}
 }

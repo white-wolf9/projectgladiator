@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -31,6 +32,7 @@ import com.lti.paysmart.entities.Product;
 import com.lti.paysmart.entities.User;
 import com.lti.paysmart.enums.CardStatus;
 import com.lti.paysmart.enums.EMITypes;
+import com.lti.paysmart.enums.PaymentStatus;
 import com.lti.paysmart.interfaces.UserDao;
 import com.lti.paysmart.utilities.CardNumberGenerator;
 
@@ -193,40 +195,52 @@ public class UserDaoImpl extends GenericDaoImpl implements UserDao  {
 	@Transactional
 	public ProductOrderResponseDTO placeOrderFresh(double installment_value, double totalAmtToPay, User user,ProductOrderRequestDTO productOrderRequestDTO, Product product) {
 		Order order = new Order();
-		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		
+		LocalDateTime orderDate = LocalDateTime.now();
 		Date date = new Date();
 		order.setOrder_date(date);
-		//Date date2 = dateFormat.parse(date.toString());
 		String emi_scheme = productOrderRequestDTO.getEmi_scheme();
 		EMITypes toPass = EMITypes.valueOf(emi_scheme);
 		order.setEmi_scheme(toPass);
 		order.setUser(user);
-		order.setProduct(product);	
+		order.setProduct(product);
 		order = entityManager.merge(order);
 		
-		Payment payment = new Payment(); double intallment_value; Date duedate;
-		switch(productOrderRequestDTO.getEmi_scheme()) {
-		case "THREEMONTHS":
-			payment.setTotal_installments(3); 
-		case "SIXMONTHS":
-			payment.setTotal_installments(6); 
-		case "NINEMONTHS":
-			payment.setTotal_installments(9); 
-		case "TWELVEMONTHS":
-			payment.setTotal_installments(12); 
+		
+		Payment payment = new Payment();
+		switch(productOrderRequestDTO.getEmi_scheme()) { 
+			case "THREEMONTHS":
+				payment.setTotal_installments(3); 
+			case "SIXMONTHS":
+				payment.setTotal_installments(6); 
+			case "NINEMONTHS":
+				payment.setTotal_installments(9); 
+			case "TWELVEMONTHS":
+				payment.setTotal_installments(12); 
 		}
 		payment.setInstallment_value(installment_value);
 		payment.setPaid_installments(1);
-		user.getCard().setCard_balance(user.getCard().getCard_balance() - installment_value);
-		payment.setLast_paid_date(order.getOrder_date());
-		/* payment.setNext_pay_date(next_pay_date); */
-		/*
-		 * Work on the date part TO:DO??
-		 */
-		 
+		user.getCard().setCard_balance((user.getCard().getCard_balance()-installment_value));
+		entityManager.merge(user);
 		
+		payment.setLast_paid_date(order.getOrder_date());
+		
+		Calendar cal_next = Calendar.getInstance();
+		cal_next.add(Calendar.MONTH, 1);
+		
+		payment.setNext_pay_date(date);
+		payment.setPayment_status(PaymentStatus.OPEN);
+		payment = entityManager.merge(payment);
+		order.setPayment(payment);
+		entityManager.merge(order);
 		ProductOrderResponseDTO orderResponse = new ProductOrderResponseDTO();
 		orderResponse.setResponse("Well");
+		
+		/*
+		 * Fix the calendar to date conversion
+		 */
+		
+		
 		return orderResponse;
 	}
 	
