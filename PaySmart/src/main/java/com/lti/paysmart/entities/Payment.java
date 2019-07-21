@@ -1,6 +1,6 @@
 package com.lti.paysmart.entities;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -27,8 +27,25 @@ public class Payment {
 	private int total_installments;
 	private int paid_installments;
 	private double installment_value;
-	private Date due_date;
+	private Date last_paid_date;
+	private Date next_pay_date;
 	
+	public Date getLast_paid_date() {
+		return last_paid_date;
+	}
+
+	public void setLast_paid_date(Date last_paid_date) {
+		this.last_paid_date = last_paid_date;
+	}
+
+	public Date getNext_pay_date() {
+		return next_pay_date;
+	}
+
+	public void setNext_pay_date(Date next_pay_date) {
+		this.next_pay_date = next_pay_date;
+	}
+
 	@OneToOne(mappedBy = "payment", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "ORDER_ID")
 	private Order order;
@@ -63,14 +80,6 @@ public class Payment {
 
 	public void setInstallment_value(double installment_value) {
 		this.installment_value = installment_value;
-	}
-
-	public Date getDue_date() {
-		return due_date;
-	}
-
-	public void setDue_date(Date due_date) {
-		this.due_date = due_date;
 	}
 
 	public int getPaid_installments() {

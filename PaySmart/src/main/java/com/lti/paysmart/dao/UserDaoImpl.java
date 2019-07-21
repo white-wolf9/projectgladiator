@@ -218,10 +218,11 @@ public class UserDaoImpl extends GenericDaoImpl implements UserDao  {
 		payment.setInstallment_value(installment_value);
 		payment.setPaid_installments(1);
 		user.getCard().setCard_balance(user.getCard().getCard_balance() - installment_value);
+		payment.setLast_paid_date(order.getOrder_date());
+		/* payment.setNext_pay_date(next_pay_date); */
 		/*
 		 * Work on the date part TO:DO??
 		 */
-		payment.getDue_date();
 		 
 		
 		ProductOrderResponseDTO orderResponse = new ProductOrderResponseDTO();
