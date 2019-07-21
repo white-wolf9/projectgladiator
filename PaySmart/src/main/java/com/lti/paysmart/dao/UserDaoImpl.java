@@ -215,13 +215,17 @@ public class UserDaoImpl extends GenericDaoImpl implements UserDao  {
 		Payment payment = new Payment();
 		switch(productOrderRequestDTO.getEmi_scheme()) { 
 			case "THREEMONTHS":
-				payment.setTotal_installments(3); 
+				payment.setTotal_installments(3);
+				break;
 			case "SIXMONTHS":
-				payment.setTotal_installments(6); 
+				payment.setTotal_installments(6);
+				break;
 			case "NINEMONTHS":
-				payment.setTotal_installments(9); 
+				payment.setTotal_installments(9);
+				break;
 			case "TWELVEMONTHS":
-				payment.setTotal_installments(12); 
+				payment.setTotal_installments(12);
+				break;
 		}
 		payment.setInstallment_value(installment_value);
 		payment.setPaid_installments(1);
