@@ -4,8 +4,11 @@ import java.util.List;
 
 import com.lti.paysmart.dto.CardDetailsRequestDTO;
 import com.lti.paysmart.dto.CardDetailsResponseDTO;
+import com.lti.paysmart.dto.ProductOrderRequestDTO;
+import com.lti.paysmart.dto.ProductOrderResponseDTO;
 import com.lti.paysmart.dto.UserLoginDTO;
 import com.lti.paysmart.dto.UserRegisterDTO;
+import com.lti.paysmart.entities.Product;
 import com.lti.paysmart.entities.User;
 
 public interface UserDao extends GenericDao {
@@ -19,4 +22,5 @@ public interface UserDao extends GenericDao {
 	public List<User> viewAllUser();
 	public CardDetailsResponseDTO fetchCardUser(CardDetailsRequestDTO cardDetailsRequestDTO);
 	public User fetchByUsername(String username);
+	public ProductOrderResponseDTO placeOrderFresh(double installment_value, double totalAmtToPay,User user,ProductOrderRequestDTO productOrderRequestDTO, Product product);
 }

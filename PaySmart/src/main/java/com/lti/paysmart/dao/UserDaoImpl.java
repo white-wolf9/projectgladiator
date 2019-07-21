@@ -2,17 +2,22 @@ package com.lti.paysmart.dao;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.NoResultException;
+import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Component;
 
 import com.lti.paysmart.dto.CardDetailsRequestDTO;
 import com.lti.paysmart.dto.CardDetailsResponseDTO;
+import com.lti.paysmart.dto.ProductOrderRequestDTO;
+import com.lti.paysmart.dto.ProductOrderResponseDTO;
 import com.lti.paysmart.dto.UserLoginDTO;
 import com.lti.paysmart.dto.UserRegisterDTO;
 import com.lti.paysmart.entities.Address;
@@ -20,8 +25,12 @@ import com.lti.paysmart.entities.BankDetails;
 import com.lti.paysmart.entities.Card;
 import com.lti.paysmart.entities.Credential;
 import com.lti.paysmart.entities.Document;
+import com.lti.paysmart.entities.Order;
+import com.lti.paysmart.entities.Payment;
+import com.lti.paysmart.entities.Product;
 import com.lti.paysmart.entities.User;
 import com.lti.paysmart.enums.CardStatus;
+import com.lti.paysmart.enums.EMITypes;
 import com.lti.paysmart.interfaces.UserDao;
 import com.lti.paysmart.utilities.CardNumberGenerator;
 
@@ -57,6 +66,8 @@ public class UserDaoImpl extends GenericDaoImpl implements UserDao  {
 		card.setName(userRegisterDTO.getFname()+" "+userRegisterDTO.getLname());
 		CardNumberGenerator cnd = new CardNumberGenerator();
 		card.setCard_no(Long.parseLong(cnd.generate("4121", 16)));
+		card.setCard_balance(0);
+		card.setLifetime_credits(card.getCard_balance());
 		/*
 		 * The user has only control of what type of card they require.
 		 * By default the status of the card is set to false
@@ -176,6 +187,25 @@ public class UserDaoImpl extends GenericDaoImpl implements UserDao  {
 	@Override
 	public User fetchByUsername(String username) {
 		return (User) entityManager.createQuery("select u from User as u where u.credential.username = :username").setParameter("username", username).getSingleResult();
+	}
+
+	@Override
+	@Transactional
+	public ProductOrderResponseDTO placeOrderFresh(double installment_value, double totalAmtToPay, User user,ProductOrderRequestDTO productOrderRequestDTO, Product product) {
+		Order order = new Order();
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Date date = new Date();
+		order.setOrder_date(date);
+		String emi_scheme = productOrderRequestDTO.getEmi_scheme();
+		EMITypes toPass = EMITypes.valueOf(emi_scheme);
+		order.setEmi_scheme(toPass);
+		order.setUser(user);
+		order.setProduct(product);	
+		order = entityManager.merge(order);
+		
+		ProductOrderResponseDTO orderResponse = new ProductOrderResponseDTO();
+		orderResponse.setResponse("Well");
+		return orderResponse;
 	}
 	
 	

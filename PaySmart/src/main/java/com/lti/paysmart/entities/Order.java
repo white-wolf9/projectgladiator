@@ -1,11 +1,13 @@
 package com.lti.paysmart.entities;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -29,6 +31,7 @@ public class Order {
 	@Column(name = "ORDER_ID")
 	private long order_id;
 	private Date order_date;
+	@Enumerated(EnumType.STRING)
 	private EMITypes emi_scheme;
 	
 	@OneToOne
@@ -49,10 +52,6 @@ public class Order {
 
 	public void setOrder_id(long order_id) {
 		this.order_id = order_id;
-	}
-
-	public Date getOrder_date() {
-		return order_date;
 	}
 
 	public void setOrder_date(Date order_date) {
@@ -89,6 +88,10 @@ public class Order {
 
 	public void setPayment(Payment payment) {
 		this.payment = payment;
+	}
+
+	public Date getOrder_date() {
+		return order_date;
 	}
 	
 	

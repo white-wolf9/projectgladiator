@@ -74,14 +74,9 @@ public class UserServiceImpl implements UserService{
 	public ProductOrderResponseDTO placeOrder(ProductOrderRequestDTO productOrderRequestDTO) {
 		
 		ProductOrderResponseDTO orderResponse = new ProductOrderResponseDTO();
-		/*
-		 * Testing
-		 */
 		User user = (User) udao.fetchByUsername(productOrderRequestDTO.getUser_name());
-		/*
-		 * Testing
-		 */
 		Card card = user.getCard();
+		
 		if(card.getCard_status().equals(CardStatus.INACTIVE)) {
 			orderResponse.setResponse("Card is inactive, please wait for it to be activated");
 			return orderResponse;
@@ -102,7 +97,8 @@ public class UserServiceImpl implements UserService{
 						orderResponse.setResponse("Card is active, but no money sorry"); 
 					}
 					else {
-						orderResponse.setResponse("Card is active, Product is yet to be purchased"); 
+						return udao.placeOrderFresh(installment_value, totalAmtToPay, user, productOrderRequestDTO, product);
+						//orderResponse.setResponse("Card is active, Product is yet to be purchased"); 
 					}
 					
 				}else {
@@ -113,7 +109,7 @@ public class UserServiceImpl implements UserService{
 						orderResponse.setResponse("Card is active, but no money sorry"); 
 					}
 					else {
-						orderResponse.setResponse("Card is active, Product is yet to be purchased"); 
+						return udao.placeOrderFresh(installment_value, totalAmtToPay, user, productOrderRequestDTO, product);
 					}
 					
 				}

@@ -30,6 +30,7 @@ public class Payment {
 	private Date due_date;
 	
 	@OneToOne(mappedBy = "payment", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "ORDER_ID")
 	private Order order;
 
 	public long getPayment_id() {
