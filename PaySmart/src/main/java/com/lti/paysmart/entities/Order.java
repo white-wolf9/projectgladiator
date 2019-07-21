@@ -1,5 +1,6 @@
 package com.lti.paysmart.entities;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.Date;
@@ -35,7 +36,7 @@ public class Order {
 	@Column(name = "ORDER_ID")
 	private long order_id;
 	@Column
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	private Date order_date;
 	@Enumerated(EnumType.STRING)
 	private EMITypes emi_scheme;
@@ -92,13 +93,14 @@ public class Order {
 	public void setPayment(Payment payment) {
 		this.payment = payment;
 	}
-	
+
 	public Date getOrder_date() {
 		return order_date;
 	}
-
+	
 	public void setOrder_date(Date order_date) {
 		this.order_date = order_date;
 	}
+	
 	
 }

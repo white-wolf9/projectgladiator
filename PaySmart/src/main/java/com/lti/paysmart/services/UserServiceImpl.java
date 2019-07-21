@@ -14,10 +14,12 @@ import com.lti.paysmart.dto.ProductOrderRequestDTO;
 import com.lti.paysmart.dto.ProductOrderResponseDTO;
 import com.lti.paysmart.dto.UserLoginDTO;
 import com.lti.paysmart.dto.UserRegisterDTO;
+import com.lti.paysmart.dto.ViewAllOrderResopnseDTO;
 import com.lti.paysmart.dto.ViewProductDTO;
 import com.lti.paysmart.dto.ViewProductDetailedDTO;
 import com.lti.paysmart.entities.Card;
 import com.lti.paysmart.entities.EMI;
+import com.lti.paysmart.entities.Order;
 import com.lti.paysmart.entities.Product;
 import com.lti.paysmart.entities.User;
 import com.lti.paysmart.enums.CardStatus;
@@ -208,6 +210,13 @@ public class UserServiceImpl implements UserService{
 			return orderResponse;
 		}
 	}
+
+	
+	@Override
+	public List<ViewAllOrderResopnseDTO> fetchAllOrders(String username) {
+		return udao.fetchAllOrder(username);
+	}
+	
 	
 	
 	

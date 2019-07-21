@@ -5,7 +5,10 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -14,13 +17,13 @@ import javax.persistence.NoResultException;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Component;
-
 import com.lti.paysmart.dto.CardDetailsRequestDTO;
 import com.lti.paysmart.dto.CardDetailsResponseDTO;
 import com.lti.paysmart.dto.ProductOrderRequestDTO;
 import com.lti.paysmart.dto.ProductOrderResponseDTO;
 import com.lti.paysmart.dto.UserLoginDTO;
 import com.lti.paysmart.dto.UserRegisterDTO;
+import com.lti.paysmart.dto.ViewAllOrderResopnseDTO;
 import com.lti.paysmart.entities.Address;
 import com.lti.paysmart.entities.BankDetails;
 import com.lti.paysmart.entities.Card;
@@ -196,9 +199,11 @@ public class UserDaoImpl extends GenericDaoImpl implements UserDao  {
 	public ProductOrderResponseDTO placeOrderFresh(double installment_value, double totalAmtToPay, User user,ProductOrderRequestDTO productOrderRequestDTO, Product product) {
 		Order order = new Order();
 		
-		LocalDateTime orderDate = LocalDateTime.now();
+		LocalDate localDate = LocalDate.now();
 		Date date = new Date();
-		order.setOrder_date(date);
+		Date orderDate = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+		Date nextPayDate = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).plusMonths(1).toInstant());
+		order.setOrder_date(orderDate);
 		String emi_scheme = productOrderRequestDTO.getEmi_scheme();
 		EMITypes toPass = EMITypes.valueOf(emi_scheme);
 		order.setEmi_scheme(toPass);
@@ -223,12 +228,9 @@ public class UserDaoImpl extends GenericDaoImpl implements UserDao  {
 		user.getCard().setCard_balance((user.getCard().getCard_balance()-installment_value));
 		entityManager.merge(user);
 		
-		payment.setLast_paid_date(order.getOrder_date());
+		payment.setLast_paid_date(orderDate);
 		
-		Calendar cal_next = Calendar.getInstance();
-		cal_next.add(Calendar.MONTH, 1);
-		
-		payment.setNext_pay_date(date);
+		payment.setNext_pay_date(nextPayDate);
 		payment.setPayment_status(PaymentStatus.OPEN);
 		payment = entityManager.merge(payment);
 		order.setPayment(payment);
@@ -244,6 +246,28 @@ public class UserDaoImpl extends GenericDaoImpl implements UserDao  {
 		return orderResponse;
 	}
 	
-	
+	public List<ViewAllOrderResopnseDTO> fetchAllOrder(String username) {
+		List<ViewAllOrderResopnseDTO> responseList = new ArrayList<ViewAllOrderResopnseDTO>();
+		List<Order> order_temp_list = (List<Order>) entityManager.createQuery("select o from Order as o where o.user.credential.username = :username").setParameter("username", username).getResultList();
+		for(Order order_iterator : order_temp_list) {
+			order_iterator.getPayment();
+			ViewAllOrderResopnseDTO object = new ViewAllOrderResopnseDTO();
+			
+			object.setEmischeme(order_iterator.getEmi_scheme());
+			object.setOrderdate(order_iterator.getOrder_date());
+			object.setProductname(order_iterator.getProduct().getName());
+			
+			object.setPaymentid(order_iterator.getPayment().getPayment_id());
+			object.setTotalinstallments(order_iterator.getPayment().getTotal_installments());
+			object.setPaidinstallments(order_iterator.getPayment().getPaid_installments());
+			object.setInstallmentvalue(order_iterator.getPayment().getInstallment_value());
+			object.setLast_paiddate(order_iterator.getPayment().getLast_paid_date());
+			object.setNext_paydate(order_iterator.getPayment().getNext_pay_date());
+			
+			responseList.add(object);
+			
+		}
+		return responseList;
+	}
 
 }

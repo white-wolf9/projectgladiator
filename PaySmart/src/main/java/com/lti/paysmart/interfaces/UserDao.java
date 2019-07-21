@@ -2,6 +2,7 @@ package com.lti.paysmart.interfaces;
 
 import java.util.List;
 
+import com.lti.paysmart.dto.ViewAllOrderResopnseDTO;
 import com.lti.paysmart.dto.CardDetailsRequestDTO;
 import com.lti.paysmart.dto.CardDetailsResponseDTO;
 import com.lti.paysmart.dto.ProductOrderRequestDTO;
@@ -22,5 +23,6 @@ public interface UserDao extends GenericDao {
 	public List<User> viewAllUser();
 	public CardDetailsResponseDTO fetchCardUser(CardDetailsRequestDTO cardDetailsRequestDTO);
 	public User fetchByUsername(String username);
+	public List<ViewAllOrderResopnseDTO> fetchAllOrder(String username);
 	public ProductOrderResponseDTO placeOrderFresh(double installment_value, double totalAmtToPay,User user,ProductOrderRequestDTO productOrderRequestDTO, Product product);
 }

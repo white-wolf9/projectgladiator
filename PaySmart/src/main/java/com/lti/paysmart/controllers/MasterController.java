@@ -27,6 +27,7 @@ import com.lti.paysmart.dto.ProductOrderRequestDTO;
 import com.lti.paysmart.dto.ProductOrderResponseDTO;
 import com.lti.paysmart.dto.UserLoginDTO;
 import com.lti.paysmart.dto.UserRegisterDTO;
+import com.lti.paysmart.dto.ViewAllOrderResopnseDTO;
 import com.lti.paysmart.dto.ViewProductDTO;
 import com.lti.paysmart.dto.ViewProductDetailedDTO;
 import com.lti.paysmart.dto.ViewUsersAdminDTO;
@@ -183,8 +184,7 @@ public class MasterController {
 	}
 	
 	@RequestMapping(value = "/fetch.all.orders", method = RequestMethod.GET)
-	public String fetchAllOrder(@RequestParam("user_name") String username) {
-		System.out.println(username);
-		return "WORD";
+	public  List<ViewAllOrderResopnseDTO> fetchAllOrder(@RequestParam("user_name") String username) {
+		return userServ.fetchAllOrders(username);
 	}
 }

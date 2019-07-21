@@ -26,6 +26,7 @@ public class Product {
 	private long product_id;
 	@Column(unique = true)
 	private String name;
+	@Column(length = 1000)
 	private String description;
 	private String imagefilename;
 	private double price;

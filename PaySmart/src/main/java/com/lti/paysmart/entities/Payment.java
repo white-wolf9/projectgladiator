@@ -1,5 +1,6 @@
 package com.lti.paysmart.entities;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.Date;
@@ -36,14 +37,14 @@ public class Payment {
 	private int paid_installments;
 	private double installment_value;
 	@Column
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	private Date last_paid_date;
 	@Column
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	private Date next_pay_date;
 	@Enumerated(EnumType.STRING)
 	private PaymentStatus payment_status;
-	
+
 	public Date getLast_paid_date() {
 		return last_paid_date;
 	}
@@ -60,7 +61,7 @@ public class Payment {
 		this.next_pay_date = next_pay_date;
 	}
 
-	@OneToOne(mappedBy = "payment", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToOne(mappedBy = "payment", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "ORDER_ID")
 	private Order order;
 

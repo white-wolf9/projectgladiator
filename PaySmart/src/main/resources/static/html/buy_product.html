@@ -40,6 +40,8 @@ $(document).ready(function(){
 			
 			success : function(response){
 				alert(JSON.stringify(response));
+				sessionStorage.removeItem('clicked_item');
+				location.href="../index.html";
 			}
 		})
 	})
