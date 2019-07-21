@@ -25,7 +25,7 @@ public class Payment {
 	@Column(name = "PAYMENT_ID")
 	private long payment_id;
 	private int total_installments;
-	private int current_installment;
+	private int paid_installments;
 	private double installment_value;
 	private Date due_date;
 	
@@ -57,14 +57,6 @@ public class Payment {
 		this.total_installments = total_installments;
 	}
 
-	public int getCurrent_installment() {
-		return current_installment;
-	}
-
-	public void setCurrent_installment(int current_installment) {
-		this.current_installment = current_installment;
-	}
-
 	public double getInstallment_value() {
 		return installment_value;
 	}
@@ -79,6 +71,14 @@ public class Payment {
 
 	public void setDue_date(Date due_date) {
 		this.due_date = due_date;
+	}
+
+	public int getPaid_installments() {
+		return paid_installments;
+	}
+
+	public void setPaid_installments(int paid_installments) {
+		this.paid_installments = paid_installments;
 	}
 	
 	

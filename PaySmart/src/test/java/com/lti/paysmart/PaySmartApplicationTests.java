@@ -1,8 +1,11 @@
 package com.lti.paysmart;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -63,14 +66,21 @@ public class PaySmartApplicationTests {
 		 * System.out.println((cng.generate("2847", 16)));
 		 */
 		
-		EMIUtility eu = new EMIUtility();
-		System.out.println(eu.calculateInstallmnet(30000, 0.01, 0.25));
+		/*
+		 * EMIUtility eu = new EMIUtility();
+		 * System.out.println(eu.calculateInstallmnet(30000, 0.01, 0.25));
+		 */
 		
 		/*
 		 * Calendar cal = Calendar.getInstance(); Displaying current date in the desired
 		 * format System.out.println("Current Date: "+sdf.format(cal.getTime())); Number
 		 * of Days to add eu.EMIDateCalculate(cal, 2);
 		 */
+		Date date = new Date();
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(date);
+		System.out.println(calendar.getTime());
+		
 	}
-
 }
+
