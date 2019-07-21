@@ -267,6 +267,7 @@ public class UserDaoImpl extends GenericDaoImpl implements UserDao  {
 			object.setInstallmentvalue(order_iterator.getPayment().getInstallment_value());
 			object.setLast_paiddate(order_iterator.getPayment().getLast_paid_date());
 			object.setNext_paydate(order_iterator.getPayment().getNext_pay_date());
+			object.setPaymentstatus(order_iterator.getPayment().getPayment_status());
 			
 			responseList.add(object);
 			

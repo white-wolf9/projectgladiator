@@ -45,6 +45,48 @@ $(document).ready(function(){
 			
 			success : function(response){
 				alert(JSON.stringify(response));
+				$.each(response, function(i, orderdetails) {
+					var row = $('<tr/>');
+					var column1 = $('<td/>').text(orderdetails.productname);
+					var column2 = $("<td/>").text(orderdetails.orderdate);
+					var column3 = $("<td/>").text(orderdetails.emischeme);
+					var column4 = $("<td/>").text(orderdetails.paymentid); 
+			 		var column5 = $("<td/>").text(orderdetails.totalinstallments);
+			 		var column6 = $("<td/>").text(orderdetails.paidinstallments); 
+			 		var column7 = $("<td/>").text(orderdetails.installmentvalue);
+			 		var column8 = $("<td/>").text(orderdetails.last_paiddate); 
+			 		var column9 = $("<td/>").text(orderdetails.next_paydate);
+			 		var column10 = $("<td/>").text(orderdetails.paymentstatus); 
+
+
+			 		/* var column6 = $("<td/>");
+			 		var img = $("<img/>").attr("src","../uploads/"+user.aadharfile);
+			 		column6.append(img);
+			 		var column7 = $("<td/>");
+			 		var img = $("<img/>").attr("src","../uploads/"+user.panfile);
+			 		column6.append(img); */
+			 		
+			 		/* var column6 = $("<td/>").html('<a href="../uploads/'+user.aadharfile+'">View Aadhar</a>');
+			 		var column7 = $("<td/>").html('<a href="../uploads/'+user.panfile+'">View Pan</a>'); */
+			 		
+			 		var r = $('<button class="makepament" value='+orderdetails.paymentid+'>Make Payment</button>');
+			 		
+					row.append(column1);
+					row.append(column2);
+					row.append(column3); 
+					row.append(column4);
+					row.append(column5);
+					row.append(column6);
+					row.append(column7);
+					row.append(column8);
+					row.append(column9);
+					row.append(column10);
+					row.append(r);
+					$('#order_table').append(row);
+				})
+				
+				
+				
 			}
 			
 		})
