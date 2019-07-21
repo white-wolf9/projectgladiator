@@ -35,7 +35,16 @@ public class Card {
 	@Enumerated(EnumType.STRING)
 	private CardStatus card_status;
 	private double lifetime_credits;
+	private double frozen_balance;
 	
+	public double getFrozen_balance() {
+		return frozen_balance;
+	}
+
+	public void setFrozen_balance(double frozen_balance) {
+		this.frozen_balance = frozen_balance;
+	}
+
 	@OneToOne
 	@JoinColumn(name = "USER_ID")
 	private User user;
