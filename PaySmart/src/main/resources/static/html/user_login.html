@@ -2,13 +2,21 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <title>Login</title>
 <link rel="stylesheet" type="text/css" href="/css/login.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script>
-function myFunction() {
-  alert("Page is loaded");
-}
+$(document).ready(function() {
+	if (sessionStorage.getItem('customer_username') === null) {
+		  //...
+		}
+	else{
+		location.href = "../index.html";
+	}
+})
 </script>
 <script>
 	$(function() {
@@ -40,7 +48,7 @@ function myFunction() {
 	})
 </script>
 </head>
-<body onload="myFunction()">
+<body>
 <div class="login">
 	<h1>Login </h1>      
 	<form id="form_login">

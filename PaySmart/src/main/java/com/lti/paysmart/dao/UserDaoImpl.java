@@ -80,7 +80,6 @@ public class UserDaoImpl extends GenericDaoImpl implements UserDao {
 		CardNumberGenerator cnd = new CardNumberGenerator();
 		card.setCard_no(Long.parseLong(cnd.generate("4121", 16)));
 		card.setCard_balance(0);
-		card.setLifetime_credits(card.getCard_balance());
 		/*
 		 * The user has only control of what type of card they require. By default the
 		 * status of the card is set to false
@@ -239,7 +238,10 @@ public class UserDaoImpl extends GenericDaoImpl implements UserDao {
 		}
 		payment.setInstallment_value(installment_value);
 		payment.setPaid_installments(1);
-		user.getCard().setCard_balance((user.getCard().getCard_balance() - installment_value));
+		
+		user.getCard().setCard_balance(user.getCard().getCard_balance() - totalAmtToPay);
+		
+		user.getCard().setFrozen_balance(user.getCard().getFrozen_balance()+(totalAmtToPay - installment_value));
 		entityManager.merge(user);
 
 		payment.setLast_paid_date(orderDate);
@@ -299,7 +301,7 @@ public class UserDaoImpl extends GenericDaoImpl implements UserDao {
 			// c.user.credential.username = :username").setParameter("username",
 			// installmentPaymentRequestDTO.getUsername());
 			Card card = user.getCard();
-			card.setCard_balance(card.getCard_balance() - payment.getInstallment_value());
+			card.setFrozen_balance(card.getFrozen_balance() - payment.getInstallment_value());
 			entityManager.merge(card);
 			int x = payment.getPaid_installments() + 1;
 			payment.setPaid_installments(x);

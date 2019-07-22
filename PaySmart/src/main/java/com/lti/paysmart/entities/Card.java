@@ -34,7 +34,6 @@ public class Card {
 	private double card_balance;
 	@Enumerated(EnumType.STRING)
 	private CardStatus card_status;
-	private double lifetime_credits;
 	private double frozen_balance;
 	
 	public double getFrozen_balance() {
@@ -104,14 +103,5 @@ public class Card {
 	public void setUser(User user) {
 		this.user = user;
 	}
-
-	public double getLifetime_credits() {
-		return lifetime_credits;
-	}
-
-	public void setLifetime_credits(double lifetime_credits) {
-		this.lifetime_credits = lifetime_credits;
-	}
-	
 	
 }

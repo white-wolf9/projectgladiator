@@ -14,7 +14,19 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
-    	
+    	if (sessionStorage.getItem('clicked_item') === null) {
+    		  //...
+    		}
+    	else{
+    		sessionStorage.removeItem('clicked_item');
+
+    	}
+    	if (sessionStorage.getItem('administrator_username') === null) {
+  		  //...
+  		}
+	  	else{
+	  		location.href = "../html/admin_home.html";
+	  	}
     	$.ajax({
     		url : '/view.all.product.index',
     		method : 'POST',
