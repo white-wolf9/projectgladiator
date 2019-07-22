@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import com.lti.paysmart.dto.CardDetailsRequestDTO;
 import com.lti.paysmart.dto.CardDetailsResponseDTO;
+import com.lti.paysmart.dto.InstallmentPaymentRequestDTO;
 import com.lti.paysmart.dto.ProductOrderRequestDTO;
 import com.lti.paysmart.dto.ProductOrderResponseDTO;
 import com.lti.paysmart.dto.UserLoginDTO;
@@ -25,5 +26,5 @@ public interface UserService {
 	public ViewProductDetailedDTO fetchSingleProduct(long product_id);
 	public ProductOrderResponseDTO placeOrder(ProductOrderRequestDTO productOrderRequestDTO);
 	public List<ViewAllOrderResopnseDTO> fetchAllOrders(String username);
-
+	public String payInstallment(InstallmentPaymentRequestDTO installmentPaymentRequestDTO);
 }

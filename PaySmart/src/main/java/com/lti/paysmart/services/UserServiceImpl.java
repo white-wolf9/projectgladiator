@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import com.lti.paysmart.dto.CardDetailsRequestDTO;
 import com.lti.paysmart.dto.CardDetailsResponseDTO;
+import com.lti.paysmart.dto.InstallmentPaymentRequestDTO;
 import com.lti.paysmart.dto.ProductOrderRequestDTO;
 import com.lti.paysmart.dto.ProductOrderResponseDTO;
 import com.lti.paysmart.dto.UserLoginDTO;
@@ -215,6 +216,11 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public List<ViewAllOrderResopnseDTO> fetchAllOrders(String username) {
 		return udao.fetchAllOrder(username);
+	}
+
+	@Override
+	public String payInstallment(InstallmentPaymentRequestDTO installmentPaymentRequestDTO) {
+		return udao.payInstallment(installmentPaymentRequestDTO);
 	}
 	
 	

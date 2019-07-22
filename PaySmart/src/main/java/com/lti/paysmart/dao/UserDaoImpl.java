@@ -16,9 +16,11 @@ import java.util.List;
 import javax.persistence.NoResultException;
 import javax.transaction.Transactional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import com.lti.paysmart.dto.CardDetailsRequestDTO;
 import com.lti.paysmart.dto.CardDetailsResponseDTO;
+import com.lti.paysmart.dto.InstallmentPaymentRequestDTO;
 import com.lti.paysmart.dto.ProductOrderRequestDTO;
 import com.lti.paysmart.dto.ProductOrderResponseDTO;
 import com.lti.paysmart.dto.UserLoginDTO;
@@ -36,6 +38,7 @@ import com.lti.paysmart.entities.User;
 import com.lti.paysmart.enums.CardStatus;
 import com.lti.paysmart.enums.EMITypes;
 import com.lti.paysmart.enums.PaymentStatus;
+import com.lti.paysmart.interfaces.GenericDao;
 import com.lti.paysmart.interfaces.UserDao;
 import com.lti.paysmart.utilities.CardNumberGenerator;
 
@@ -45,6 +48,9 @@ import com.lti.paysmart.utilities.CardNumberGenerator;
 
 @Component
 public class UserDaoImpl extends GenericDaoImpl implements UserDao  {
+	
+	@Autowired
+	GenericDao gdao;
 
 	@Override
 	public String performLogin(UserLoginDTO userLoginDTO) {
@@ -274,4 +280,28 @@ public class UserDaoImpl extends GenericDaoImpl implements UserDao  {
 		return responseList;
 	}
 
+	
+	@Override
+	public String payInstallment(InstallmentPaymentRequestDTO installmentPaymentRequestDTO) {
+		Payment payment = (Payment) gdao.fetchById(Payment.class, installmentPaymentRequestDTO.getPayment_id());
+		if(payment.getPaid_installments()<=payment.getTotal_installments()) {
+			User user = (User) entityManager.createQuery("select u from User as u where u.credential.username= :username").setParameter("username", installmentPaymentRequestDTO.getUsername());
+			//Card card = (Card) entityManager.createQuery("select c from Card as c where c.user.credential.username = :username").setParameter("username", installmentPaymentRequestDTO.getUsername());
+			Card card =user.getCard();
+			card.setCard_balance(card.getCard_balance()-payment.getInstallment_value());
+			entityManager.merge(card);
+			int x = payment.getPaid_installments()+1;
+			payment.setPaid_installments(x);
+			entityManager.merge(payment);
+			return x+" installment was just paid";
+		}
+		else {
+			payment.setPaid_installments(payment.getTotal_installments());
+			payment.setPayment_status(PaymentStatus.CLOSE);
+			entityManager.merge(payment);
+			return "All monthly installments were paid";
+		}
+	}
+
+	
 }

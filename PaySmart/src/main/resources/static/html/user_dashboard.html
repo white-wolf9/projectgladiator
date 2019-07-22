@@ -85,8 +85,27 @@ $(document).ready(function(){
 					$('#order_table').append(row);
 				})
 				
-				
-				
+				$(document).on("click","button.makepament",function(){
+					
+					var obj = {
+						username : sessionStorage.getItem("customer_username"),
+						payment_id : $(this).val()
+					}
+					alert(JSON.stringify(obj));
+					
+					$.ajax({
+						url : '/pay.order.installment',
+						method : 'POST',
+						type : 'json',
+						data : JSON.stringify(obj),
+						contentType : 'application/json',
+						
+						success : function(response){
+							alert(JSON.stringify(response));
+						}
+					})
+				})
+					
 			}
 			
 		})
@@ -100,7 +119,7 @@ $(document).ready(function(){
 <label>Card Holder Name :</label> <label id="card_name"></label> <br/>
 <label>Type of Card :</label> <label id="card_type"></label><br/>
 <label>Status:</label> <label id="card_status"></label><br/>
-<div class=topupcard"">
+<div class="topupcard">
 <button class="rechargecard" id="rechargecard">Recharge Card</button>
 </div>
 </div>

@@ -145,5 +145,4 @@ public class ProductDaoImpl extends GenericDaoImpl implements ProductDao{
 	}
 
 	
-	
 }

@@ -22,6 +22,7 @@ import com.lti.paysmart.dto.AddProductDTO;
 import com.lti.paysmart.dto.AdminLoginDTO;
 import com.lti.paysmart.dto.CardDetailsRequestDTO;
 import com.lti.paysmart.dto.CardDetailsResponseDTO;
+import com.lti.paysmart.dto.InstallmentPaymentRequestDTO;
 import com.lti.paysmart.dto.LoginResponseDTO;
 import com.lti.paysmart.dto.ProductOrderRequestDTO;
 import com.lti.paysmart.dto.ProductOrderResponseDTO;
@@ -165,4 +166,10 @@ public class MasterController {
 	public  List<ViewAllOrderResopnseDTO> fetchAllOrder(@RequestParam("user_name") String username) {
 		return userServ.fetchAllOrders(username);
 	}
+	
+	@RequestMapping(value = "/pay.order.installment", method = RequestMethod.POST)
+	public String payInstallment(@RequestBody InstallmentPaymentRequestDTO installmentPaymentRequestDTO) {
+		return userServ.payInstallment(installmentPaymentRequestDTO);
+	}
+
 }
