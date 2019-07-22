@@ -7,7 +7,14 @@ public class ViewProductDTO {
 	private String description;
 	private String imagefilename;
 	private double price;
+	private String keywords;
 	
+	public String getKeywords() {
+		return keywords;
+	}
+	public void setKeywords(String keywords) {
+		this.keywords = keywords;
+	}
 	public long getProduct_id() {
 		return product_id;
 	}

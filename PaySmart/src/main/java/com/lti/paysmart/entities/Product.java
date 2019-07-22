@@ -31,7 +31,16 @@ public class Product {
 	private String imagefilename;
 	private double price;
 	private int stock;
+	private String keywords;
 	
+	public String getKeywords() {
+		return keywords;
+	}
+
+	public void setKeywords(String keywords) {
+		this.keywords = keywords;
+	}
+
 	@OneToMany(mappedBy = "product",fetch =FetchType.LAZY, cascade = CascadeType.ALL)
 	private Set<EMI> emi;
 	

@@ -52,6 +52,7 @@
     		contentType : 'application/json',
     		
     		success : function(response){
+    			
 				var data = response;
 		    	var cards = $();
 		    	// Store all the card nodes
@@ -63,7 +64,7 @@
 			    		    
 			    		    '<img src="'+'../uploads/'+item.imagefilename+'" alt="100" style="width:60%">',
 			    		    '<h1>'+item.name+'</h1>',
-			    		    '<h3>(Midnight Black, 8GB RAM, 256GB Storage)</h3>',
+			    		    '<h3>('+item.keywords+')</h3>',
 			    		    '<p class="price">₹' +item.price+'</p>',
 			    		    '<p><button class="specificproduct" value='+item.product_id+'>Buy now</button></p>',
 			    		    '</div>'

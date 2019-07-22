@@ -6,16 +6,14 @@ public class AddProductDTO {
 	
 	private String product_name;
 	private String product_description;
+	private String product_keywords;
 	private double product_price;
 	private int product_stock;
 	private MultipartFile product_image;
-	
-	
 	private double emi_three_gold;
 	private double emi_six_gold;
 	private double emi_nine_gold;
 	private double emi_twelve_gold;
-	
 	private double emi_three_titanium;
 	private double emi_six_titanium;
 	private double emi_nine_titanium;
@@ -99,6 +97,12 @@ public class AddProductDTO {
 	}
 	public void setEmi_twelve_titanium(double emi_twelve_titanium) {
 		this.emi_twelve_titanium = emi_twelve_titanium;
+	}
+	public String getProduct_keywords() {
+		return product_keywords;
+	}
+	public void setProduct_keywords(String product_keywords) {
+		this.product_keywords = product_keywords;
 	}
 	
 

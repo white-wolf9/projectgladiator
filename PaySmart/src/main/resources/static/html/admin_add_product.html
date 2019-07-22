@@ -19,6 +19,7 @@ $(function() {
 		formdata = new FormData();
 		formdata.append("product_name",$("#product_name").val());
 		formdata.append("product_description",$("#product_description").val());
+		formdata.append("product_keywords",$("#product_keywords").val());
 		formdata.append("product_price",$("#product_price").val());
 		formdata.append("product_stock",$("#product_stock").val());
 		formdata.append("product_image", $("#product_image").get(0).files[0]);
@@ -34,8 +35,7 @@ $(function() {
 		formdata.append("emi_nine_titanium",$("#emi_nine_titanium").val());
 		formdata.append("emi_twelve_titanium",$("#emi_twelve_titanium").val());
 		
-		alert(JSON.stringify(formdata)),
-		
+		alert(JSON.stringify(formdata));
 		$.ajax({
 			url : "/add.product",
 			method : 'POST', 
@@ -43,7 +43,8 @@ $(function() {
 			processData : false,
 			contentType : false,
 			success: function(response){
-				alert(JSON.stringify(response));
+
+				location. reload(true);
 			}
 		})
 	})
@@ -54,6 +55,7 @@ $(function() {
 <form id="addProductForm">
 Product Name: <input type = "text" id = "product_name"/><br/>
 Product Description: <input type = "text" id = "product_description"/><br/>
+Product Keywords: <input type = "text" step="any" id = "product_keywords"/><br/>
 Product Price: <input type = "number" step="any" id = "product_price"/><br/>
 Product Stock: <input type = "number" step="any" id = "product_stock"/><br/>
 Product Image: <input type="file" id = "product_image"><br/>

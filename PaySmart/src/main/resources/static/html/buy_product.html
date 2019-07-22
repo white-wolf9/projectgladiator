@@ -4,6 +4,77 @@
 <meta charset="ISO-8859-1">
 <title>Buy Product</title>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<style type="text/css">
+thead{
+    background-color: #3f87a6;
+    color: #fff;
+}
+
+table {
+    border-collapse: collapse;
+    border: 1px solid rgb(126, 125, 125);
+    font-size: 11px;
+}
+
+td,th {
+    border: 1px solid rgb(126, 125, 125);
+    padding: 8px 10px;
+    font-family: Cambria;
+}
+
+td {
+    text-align: center;
+}
+tr td:last-child{
+    width: 33%;
+    white-space: nowrap;
+}
+.split {
+    height: 100%;
+    width: 50%;
+    position: fixed;
+    word-break: break-all;
+    font-family: Cambria;
+    font-size: 15px;
+}
+
+.left {
+    left: 20px;
+}
+
+.right {
+    top: 20%;
+    right: 100px;
+  
+}
+.centered {
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    align-content: center;
+}
+
+#btn {
+    color: #fff;
+    border-radius: 2px;
+    background: #3f87a6;
+    transition: all 0.4s;
+    border: none;
+    width: 20%;
+    height: 6%;
+    font-family: Cambria;
+}
+#btn:hover {
+    background: seagreen;
+    outline: none;
+}
+#name,#price,#desc{
+    font-family: Arial;
+}
+
+
+</style>
 <script>
 $(document).ready(function(){
 	var product_id = sessionStorage.getItem("clicked_item");
@@ -16,12 +87,61 @@ $(document).ready(function(){
 		
 		success : function(response){
 			alert(JSON.stringify(response));
-			var r = $('<button class="buyproduct" value='+response.product_id+'>Validate</button>')
+			$("#productimg").append('<img src="'+'../uploads/'+response.imagefilename+'" alt="100" style="width:20%">');
+			var r = $('<button class="buyproduct" value='+response.product_id+'>Buy now</button>');
+			if(response.three_emi_value_gold === 0.01){
+				$("#emi_three_gold").append("No Cost EMI");
+			}else{
+				$("#emi_three_gold").append(response.three_emi_value_gold+"%");
+			}
+			if(response.three_emi_value_titanium === 0.01){
+				$("#emi_three_titanium").append("No Cost EMI");
+			}
+			else{
+				$("#emi_three_titanium").append(response.three_emi_value_titanium+"%");
+			}
+			if(response.six_emi_value_gold === 0.01){
+				$("#emi_six_gold").append("No Cost EMI");
+			}
+			else{
+				$("#emi_six_gold").append(response.six_emi_value_gold+"%");
+			}
+			if(response.six_emi_value_titanium === 0.01){
+				$("#emi_six_titanium").append("No Cost EMI");
+			}else{
+				$("#emi_six_titanium").append(response.six_emi_value_titanium+"%");
+			}
+			if(response.nine_emi_value_gold === 0.01){
+				$("#emi_nine_gold").append("No Cost EMI");
+			}else{
+				$("#emi_nine_gold").append(response.nine_emi_value_gold+"%");
+			}
+			if(response.nine_emi_value_titanium === 0.01){
+				$("#emi_nine_titanium").append("No Cost EMI");
+			}else{
+				$("#emi_nine_titanium").append(response.nine_emi_value_titanium+"%");
+			}
+			if(response.twelve_emi_value_gold === 0.01){
+				$("#emi_twelve_gold").append("No Cost EMI");
+			}else{
+				$("#emi_twelve_gold").append(response.twelve_emi_value_gold+"%");
+			}
+			if(response.twelve_emi_value_titanium === 0.01){
+				$("#emi_twelve_titanium").append("No Cost EMI");
+			}else{
+				$("#emi_twelve_titanium").append(response.twelve_emi_value_titanium+"%");
+			}
 			$("p").append(r);
 		}
 		
 	})
 	$(document).on("click","button.buyproduct",function(){
+		
+/* 		if(sessionStorage.getItem('customer_username') === null){
+			window.location.replace("../html/user_login.html");
+			sessionStorage.removeItem('clicked_item');
+		} */
+			
 		
 		var obj = {
 			user_name : sessionStorage.getItem("customer_username"),
@@ -51,9 +171,41 @@ $(document).ready(function(){
 
 </head>
 <body>
-TO DO: Add the parts where the data is getting appended.
-
-
+<div id="productimg"></div>
+<table class="products">
+<thead>
+<tr>
+<th>DURATION</th>
+<th>GOLD CARD</th>
+<th>TITANIUM CARD</th>
+<th>INSTALLMENT VALUE</th>
+</tr>
+</thead>
+<tr>
+<td>3 MONTHS</td>
+<td id="emi_three_gold"></td>
+<td id="emi_three_titanium"></td>
+<td></td>
+</tr>
+<tr>
+<td>6 MONTHS</td>
+<td id="emi_six_gold"></td>
+<td id="emi_six_titanium"></td>
+<td></td>
+</tr>
+<tr>
+<td>9 MONTHS</td>
+<td id="emi_nine_gold"></td>
+<td id="emi_nine_titanium"></td>
+<td></td>
+</tr>
+<tr>
+<td>12 MONTHS</td>
+<td id="emi_twelve_gold"></td>
+<td id="emi_twelve_titanium"></td>
+<td></td>
+</tr>
+</table>
 <div>
 <select name="EMI Schemes" id="customer_choice">
   <option value="THREEMONTHS">THREEMONTHS</option>

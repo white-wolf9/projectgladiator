@@ -41,6 +41,7 @@ public class ProductDaoImpl extends GenericDaoImpl implements ProductDao{
 		product.setDescription(addProductDTO.getProduct_description());
 		product.setPrice(addProductDTO.getProduct_price());
 		product.setStock(addProductDTO.getProduct_stock());
+		product.setKeywords(addProductDTO.getProduct_keywords());
 		
 		String path = "D:/uploads/";
 		String filename = addProductDTO.getProduct_name()+"_"+addProductDTO.getProduct_image().getOriginalFilename();
@@ -99,7 +100,7 @@ public class ProductDaoImpl extends GenericDaoImpl implements ProductDao{
 			object.setName(product_iterator.getName());
 			object.setProduct_id(product_iterator.getProduct_id());
 			object.setDescription(product_iterator.getDescription());
-			
+			object.setKeywords(product_iterator.getKeywords());
 			object.setPrice(product_iterator.getPrice());
 			
 			Path sourceProductFile = Paths.get("D:/uploads/"+product_iterator.getImagefilename());

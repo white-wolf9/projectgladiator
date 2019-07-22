@@ -36,6 +36,7 @@ public class ProductController {
 
 	@RequestMapping(value = "/add.product", method = RequestMethod.POST)
 	public String addProduct(AddProductDTO addProductDTO) {
+		System.out.println(addProductDTO.getProduct_keywords());
 		return admServ.addProduct(addProductDTO);
 	}
 }
