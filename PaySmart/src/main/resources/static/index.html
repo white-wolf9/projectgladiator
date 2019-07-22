@@ -1,74 +1,71 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="utf-8" />
+<meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Index Page</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="pragma" content="no-cache">
-<link rel="stylesheet" type="text/css" href="../css/index.css" />
-<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-<script>
-$(document).ready(function(){
-	
-	$.ajax({
-		url : '/view.all.product.index',
-		method : 'POST',
-		contentType : 'application/json',
-		
-		success : function(response){
+<title>Index Page</title>
+<link rel="stylesheet" type="text/css" href="../css/main.css" />
+<link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+    	
+    	$.ajax({
+    		url : '/view.all.product.index',
+    		method : 'POST',
+    		contentType : 'application/json',
+    		
+    		success : function(response){
+				var data = response;
+		    	var cards = $();
+		    	// Store all the card nodes
+		    	data.forEach(function(item, i) {
+		    		
+		    		function createCard(cardData) {
+			    		  var cardTemplate = [
+			    		    '<div class="card">',
+			    		    
+			    		    '<img src="'+'../uploads/'+item.imagefilename+'" alt="100" style="width:60%">',
+			    		    '<h1>'+item.name+'</h1>',
+			    		    '<h3>(Midnight Black, 8GB RAM, 256GB Storage)</h3>',
+			    		    '<p class="price">₹' +item.price+'</p>',
+			    		    '<p><button class="specificproduct" value='+item.product_id+'>Buy now</button></p>',
+			    		    '</div>'
+			    		  ];
 
-			$.each(response, function(i, product) {
-				var row = $('<tr/>');
-				var column1 = $('<td/>').text(product.name);
-				var column2 = $("<td/>").text(product.description);
-		 		var column3 = $("<td/>").text(product.price);
-		 		
-		 		/* var column6 = $("<td/>");
-		 		var img = $("<img/>").attr("src","../uploads/"+user.aadharfile);
-		 		column6.append(img);
-		 		var column7 = $("<td/>");
-		 		var img = $("<img/>").attr("src","../uploads/"+user.panfile);
-		 		column6.append(img); */
-		 		
-		 		var column4 = $("<td/>").html('<a href="../uploads/'+product.imagefilename+'">View Picture</a>');
-		 		
-		 		var r = $('<button class="specificproduct" value='+product.product_id+'>Buy now</button>')
-		 		
-				row.append(column1);
-				row.append(column2);
-				row.append(column3); 
-				row.append(column4);
-				row.append(r);
-				$('#products_table').append(row);
+			    		  // a jQuery node
+			    		  return $(cardTemplate.join(''));
+			    	}
+		    		
+		    		
+		    	  cards = cards.add(createCard(item));
+		    	});
 
-			})
-		}
-	})
-	$(document).on("click","button.specificproduct",function(){
+		    	// Add them to the page... for instance the <body>
+		    	$(function() {
+		    	  $('.container').append(cards);
+		    	});
+    			
+    		}
+    	})
+    	$(document).on("click","button.specificproduct",function(){
 
-		sessionStorage.setItem("clicked_item", $(this).val());
-		location.href = "../html/buy_product.html"
-		
-		/* var user_id = $(this).val()
-		
-		var url = "/activate.user.card?user_id="+user_id
-		 */
-		/* $.ajax({
-			url : url,
-			method : 'GET',
-			type : 'json',
-			
-			success : function(response){
-				alert(JSON.stringify(response));
-			}
-			
-		}) */
-	})
-	
-})
-</script>
+    		sessionStorage.setItem("clicked_item", $(this).val());
+    		location.href = "../html/buy_product.html"
+    		
+    	})
+    	
+    })
+    
+    </script>
 </head>
+ 
+ 
 <body>
     <header>
         <div class="main">
@@ -76,29 +73,119 @@ $(document).ready(function(){
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmRfNHrjFQYzswdYiAIceM2oBp9O1-9HjEC5HEv9a1HDUnZmy2JA">
             </div>
 
-            <ul>
-            	<li><a href="../html/user_dashboard.html">Dash board</a></li>
-                <li><a href="/index.html">Home</a></li>
+            <ul id="ul1">
                 <li><a href="../html/user_register.html">New user?</a></li>
                 <li><a href="../html/admin_login.html">Administrator Login</a></li>
                 <li><a href="../html/user_login.html">Login</a></li>
-                <li><a href="../html/test_page2.html">Test Page</a></li>
-               
+                <li><a href="../html/user_dashboard.html">Dashboard</a></li>
+                <li><a href="/index.html">Home</a></li>
             </ul>
         </div>
-</header>
-        <table id="products_table" style="border : 1px solid black;">
-			<tr style="border : 1px solid black;">
-			</tr>
-		</table>
-        
-        <footer>
-                <ul id="ul2">
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Eligibility</a></li>
-                    <li><a href="#">Terms & Conditions</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-        </footer>
+    </header>
+            <div class="container">
+
+            </div>
+
+<footer>
+    <ul id="ul2">
+            <div class="text-center">
+                    <!-- Button HTML (to Trigger Modal) -->
+                   <li><a href="#myModal" class="trigger-btn" data-toggle="modal">About</a></li>
+                   <li><a href="#myModal1" class="trigger-btn" data-toggle="modal">Eligibility</a></li>
+                   <li><a href="#myModal2" class="trigger-btn" data-toggle="modal">Terms & Conditions</a></li>
+                   <li><a href="#myModal3" class="trigger-btn" data-toggle="modal">Contact Us</a></li>      
+            </div>
+                
+                <!-- Modal HTML -->
+                <div id="myModal" class="modal fade">
+                    <div class="modal-dialog modal-confirm">
+                        <div class="modal-content">
+                            <div class="modal-header">				
+                                <h3 class="modal-title">About Smart Pay</h3>	
+                            </div>
+                            <div class="modal-body">
+                                <p class="text-center">Smart pay is a best online store which is providing exclusive deals and unmatched services to the users. Yes, Smart pay offers you all this and more at your doorstep. Upgrading to a new phone, who thought online electronic and gadget shopping would be as easy as lazing on the couch and clicking away on your phone. It is not just a passing fad, it is convenience at your fingertips!<br/>
+                
+                                    It’s faster! It’s smarter! It’s better!.</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-success btn-block" data-dismiss="modal">OK</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Modal HTML -->
+                <div id="myModal1" class="modal fade">
+                        <div class="modal-dialog modal-confirm">
+                            <div class="modal-content">
+                                <div class="modal-header">				
+                                    <h3 class="modal-title">Eligibility</h3>	
+                                </div>
+                                <div class="modal-body">
+                                    <p class="text-center">
+                                        1. The customer should have a savings account.<br/>
+                                        2. The account should be either salaried or a business account.<br/>
+                                        3. Customer must have valid PAN and Aadhar card.<br/>
+                                        
+                                    </p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-success btn-block" data-dismiss="modal">OK</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    
+                <!-- Modal HTML -->
+                <div id="myModal2" class="modal fade">
+                        <div class="modal-dialog modal-confirm">
+                            <div class="modal-content">
+                                <div class="modal-header">				
+                                    <h3 class="modal-title">Terms & Conditions</h3>	
+                                </div>
+                                <div class="modal-body">
+                                    <p class="text-center">
+                                        1. The customer should have minimum age of 18 years.<br/>
+                                        2. He/She can read and write english language.<br/>
+                                        3. Should have basic knowledge about EMI and Bank account transactions.<br/>
+                                        4. And as mentioned in eligibility, the customer should reach all the criteria.<br/>
+                                    </p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-success btn-block" data-dismiss="modal">OK</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    
+                <!-- Modal HTML -->
+                <div id="myModal3" class="modal fade">
+                        <div class="modal-dialog modal-confirm">
+                            <div class="modal-content">
+                                <div class="modal-header">				
+                                    <h3 class="modal-title">Contact Us</h3>	
+                                </div>
+                                <div class="modal-body">
+                                    <p class="text-center">
+                                        Through email:<br/>
+                                        Venkata.kankanala@lntinfotech.com<br/>
+                                        saurav.sanyal@lntinfotech.com<br/>
+
+                                        Through call:<br/>
+                                        8559076263<br/>
+                                        7009464757<br/>
+                                    </p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-success btn-block" data-dismiss="modal">OK</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    </ul>
+</footer>               
 </body>
 </html>
