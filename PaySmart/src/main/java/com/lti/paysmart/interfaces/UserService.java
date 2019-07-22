@@ -21,7 +21,7 @@ public interface UserService {
 	public String performLogin(UserLoginDTO userLoginDTO);
 	public String performRegister(UserRegisterDTO userRegisterDTO);
 	public CardDetailsResponseDTO fetchCardUser(CardDetailsRequestDTO cardDetailsRequestDTO);
-	public List<Product> fetchAllProduct();
+	public List<ViewProductDTO> fetchAllProduct();
 	public ViewProductDetailedDTO fetchSingleProduct(long product_id);
 	public ProductOrderResponseDTO placeOrder(ProductOrderRequestDTO productOrderRequestDTO);
 	public List<ViewAllOrderResopnseDTO> fetchAllOrders(String username);

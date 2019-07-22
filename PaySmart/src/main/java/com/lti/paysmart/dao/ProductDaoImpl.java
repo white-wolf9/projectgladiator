@@ -3,6 +3,10 @@ package com.lti.paysmart.dao;
 import java.io.File;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -14,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.lti.paysmart.dto.AddProductDTO;
+import com.lti.paysmart.dto.ViewProductDTO;
 import com.lti.paysmart.dto.ViewProductDetailedDTO;
 import com.lti.paysmart.entities.EMI;
 import com.lti.paysmart.entities.Product;
@@ -84,8 +89,31 @@ public class ProductDaoImpl extends GenericDaoImpl implements ProductDao{
 	}
 
 	@Override
-	public List<Product> fetchAllProduct() {
-		return (List<Product>) entityManager.createQuery("select p from Product as p").getResultList();
+	public List<ViewProductDTO> fetchAllProduct() {
+		
+		List<Product> list = (List<Product>) entityManager.createQuery("select p from Product as p").getResultList();
+		List<ViewProductDTO> responseList = new ArrayList<ViewProductDTO>();
+		
+		for(Product product_iterator : list) {
+			ViewProductDTO object = new ViewProductDTO();
+			object.setName(product_iterator.getName());
+			object.setProduct_id(product_iterator.getProduct_id());
+			object.setDescription(product_iterator.getDescription());
+			
+			object.setPrice(product_iterator.getPrice());
+			
+			Path sourceProductFile = Paths.get("D:/uploads/"+product_iterator.getImagefilename());
+			Path destProductFile = Paths.get("src/main/resources/static/uploads/"+product_iterator.getImagefilename());
+			try {
+				Files.copy(sourceProductFile, destProductFile, StandardCopyOption.REPLACE_EXISTING);
+			}catch (Exception e) {
+				// TODO: handle exception
+			}
+			object.setImagefilename(product_iterator.getImagefilename());
+			
+			responseList.add(object);
+		}
+		return responseList;
 	}
 
 	@Override

@@ -41,7 +41,7 @@ public class Order {
 	@Enumerated(EnumType.STRING)
 	private EMITypes emi_scheme;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "PRODUCT_ID")
 	private Product product;
 	

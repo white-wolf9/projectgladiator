@@ -35,8 +35,8 @@ public class Product {
 	@OneToMany(mappedBy = "product",fetch =FetchType.LAZY, cascade = CascadeType.ALL)
 	private Set<EMI> emi;
 	
-	@OneToOne(mappedBy = "product",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	private Order order;
+	@OneToMany(mappedBy = "product",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private Set<Order> order;
 
 	public long getProduct_id() {
 		return product_id;
@@ -94,15 +94,13 @@ public class Product {
 		this.emi = emi;
 	}
 
-	public Order getOrder() {
+	public Set<Order> getOrder() {
 		return order;
 	}
 
-	public void setOrder(Order order) {
+	public void setOrder(Set<Order> order) {
 		this.order = order;
 	}
-
-	
 	
 
 }

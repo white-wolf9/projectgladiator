@@ -63,7 +63,7 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public List<Product> fetchAllProduct() {
+	public List<ViewProductDTO> fetchAllProduct() {
 		return pdao.fetchAllProduct();
 	}
 

@@ -147,30 +147,8 @@ public class MasterController {
 	
 	@RequestMapping(value = "/view.all.product.index", method = RequestMethod.POST)
 	public List<ViewProductDTO> showAllProduct() {
-
-		List<Product> list = userServ.fetchAllProduct();
-		List<ViewProductDTO> responseList = new ArrayList<ViewProductDTO>();
+		return userServ.fetchAllProduct();
 		
-		for(Product product_iterator : list) {
-			ViewProductDTO object = new ViewProductDTO();
-			object.setName(product_iterator.getName());
-			object.setProduct_id(product_iterator.getProduct_id());
-			object.setDescription(product_iterator.getDescription());
-			
-			object.setPrice(product_iterator.getPrice());
-			
-			Path sourceProductFile = Paths.get("D:/uploads/"+product_iterator.getImagefilename());
-			Path destProductFile = Paths.get("src/main/resources/static/uploads/"+product_iterator.getImagefilename());
-			try {
-				Files.copy(sourceProductFile, destProductFile, StandardCopyOption.REPLACE_EXISTING);
-			}catch (Exception e) {
-				// TODO: handle exception
-			}
-			object.setImagefilename(product_iterator.getImagefilename());
-			
-			responseList.add(object);
-		}
-		return responseList;
 	}
 	
 	@RequestMapping(value = "/view.specific.product", method = RequestMethod.GET)
