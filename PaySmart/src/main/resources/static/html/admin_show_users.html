@@ -2,6 +2,9 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <title>Validate Users</title>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
@@ -50,18 +53,7 @@ $(document).ready(function(){
 				var column4 = $("<td/>").text(user.email); 
 		 		var column5 = $("<td/>").text(user.address);
 		 		var column6 ="<td>"+'<button type="button" class="btn btn-primary splclass" id="../uploads/'+user.aadharfile+'" data-toggle="modal" data-target="#exampleModal">View</button>'+"</td>";
-		 		var column7 ="<td>"+'<button type="button" class="btn btn-primary splclass" id="../uploads/'+user.aadharfile+'" data-toggle="modal" data-target="#exampleModal">View</button>'+"</td>";
-
-		 		/* var column6 = $("<td/>");
-		 		var img = $("<img/>").attr("src","../uploads/"+user.aadharfile);
-		 		column6.append(img);
-		 		var column7 = $("<td/>");
-		 		var img = $("<img/>").attr("src","../uploads/"+user.panfile);
-		 		column6.append(img); */
-		 		
-		 		//var column6 = $("<td/>").html('<a href="../uploads/'+user.aadharfile+'">View Aadhar</a>');
-		 		//var column7 = $("<td/>").html('<a href="../uploads/'+user.panfile+'">View Pan</a>');
-		 		
+		 		var column7 ="<td>"+'<button type="button" class="btn btn-primary splclass" id="../uploads/'+user.panfile+'" data-toggle="modal" data-target="#exampleModal">View</button>'+"</td>";
 		 		var r = $('<button class="btn btn-outline-dark toggle" value='+user.userid+'>Validate</button>')
 		 		
 				row.append(column1);
@@ -122,7 +114,7 @@ $(document).ready(function(){
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Aadhar Card</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Viewing Document</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
