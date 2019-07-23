@@ -11,47 +11,82 @@ if(sessionStorage.getItem("administrator_username") != null){
     }
 	else
 		history.go(-1);
+	$(".btn").click(function(){
+		sessionStorage.removeItem('administrator_username');
+		sessionStorage.removeItem('administrator_password');
+	  	window.location.replace("../index.html");
+	});
 })
 </script>
 <style>
 body {
-  font-family: Arial;
-  color: white;
-}
-
-.split {
-  height: 100%;
-  width: 50%;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  overflow-x: hidden;
-  padding-top: 20px;
-}
-
-.left {
-  left: 0;
-  background-color: #617850;
-}
-
-.right {
-  right: 0;
-  background-color: #a4ab9f;
-}
-
-.centered {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
- .link {
-	color : white;
-}
+    font-family: Arial;
+    color: white;
+  }
+  .split {
+    height: 85%;
+    width: 50%;
+    position: fixed;
+    z-index: 1;
+    top: 15%;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+  .left {
+    left: 0;
+    background-color: #617850;
+    text-align: center;
+  }
+  .right {
+    right: 0;
+    background-color: #a4ab9f;
+    text-align: center;
+  }
+  .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+  }
+   .link {
+      color : white;
+  }
+   .part{
+    width: 100%;
+    position: fixed;
+    overflow-x: hidden;
+  }
+  .top{
+      top:0%;
+      left: 0%;
+      bottom:85%;
+      background-color: rgb(64, 124, 124);
+      width: 100%;
+      text-align: center;
+  }
+ a{
+    display:block;
+ }
+ h2{
+     align-content: center;
+ }
+ .bottom{
+     text-align: center;
+ }
+ .btn{
+    background-color: teal;
+    width: 100%;
+    height: 100%;
+    color : white;
+    font-family: Arial;
+    font-size: 20px;
+ }
 </style>
 </head>
 <body>
+<div class="part top">
+<button class="btn">Logout</button>
+</div>
 <a class= "link" href="../html/admin_add_product.html">
 <div class="split left">
   <div class="centered">

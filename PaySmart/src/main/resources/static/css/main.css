@@ -146,3 +146,12 @@ ul li a:hover{
     outline: none;
 }
 
+.logoutuser {
+    text-decoration: none;
+    color:darkblue;
+    padding: 5px 20px;
+    border: 1px solid transparent;
+    transition: 0.6s ease;
+    background-color:#82ce34;
+    color:darkblue;
+}

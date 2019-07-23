@@ -4,6 +4,29 @@
 <meta charset="ISO-8859-1">
 <title>Validate Users</title>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/lux/bootstrap.min.css" rel="stylesheet" integrity="sha384-hVpXlpdRmJ+uXGwD5W6HZMnR9ENcKVRn855pPbuI/mwPIEKAuKgTKgGksVGmlAvt" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<style type="text/css">
+.users_table {
+  border-collapse: collapse;
+  width: 100%;
+  color: black;
+}
+
+tr:hover {
+  background-color:#8fb2eb;
+}
+
+th, td {
+  padding: 1px;
+  text-align: left;
+  color: black;
+  border: 1px solid black;
+  border-right: 1px solid black;
+  border-top: 1px solid black;
+}</style>
 <script>
 $(document).ready(function(){
 	if(sessionStorage.getItem("administrator_username") != null){
@@ -18,7 +41,7 @@ $(document).ready(function(){
 		contentType : 'application/json',
 		
 		success : function(response){
-			alert(JSON.stringify(response));
+			
 			$.each(response, function(i, user) {
 				var row = $('<tr/>');
 				var column1 = $('<td/>').text(user.fname);
@@ -26,6 +49,8 @@ $(document).ready(function(){
 				var column3 = $("<td/>").text(user.phone_no);
 				var column4 = $("<td/>").text(user.email); 
 		 		var column5 = $("<td/>").text(user.address);
+		 		var column6 ="<td>"+'<button type="button" class="btn btn-primary splclass" id="../uploads/'+user.aadharfile+'" data-toggle="modal" data-target="#exampleModal">View</button>'+"</td>";
+		 		var column7 ="<td>"+'<button type="button" class="btn btn-primary splclass" id="../uploads/'+user.aadharfile+'" data-toggle="modal" data-target="#exampleModal">View</button>'+"</td>";
 
 		 		/* var column6 = $("<td/>");
 		 		var img = $("<img/>").attr("src","../uploads/"+user.aadharfile);
@@ -34,10 +59,10 @@ $(document).ready(function(){
 		 		var img = $("<img/>").attr("src","../uploads/"+user.panfile);
 		 		column6.append(img); */
 		 		
-		 		var column6 = $("<td/>").html('<a href="../uploads/'+user.aadharfile+'">View Aadhar</a>');
-		 		var column7 = $("<td/>").html('<a href="../uploads/'+user.panfile+'">View Pan</a>');
+		 		//var column6 = $("<td/>").html('<a href="../uploads/'+user.aadharfile+'">View Aadhar</a>');
+		 		//var column7 = $("<td/>").html('<a href="../uploads/'+user.panfile+'">View Pan</a>');
 		 		
-		 		var r = $('<button class="validateuser" value='+user.userid+'>Validate</button>')
+		 		var r = $('<button class="btn btn-outline-dark toggle" value='+user.userid+'>Validate</button>')
 		 		
 				row.append(column1);
 				row.append(column2);
@@ -46,13 +71,20 @@ $(document).ready(function(){
 				row.append(column5);
 				row.append(column6);
 				row.append(column7);
+				//row.append(column8);
 				row.append(r);
-				$('#users_table').append(row);
+				$('.table-hover').append(row);
 
 			})
 		}
+	
 	})
-	$(document).on("click","button.validateuser",function(){
+	$(document).on("click", "button.splclass" , function() {
+ /* console.log("Iam a dynamic button"); */
+ /* alert(this.id); */
+ $("#myImage").attr("src",this.id);
+	})
+	$(document).on("click","button.toggle",function(){
 		
 		var user_id = $(this).val()
 		
@@ -74,9 +106,35 @@ $(document).ready(function(){
 </head>
 <body>
 <h1>Displaying all the users</h1>
-<table id="users_table" style="border : 1px solid black;">
+<table class="table-hover" id="users_table" style="border : 1px solid black;">
 <tr style="border : 1px solid black;">
-</tr>
+<th>First Name</th>
+<th>Last Name</th>
+<th>Phone Number</th>
+<th>E-mail</th>
+<th>Address</th>
+<th>Aadhar Card</th>
+<th>Pan Card</th>
+</tr> 
 </table>
+<!-- Modal -->
+<div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Aadhar Card</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       <img id="myImage" class="img-fluid"></img>
+      </div>
+      <div class="modal-footer">
+        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>

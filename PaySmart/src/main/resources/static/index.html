@@ -25,8 +25,27 @@
   		  //...
   		}
 	  	else{
-	  		location.href = "../html/admin_home.html";
+	  		window.location.replace("../html/admin_home.html");
+	  		
 	  	}
+    	if (sessionStorage.getItem('customer_username') === null) {
+    		  //...
+    		}
+  	  	else{
+  	  		
+  	  		$('#adminlogin').hide();
+  	  		$('#customerlogin').hide();
+  	  		$('#registeruser').hide();
+  	  		$("#registeruser").after("<button class='logoutuser'>Log out</button>");
+	  	  	
+  	  		$('.logoutuser').on("click",function(){
+	    		sessionStorage.removeItem('customer_username');
+	    		sessionStorage.removeItem('customer_password');
+	    		window.location.replace("../index.html");
+	    	})
+  	  	}
+    	
+    	
     	$.ajax({
     		url : '/view.all.product.index',
     		method : 'POST',
@@ -73,7 +92,15 @@
     	})
     	
     })
-    
+    $(document).on("click", "#sec1", function(){
+    	if (sessionStorage.getItem('customer_username') === null) {
+    		  //...
+    		}
+  	  	else{
+  	  		window.location.replace("../html/user_dashboard.html");
+  	  	}
+});
+
     </script>
 </head>
  
@@ -86,9 +113,8 @@
             </div>
 
             <ul id="ul1">
-                <li><a href="../html/user_register.html">New user?</a></li>
-                <li><a href="../html/admin_login.html">Administrator Login</a></li>
-                <li><a href="../html/user_login.html">Login</a></li>
+                <li id="registeruser"><a href="../html/user_register.html">New user?</a></li>
+                <li id="customerlogin"><a href="../html/user_login.html">Login</a></li>
                 <li><a href="../html/user_dashboard.html">Dashboard</a></li>
                 <li><a href="/index.html">Home</a></li>
             </ul>
@@ -105,7 +131,8 @@
                    <li><a href="#myModal" class="trigger-btn" data-toggle="modal">About</a></li>
                    <li><a href="#myModal1" class="trigger-btn" data-toggle="modal">Eligibility</a></li>
                    <li><a href="#myModal2" class="trigger-btn" data-toggle="modal">Terms & Conditions</a></li>
-                   <li><a href="#myModal3" class="trigger-btn" data-toggle="modal">Contact Us</a></li>      
+                   <li><a href="#myModal3" class="trigger-btn" data-toggle="modal">Contact Us</a></li>
+                   <li id="adminlogin"><a href="../html/admin_login.html">Administrator Login</a></li>      
             </div>
                 
                 <!-- Modal HTML -->

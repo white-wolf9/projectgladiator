@@ -11,6 +11,14 @@
 <script src="//geodata.solutions/includes/countrystatecity.js"></script>
 <link rel="stylesheet" type="text/css" media="screen" href="../css/register.css" />
 <script type="text/javascript">
+$(document).ready(function(){
+	if (sessionStorage.getItem('customer_username') === null) {
+		  //...
+		}
+	else{
+		window.location.replace("../index.html");
+	}
+})
 $(function() {
 	$("#addUser").submit(function(evt) {
 		evt.preventDefault();
@@ -94,7 +102,7 @@ $(function() {
 				<label>STREET</label>
 				<input type="text" class="form-control" placeholder="Enter your street" id="u_street">
 				<label>COUNTRY</label>
-				<select name="country" class="countries" id="countryId">
+				<select name="country" class="countries" id="countryId" value="In">
 				    <option value="">Select Country</option>
 				</select>
 				<label>STATE</label>
