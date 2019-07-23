@@ -36,11 +36,18 @@ $(document).ready(function() {
 				data : JSON.stringify(obj),
 				contentType : 'application/json',
 				success : function(response) {
-					alert(JSON.stringify(response));
+					
 					if(response.message === "Success") {
+						alert("Log in successful");
 						sessionStorage.setItem("customer_username", response.username);
 						sessionStorage.setItem("customer_password", response.password);
-						window.location.replace("../index.html");	
+						window.location.replace("../index.html");
+					}
+					if(response.message === "User account does not exist!"){
+						alert("User does not exist");
+					}
+					if(response.message === "Incorrect Password"){
+						alert("Incorrect Password");
 					}
 				}
 			})

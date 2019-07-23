@@ -86,7 +86,7 @@ $(document).ready(function(){
 		type : 'json',
 		
 		success : function(response){
-			alert(JSON.stringify(response));
+			
 			$("#productimg").append('<img src="'+'../uploads/'+response.imagefilename+'" alt="100" style="width:20%">');
 			$("#put_name").append('<p id="product_name">'+response.name+'</p>');
 			$("#put_description").append('<p id="product_description">'+response.description+'</p>');
@@ -163,8 +163,16 @@ $(document).ready(function(){
 			
 			success : function(response){
 				alert(JSON.stringify(response));
+				if(response==="Card is inactive, please wait for it to be activated"){
+					alert("Wait for admin to activate your card");
+					window.location.replace("../index.html");
+				}else if(response==="Card is active, but no money sorry"){
+					alert("Please recharge your card");
+					window.location.replace("../index.html");
+				}
+				if(response==="Bought")
 				sessionStorage.removeItem('clicked_item');
-				location.href="../index.html";
+				window.location.replace("../index.html");
 			}
 		})
 	})
@@ -181,32 +189,27 @@ $(document).ready(function(){
 <th>DURATION</th>
 <th>GOLD CARD</th>
 <th>TITANIUM CARD</th>
-<th>INSTALLMENT VALUE</th>
 </tr>
 </thead>
 <tr>
 <td>3 MONTHS</td>
 <td id="emi_three_gold"></td>
 <td id="emi_three_titanium"></td>
-<td></td>
 </tr>
 <tr>
 <td>6 MONTHS</td>
 <td id="emi_six_gold"></td>
 <td id="emi_six_titanium"></td>
-<td></td>
 </tr>
 <tr>
 <td>9 MONTHS</td>
 <td id="emi_nine_gold"></td>
 <td id="emi_nine_titanium"></td>
-<td></td>
 </tr>
 <tr>
 <td>12 MONTHS</td>
 <td id="emi_twelve_gold"></td>
 <td id="emi_twelve_titanium"></td>
-<td></td>
 </tr>
 </table>
 <div id="put_name"><label>NAME</label></div>

@@ -13,12 +13,4 @@ public class EMIUtility {
         return emi;
 	}
 	
-	public void EMIDateCalculate(Calendar cal, int tenure) {
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
-		for (int i = 0; i < tenure; i++) {
-			cal.add(Calendar.DAY_OF_MONTH, 30);  
-	    	String newDate = sdf.format(cal.getTime());  
-	    	System.out.println("Date after Addition: "+newDate);	
-		}
-	}
 }

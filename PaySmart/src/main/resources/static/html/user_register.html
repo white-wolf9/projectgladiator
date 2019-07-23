@@ -19,41 +19,6 @@ $(document).ready(function(){
 		window.location.replace("../index.html");
 	}
 })
-<!-- 
-<script>
-        function valid()
-        {
-            var letters = /^[A-Za-z]+$/;
-            var name =document.getElementById("name").value;
-            var phone =Number(document.getElementById("gridright").value);
-            var password =document.getElementById("password").value;
-            if (name==null || name==""){  
-                document.getElementById("namep").innerHTML = "Enter your name";
-                document.getElementById("name").style="border-color:red";
-            } else if (letters.test(name.value)){
-                document.getElementById("namep").innerHTML = "Invalid characters";
-                document.getElementById("name").style="border-color:red";
-            }
-            if (phone==null || phone==""){  
-                document.getElementById("phonep").innerHTML = "Enter your mobile number";
-                document.getElementById("gridright").style="border-color:red";
-            } else if (isNaN(phone)) {
-                document.getElementById("phonep").innerHTML = "The mobile number you entered does not seem to be valid";
-                document.getElementById("phone").style="border-color:red";
-            }
-            if(password==null || password==""){
-                document.getElementById("passp").innerHTML = "Password can't be empty";
-                document.getElementById("password").style="border-color:red";
-            }else if (password.length<6){  
-                document.getElementById("passp").innerHTML = "Password must be 6 characters long";
-                document.getElementById("password").style="border-color:red";
-            }  
-        }    
-    </script> -->
-
-
-
-
 $(function() {
 	$("#addUser").submit(function(evt) {
 		evt.preventDefault();
@@ -85,9 +50,6 @@ $(function() {
 		formdata.append("aadharcard", $("#u_aadhar").get(0).files[0]);
 		formdata.append("pancard", $("#u_pan").get(0).files[0]);
 		
-		
-		alert(formdata),
-		
  		$.ajax({
  			url : "/register.user",
  			method : 'POST', 
@@ -111,66 +73,64 @@ $(function() {
 			<button class="accordion" type="button">Basic Details</button>
 			<div class="panel">
 				<label>FIRSTNAME</label>
-				<input type="text" class="form-control" placeholder="Enter you first name" id="u_fname">
+				<input type="text" class="form-control" placeholder="Enter you first name" id="u_fname" required>
 				<label>LASTNAME</label>
-				<input type="text" class="form-control" placeholder="Enter your last name" id="u_lname">
+				<input type="text" class="form-control" placeholder="Enter your last name" id="u_lname" required>
 				<label>DATE</label>
-				<input type="date" class="form-control select-date" id="u_dob">
+				<input type="date" class="form-control select-date" id="u_dob" required>
 				<label>EMAIL</label>
-				<input type="email" class="form-control" placeholder="Enter your email" id="u_email">
+				<input type="email" class="form-control" placeholder="Enter your email" id="u_email" required>
 				<label>PHONENO.</label>
-				<input type="number" class="form-control" placeholder="Enter your phone number" id="u_phone_no">
+				<input type="number" class="form-control" placeholder="Enter your phone number" id="u_phone_no" required>
 			</div>
 			<button class="accordion" type="button">Credentials</button>
 			<div class="panel">
 				<label>USERNAME</label>
-				<input type="text" class="form-control" placeholder="Enter your username" id="u_username">
+				<input type="text" class="form-control" placeholder="Enter your username" id="u_username" required>
 				<label>PASSWORD</label>
-				<input type="password" class="form-control" placeholder="Enter your password" id="u_password">
-				<label>CONFIRM PASSWORD</label>
-				<input type="password" class="form-control" id="u_confirm_pass">
+				<input type="password" class="form-control" placeholder="Enter your password" id="u_password" required>
 			</div>
 			<button class="accordion" type="button">Address</button>
 			<div class="panel">
 				<label>HOUSENO</label>
-				<input type="text" class="form-control" placeholder="Enter your door no" id="u_door_no">
+				<input type="text" class="form-control" placeholder="Enter your door no" id="u_door_no" required>
 				<label>STREET</label>
-				<input type="text" class="form-control" placeholder="Enter your street" id="u_street">
+				<input type="text" class="form-control" placeholder="Enter your street" id="u_street" required>
 				<label>COUNTRY</label>
-				<select name="country" class="countries" id="countryId" value="In">
+				<select name="country" class="countries" id="countryId" required>
 				    <option value="">Select Country</option>
 				</select>
 				<label>STATE</label>
-				<select name="state" class="states" id="stateId">
+				<select name="state" class="states" id="stateId" required>
 				    <option value="">Select State</option>
 				</select>
 				<label>CITY</label>
-				<select name="city" class="cities" id="cityId">
+				<select name="city" class="cities" id="cityId" required>
 				    <option value="">Select City</option>
 				</select>
 				<label>PINCODE</label>
-				<input type="number" class="form-control" placeholder="Enter your pincode" id="u_pincode">
+				<input type="number" class="form-control" placeholder="Enter your pincode" id="u_pincode" required>
 			</div>
 			<button class="accordion" type="button">Document Upload</button>
 			<div class="panel">
 			<label>AADHAR CARD</label>
-			<input type="file" class="form-control" placeholder="" id="u_aadhar">
+			<input type="file" class="form-control" placeholder="" id="u_aadhar" required>
 			<label>PAN CARD</label>
-			<input type="file" class="form-control" placeholder="" id="u_pan">
+			<input type="file" class="form-control" placeholder="" id="u_pan" required>
 			</div>
 			<button class="accordion" type="button">CARD TYPE</button>
 			<div class="panel">
-			<input type="radio" name="cardtype"  value="GOLD"/>Gold 
+			<input type="radio" name="cardtype"  value="GOLD"/ required>Gold 
 			<input type="radio" name="cardtype" value="TITANIUM"/>Titanium <br/>
 			</div>
 			<button class="accordion" type="button">BANK DETAILS</button>
 			<div class="panel">
 			<label>BANK NAME</label>
-			<input type="text" class="form-control" placeholder="Enter your bank name" id="u_bank_name">
+			<input type="text" class="form-control" placeholder="Enter your bank name" id="u_bank_name" required>
 			<label>SAVINGS A/C NO</label>
-			<input type="text" class="form-control" placeholder="Enter your a/c no" id="u_ac_no">
+			<input type="text" class="form-control" placeholder="Enter your a/c no" id="u_ac_no" required>
 			<label>IFSC CODE</label>
-			<input type="text" class="form-control " placeholder="Enter your ifsc code" id="u_ifsc"> 
+			<input type="text" class="form-control " placeholder="Enter your ifsc code" id="u_ifsc" required> 
 			</div>
 			<div class="submit">
 			<input type="submit" value="Register" /> <br/>

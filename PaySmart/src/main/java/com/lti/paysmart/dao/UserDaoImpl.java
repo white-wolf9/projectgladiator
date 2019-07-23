@@ -252,7 +252,7 @@ public class UserDaoImpl extends GenericDaoImpl implements UserDao {
 		order.setPayment(payment);
 		entityManager.merge(order);
 		ProductOrderResponseDTO orderResponse = new ProductOrderResponseDTO();
-		orderResponse.setResponse("Well");
+		orderResponse.setResponse("Bought");
 
 		/*
 		 * Fix the calendar to date conversion

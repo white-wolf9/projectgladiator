@@ -4,6 +4,11 @@
 <meta charset="ISO-8859-1">
 <title>Add Product</title>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/lux/bootstrap.min.css" rel="stylesheet" integrity="sha384-hVpXlpdRmJ+uXGwD5W6HZMnR9ENcKVRn855pPbuI/mwPIEKAuKgTKgGksVGmlAvt" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" type="text/css" media="screen" href="../css/add_product.css" />
 <script>
 function master() {
 	if(sessionStorage.getItem("administrator_username") != null){
@@ -51,69 +56,6 @@ $(function() {
 })
 </script>
 <style>
-body
-{
-    background-image:  linear-gradient(rgba(0, 0, 0, 0),rgba(0,0,0,0.25)), url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9LnCKTrlF1Jg3G-N-e8jysukv2FdcKlmfNCxADZbu3Z13F3mR");
-	background-size:cover;
-    background-position:center;
-}
-
-.prodinfo{
-    border-radius: 5px;
-    background:#fff;
-    
-    
-    width: 400px;
-    height: 30px;
-} 
-   
-
-.emi_entry{
-    border-radius: 5px;
-    background: #fff;
-
-    width: 400px;
-    height: 30px;
-
-}
-
-.product
-{
-   
-    max-width: 500px;
-    border: 5px solid #000 ;
-    margin: 10% auto;
-    padding: 10px 10px;
-    border-radius: 1rem;
-    
-}
-
-
-.butt{
-    text-align: center;
-    align-content: center;
-}
-
-#addProductForm{
-    background: transparent;
-    
-    
-   
-
-}
-
-.prod{
-    border-radius: 5px;
-    background: #fff;
-    padding: 30px 30px;
-    width: 400px;
-   
-}
-    
-
-
-
-
 
 </style>
 </head>
@@ -148,8 +90,7 @@ EMI for nine months titanium card holders: <input type="number" step="any" id="e
 EMI for twelve months titanium card holders: <input type="number" step="any" id="emi_twelve_titanium" class="emi_entry"/>%<br/>
 
 </p>
-
-<input type="submit" class="butt" />
+<input type="submit" class="button" />
 
 
 </form>
