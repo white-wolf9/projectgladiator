@@ -50,30 +50,109 @@ $(function() {
 	})
 })
 </script>
+<style>
+body
+{
+    background-image:  linear-gradient(rgba(0, 0, 0, 0),rgba(0,0,0,0.25)), url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9LnCKTrlF1Jg3G-N-e8jysukv2FdcKlmfNCxADZbu3Z13F3mR");
+	background-size:cover;
+    background-position:center;
+}
+
+.prodinfo{
+    border-radius: 5px;
+    background:#fff;
+    
+    
+    width: 400px;
+    height: 30px;
+} 
+   
+
+.emi_entry{
+    border-radius: 5px;
+    background: #fff;
+
+    width: 400px;
+    height: 30px;
+
+}
+
+.product
+{
+   
+    max-width: 500px;
+    border: 5px solid #000 ;
+    margin: 10% auto;
+    padding: 10px 10px;
+    border-radius: 1rem;
+    
+}
+
+
+.butt{
+    text-align: center;
+    align-content: center;
+}
+
+#addProductForm{
+    background: transparent;
+    
+    
+   
+
+}
+
+.prod{
+    border-radius: 5px;
+    background: #fff;
+    padding: 30px 30px;
+    width: 400px;
+   
+}
+    
+
+
+
+
+
+</style>
 </head>
 <body onload="master()">
+<div class="product">
 <form id="addProductForm">
-Product Name: <input type = "text" id = "product_name"/><br/>
-Product Description: <input type = "text" id = "product_description"/><br/>
-Product Keywords: <input type = "text" step="any" id = "product_keywords"/><br/>
-Product Price: <input type = "number" step="any" id = "product_price"/><br/>
-Product Stock: <input type = "number" step="any" id = "product_stock"/><br/>
-Product Image: <input type="file" id = "product_image"><br/>
-<p>Enter 0.01 as EMI value where ever no cost EMI is applicable</p>
-<p>NOTE: EMI values are in percentages</p>
-<p>
+        <h1 align="center">ADD PRODUCTS</h1>         
+<p  style="font-size:20px">
+Product Name:<input type ="text" class="prodinfo" id = "product_name"/><br/>
+Product Detail:<input type ="text" class="prodinfo" id = "product_description"/><br/>
+Product Prices:<input type ="number" class="prodinfo"   step="any" id = "product_price"/><br/>
+Product Stock:<input type ="number" class="prodinfo" step="any" id = "product_stock"/><br/>
+
+</p>
+<p style="font-size:20px">
+Product Image:<input type="file"  class="prod"  id = "product_image" ><br/>
+</p>
+
+<p  style="font-size:20px">Enter 0.01 as EMI value where ever no cost EMI is applicable</p>
+<p  style="font-size:20px">NOTE: EMI values are in percentages</p>
+<p  style="font-size:20px" style="text-align: center">
 EMI for three months for gold card holders: <input type="number" step="any" id="emi_three_gold" class="emi_entry"/>%<br/>
 EMI for six months gold card holders: <input type="number" step="any" id="emi_six_gold" class="emi_entry"/>%<br/>
 EMI for nine months gold card holders: <input type="number" step="any" id="emi_nine_gold" class="emi_entry"/>%<br/>
 EMI for twelve months gold card holders: <input type="number" step="any" id="emi_twelve_gold" class="emi_entry"/>%<br/>
 </p>
-<p>
-EMI for three months for titanium card holders: <input type="number" step="any" id="emi_three_titanium" class="emi_entry"/>%<br/>
+
+<p  style="font-size:20px">
+ EMI for three months titanium card holders: <input type="number" step="any" id="emi_three_titanium" class="emi_entry"/>%<br/>
 EMI for six months titanium card holders: <input type="number" step="any" id="emi_six_titanium" class="emi_entry"/>%<br/>
 EMI for nine months titanium card holders: <input type="number" step="any" id="emi_nine_titanium" class="emi_entry"/>%<br/>
 EMI for twelve months titanium card holders: <input type="number" step="any" id="emi_twelve_titanium" class="emi_entry"/>%<br/>
+
 </p>
-<input type="submit">
+
+<input type="submit" class="butt" />
+
+
 </form>
+</div>
 </body>
 </html>

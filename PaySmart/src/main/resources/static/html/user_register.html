@@ -19,6 +19,41 @@ $(document).ready(function(){
 		window.location.replace("../index.html");
 	}
 })
+<!-- 
+<script>
+        function valid()
+        {
+            var letters = /^[A-Za-z]+$/;
+            var name =document.getElementById("name").value;
+            var phone =Number(document.getElementById("gridright").value);
+            var password =document.getElementById("password").value;
+            if (name==null || name==""){  
+                document.getElementById("namep").innerHTML = "Enter your name";
+                document.getElementById("name").style="border-color:red";
+            } else if (letters.test(name.value)){
+                document.getElementById("namep").innerHTML = "Invalid characters";
+                document.getElementById("name").style="border-color:red";
+            }
+            if (phone==null || phone==""){  
+                document.getElementById("phonep").innerHTML = "Enter your mobile number";
+                document.getElementById("gridright").style="border-color:red";
+            } else if (isNaN(phone)) {
+                document.getElementById("phonep").innerHTML = "The mobile number you entered does not seem to be valid";
+                document.getElementById("phone").style="border-color:red";
+            }
+            if(password==null || password==""){
+                document.getElementById("passp").innerHTML = "Password can't be empty";
+                document.getElementById("password").style="border-color:red";
+            }else if (password.length<6){  
+                document.getElementById("passp").innerHTML = "Password must be 6 characters long";
+                document.getElementById("password").style="border-color:red";
+            }  
+        }    
+    </script> -->
+
+
+
+
 $(function() {
 	$("#addUser").submit(function(evt) {
 		evt.preventDefault();

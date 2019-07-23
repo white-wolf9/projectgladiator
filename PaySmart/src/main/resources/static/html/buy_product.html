@@ -88,6 +88,9 @@ $(document).ready(function(){
 		success : function(response){
 			alert(JSON.stringify(response));
 			$("#productimg").append('<img src="'+'../uploads/'+response.imagefilename+'" alt="100" style="width:20%">');
+			$("#put_name").append('<p id="product_name">'+response.name+'</p>');
+			$("#put_description").append('<p id="product_description">'+response.description+'</p>');
+			$("#put_price").append('<p id="product_price">'+response.price+'</p>');
 			var r = $('<button class="buyproduct" value='+response.product_id+'>Buy now</button>');
 			if(response.three_emi_value_gold === 0.01){
 				$("#emi_three_gold").append("No Cost EMI");
@@ -131,7 +134,7 @@ $(document).ready(function(){
 			}else{
 				$("#emi_twelve_titanium").append(response.twelve_emi_value_titanium+"%");
 			}
-			$("p").append(r);
+			$("#buttonspace").append(r);
 		}
 		
 	})
@@ -206,6 +209,9 @@ $(document).ready(function(){
 <td></td>
 </tr>
 </table>
+<div id="put_name"><label>NAME</label></div>
+<div id="put_description"><label>Description</label></div>
+<div id="put_price"><label>Price</label></div>
 <div>
 <select name="EMI Schemes" id="customer_choice">
   <option value="THREEMONTHS">THREEMONTHS</option>
@@ -214,7 +220,7 @@ $(document).ready(function(){
   <option value="TWELVEMONTHS">TWELVEMONTHS</option>
 </select>
 </div>
-<p>
+<p id="buttonspace">
 </p>
 </body>
 </html>
