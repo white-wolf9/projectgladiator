@@ -79,8 +79,6 @@ public class UserController {
 		return userServ.performRegister(userRegisterDTO);
 	}
 	
-	
-	
 	@RequestMapping(value = "/view.all.users", method = RequestMethod.POST)
 	public List<ViewUsersAdminDTO> viewUserDetails() {
 
