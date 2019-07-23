@@ -42,7 +42,7 @@ $(document).ready(function() {
 				data : JSON.stringify(obj),
 				contentType : 'application/json',
 				success : function(response) {
-					
+					alert(JSON.stringify(response));
 					if(response.message === "Success") {
 						sessionStorage.setItem("administrator_username", response.username);
 						sessionStorage.setItem("administrator_password", response.password);

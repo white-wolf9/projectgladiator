@@ -27,7 +27,7 @@ $(document).ready(function(){
 			contentType : 'application/json',
 			
 			success : function(response){
-				alert(JSON.stringify(response));
+				//alert(JSON.stringify(response));
 				$("#card_number").append(response.cardno);
 				$("#card_name").append(response.name);
 				$("#card_type").append(response.type);

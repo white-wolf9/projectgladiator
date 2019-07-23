@@ -4,6 +4,9 @@
 <meta charset="ISO-8859-1">
 <title>Buy Product</title>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <style type="text/css">
 thead{
     background-color: #3f87a6;
@@ -163,11 +166,9 @@ $(document).ready(function(){
 			
 			success : function(response){
 				alert(JSON.stringify(response));
-				if(response==="Card is inactive, please wait for it to be activated"){
-					alert("Wait for admin to activate your card");
+				if(response === "Card is inactive, please wait for it to be activated"){
 					window.location.replace("../index.html");
 				}else if(response==="Card is active, but no money sorry"){
-					alert("Please recharge your card");
 					window.location.replace("../index.html");
 				}
 				if(response==="Bought")
