@@ -21,7 +21,6 @@ public class CardController {
 	@Autowired
 	AdminService admServ;
 	
-
 	@RequestMapping(value = "/get.card.details", method = RequestMethod.POST)
 	public CardDetailsResponseDTO showCardDetails(@RequestBody CardDetailsRequestDTO cardDetailsRequestDTO) {
 		return userServ.fetchCardUser(cardDetailsRequestDTO);

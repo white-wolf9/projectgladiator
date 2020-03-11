@@ -61,17 +61,14 @@ public class PaySmartApplicationTests {
 		 * emi.setEmi_type(EMITypes.TWELVEMONTHS); emi.setEmi_value(3.9);
 		 * emi.setZero_emi(true); emi.setProduct(product); pdao.add(emi);
 		 */
-		
 		/*
 		 * CardNumberGenerator cng = new CardNumberGenerator();
 		 * System.out.println((cng.generate("2847", 16)));
 		 */
-		
 		/*
 		 * EMIUtility eu = new EMIUtility();
 		 * System.out.println(eu.calculateInstallmnet(30000, 0.01, 0.25));
 		 */
-		
 		/*
 		 * Calendar cal = Calendar.getInstance(); Displaying current date in the desired
 		 * format System.out.println("Current Date: "+sdf.format(cal.getTime())); Number
@@ -81,7 +78,6 @@ public class PaySmartApplicationTests {
 		 * Date date = new Date(); Calendar calendar = Calendar.getInstance();
 		 * calendar.setTime(date); System.out.println(calendar.getTime());
 		 */
-		
 		/*
 		 * Calendar cal = Calendar.getInstance(); // Printing the calendar object
 		 * System.out.println(cal.getTime().toString()); // Creating a date time format
@@ -92,16 +88,12 @@ public class PaySmartApplicationTests {
 		 * System.out.println(date1); } catch (ParseException e) { // TODO
 		 * Auto-generated catch block e.printStackTrace(); }
 		 */
-		
-		Date date = new Date();
-		System.out.println(date);
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-		try {
-			System.out.println(sdf.parse(date.toString()));
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		/*
+		 * Date date = new Date(); System.out.println(date); SimpleDateFormat sdf = new
+		 * SimpleDateFormat("yyyy-MM-dd hh:mm:ss"); try {
+		 * System.out.println(sdf.parse(date.toString())); } catch (ParseException e) {
+		 * // TODO Auto-generated catch block e.printStackTrace(); }
+		 */
 	}
 }
 

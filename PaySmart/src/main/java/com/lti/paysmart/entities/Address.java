@@ -10,6 +10,11 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+/*The EJB 3 standard annotations are contained in the javax.persistence package, 
+ * so we import this package as the first step. Second, we used the @Entity annotation 
+ * to the Employee class, which marks this class as an entity bean, 
+ * so it must have a no-argument constructor that is visible with at least protected scope.*/
+
 @Entity
 @Table(name = "TBL_PROJ_ADDRESS")
 public class Address {

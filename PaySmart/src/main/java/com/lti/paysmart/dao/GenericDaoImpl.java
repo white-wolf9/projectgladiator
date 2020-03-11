@@ -11,6 +11,9 @@ import org.springframework.stereotype.Component;
 
 import com.lti.paysmart.interfaces.GenericDao;
 
+/*The @Component annotation marks a java class as a bean so the component-scanning 
+ * mechanism of spring can pick it up and pull it into the application context.*/
+
 @Component
 @Primary
 public class GenericDaoImpl implements GenericDao{
